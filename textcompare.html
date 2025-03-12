@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free online text comparison tool. Compare two texts and highlight differences instantly. Perfect for developers, writers, and editors.">
+    <meta name="keywords" content="text comparison, compare text, online text tool, text diff, text difference checker, free text comparison">
+    <meta name="author" content="Online Text Tools">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Free Online Text Comparison Tool | Compare Texts Instantly">
+    <meta property="og:description" content="Compare two texts and highlight differences instantly with our free online text comparison tool. Perfect for developers, writers, and editors.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourwebsite.com/text-compare.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Free Online Text Comparison Tool">
+    <meta name="twitter:description" content="Compare two texts and highlight differences instantly with our free online text comparison tool.">
+    
+    <title>Free Online Text Comparison Tool | Compare Texts Instantly</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Add structured data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Text Comparison Tool",
+      "description": "Free online tool to compare two texts and highlight differences",
+      "url": "https://yourwebsite.com/text-compare.html",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5011292240027163" crossorigin="anonymous"></script>
+
+    <style>
+        :root {
+            --primary-color: #2575fc;
+            --secondary-color: #6a11cb;
+            --accent-color: #ff6b6b;
+            --success-color: #22c55e;
+            --background-color: #f8f9fa;
+            --text-color: #333;
+            --border-color: #e2e8f0;
+            --card-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            --transition: all 0.3s ease;
+        }
+
+        /* General Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            color: #fff;
+            padding: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #fff, #f0f0f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        header p {
+            margin: 5px 0 0;
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        header a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1rem;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        header a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Main Content */
+        main {
+            flex: 1;
+            padding: 30px 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        /* Text Comparison Tool Section */
+        #text-compare-tool {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            background: #fff;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .tool-section {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .section-header i {
+            font-size: 1.4rem;
+            color: var(--primary-color);
+        }
+
+        .section-header h2 {
+            margin: 0;
+            font-size: 1.4rem;
+            color: var(--text-color);
+        }
+
+        .editable-box {
+            width: 100%;
+            height: 300px; /* Fixed height */
+            padding: 20px;
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            font-family: 'Fira Code', monospace;
+            font-size: 14px;
+            line-height: 1.6;
+            background: #fafafa;
+            overflow-y: auto; /* Enable vertical scrolling */
+            outline: none;
+            white-space: pre-wrap; /* Preserve line breaks and spaces */
+            word-wrap: break-word; /* Ensure long words wrap */
+            resize: none; /* Disable resizing */
+            box-sizing: border-box; /* Ensure padding is included in the height */
+        }
+
+        .editable-box:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(37, 117, 252, 0.1);
+        }
+
+        .highlight {
+            background-color: #ffeef0; /* Light red for differences */
+        }
+
+        /* Buttons */
+        .buttons {
+            display: flex;
+            gap: 12px;
+        }
+
+        button {
+            padding: 12px 24px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            flex: 1;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(37, 117, 252, 0.2);
+        }
+
+        button i {
+            font-size: 1.1rem;
+        }
+
+        /* Output Section */
+        #comparison-output {
+            background: #fafafa;
+            padding: 20px;
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            font-family: 'Fira Code', monospace;
+            font-size: 14px;
+            line-height: 1.6;
+            height: 300px;
+            overflow-y: auto; /* Enable vertical scrolling */
+        }
+
+        .success {
+            color: var(--success-color);
+            font-weight: 500;
+            padding: 10px;
+            border-radius: 8px;
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid var(--success-color);
+        }
+
+        .error {
+            color: var(--accent-color);
+            font-weight: 500;
+            padding: 10px;
+            border-radius: 8px;
+            background: rgba(255, 107, 107, 0.1);
+            border-left: 4px solid var(--accent-color);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            #text-compare-tool {
+                grid-template-columns: 1fr;
+            }
+
+            .editable-box, #comparison-output {
+                height: 200px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.4rem;
+            }
+
+            main {
+                padding: 20px 15px;
+            }
+
+            #text-compare-tool {
+                padding: 20px;
+            }
+
+            .buttons {
+                flex-direction: column;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            color: #fff;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-links a {
+            color: #fff;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div>
+                <h1><i class="fas fa-code-compare"></i> Text Comparison Tool</h1>
+                <p>Compare two texts and highlight differences instantly</p>
+            </div>
+            <nav>
+                <a href="/"><i class="fas fa-home"></i> Home</a>
+                <a href="/blog.html" class="blog-link"><i class="fas fa-blog"></i> Blog</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div id="text-compare-tool">
+            <div class="tool-section">
+                <div class="section-header">
+                    <i class="fas fa-edit"></i>
+                    <h2>Text 1</h2>
+                </div>
+                <div id="text1" class="editable-box" contenteditable="true" placeholder="Enter first text here..."></div>
+            </div>
+
+            <div class="tool-section">
+                <div class="section-header">
+                    <i class="fas fa-edit"></i>
+                    <h2>Text 2</h2>
+                </div>
+                <div id="text2" class="editable-box" contenteditable="true" placeholder="Enter second text here..."></div>
+            </div>
+        </div>
+
+        <div class="buttons">
+            <button id="compare-btn"><i class="fas fa-code-compare"></i> Compare Texts</button>
+            <button id="clear-btn"><i class="fas fa-trash-alt"></i> Clear</button>
+        </div>
+
+        <div id="comparison-output"></div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2023 Online Text Tools. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="/privacy-policy">Privacy Policy</a>
+                <a href="/terms-of-service">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript for Text Comparison Functionality
+        const text1 = document.getElementById('text1');
+        const text2 = document.getElementById('text2');
+        const comparisonOutput = document.getElementById('comparison-output');
+        const compareBtn = document.getElementById('compare-btn');
+        const clearBtn = document.getElementById('clear-btn');
+
+        compareBtn.addEventListener('click', function() {
+            const text1Value = text1.innerText;
+            const text2Value = text2.innerText;
+
+            if (text1Value && text2Value) {
+                if (text1Value === text2Value) {
+                    // Texts are identical
+                    comparisonOutput.innerHTML = '<span class="success">✅ The texts are identical!</span>';
+                    clearHighlights(text1);
+                    clearHighlights(text2);
+                } else {
+                    // Texts are different, perform comparison
+                    highlightDifferences(text1, text2);
+                    comparisonOutput.innerHTML = '<span class="error">❌ The texts are different. Differences are highlighted.</span>';
+                }
+            } else {
+                comparisonOutput.innerHTML = '<span class="error">❌ Please enter text in both fields.</span>';
+            }
+        });
+
+        clearBtn.addEventListener('click', function() {
+            text1.innerHTML = '';
+            text2.innerHTML = '';
+            comparisonOutput.innerHTML = '';
+            clearHighlights(text1);
+            clearHighlights(text2);
+        });
+
+        // Function to highlight differences by line
+        function highlightDifferences(box1, box2) {
+            const lines1 = box1.innerText.split('\n');
+            const lines2 = box2.innerText.split('\n');
+
+            // Clear previous highlights
+            clearHighlights(box1);
+            clearHighlights(box2);
+
+            // Compare lines and highlight differences
+            for (let i = 0; i < Math.max(lines1.length, lines2.length); i++) {
+                const line1 = lines1[i] || '';
+                const line2 = lines2[i] || '';
+
+                if (line1 !== line2) {
+                    highlightLine(box1, i);
+                    highlightLine(box2, i);
+                }
+            }
+        }
+
+        // Function to highlight a specific line in a contenteditable div
+        function highlightLine(box, lineIndex) {
+            const lines = box.innerText.split('\n');
+            let start = 0;
+            for (let i = 0; i < lineIndex; i++) {
+                start += lines[i].length + 1; // +1 for the newline character
+            }
+            const end = start + lines[lineIndex].length;
+
+            // Create a temporary element to hold the highlighted text
+            const temp = document.createElement('div');
+            temp.innerHTML = box.innerHTML.substring(0, start) +
+                            `<span class="highlight">${box.innerHTML.substring(start, end)}</span>` +
+                            box.innerHTML.substring(end);
+
+            // Replace the box content with the highlighted version
+            box.innerHTML = temp.innerHTML;
+        }
+
+        // Function to clear highlights from a contenteditable div
+        function clearHighlights(box) {
+            box.innerHTML = box.innerText; // Reset to plain text
+        }
+    </script>
+</body>
+</html>

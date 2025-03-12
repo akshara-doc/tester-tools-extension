@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free online HTML Validator and Formatter tool. Validate, format, and beautify your HTML data instantly. Easy to use and mobile-friendly.">
+    <meta name="keywords" content="HTML validator, HTML formatter, HTML beautifier, HTML tool, online HTML tool, HTML parser">
+    <meta name="author" content="Your Name or Company Name">
+    <meta name="robots" content="index, follow">
+    <title>Free Online HTML Validator & Formatter Tool | HTML Tools</title>
+    <style>
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: #fff;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        header p {
+            margin: 4px 0 0;
+            font-size: 0.75rem;
+            font-weight: 300;
+        }
+
+        header a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1rem;
+            margin-left: 20px;
+            transition: opacity 0.3s ease;
+        }
+
+        header a:hover {
+            opacity: 0.8;
+        }
+
+        /* General Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5;
+            color: #333;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Full viewport height */
+        }
+
+        main {
+            flex: 1;
+            padding: 10px;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        /* HTML Tool Section */
+        #html-tool {
+            display: flex;
+            flex-direction: column; /* Stack vertically on small screens */
+            gap: 20px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            flex: 1;
+        }
+
+        #html-input-container, #html-output-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        textarea {
+            width: 100%;
+            height: 200px; /* Fixed height for smaller screens */
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 14px;
+            margin-bottom: 10px;
+            resize: none;
+            transition: border-color 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        textarea:focus {
+            border-color: #2575fc;
+            outline: none;
+        }
+
+        .buttons {
+            display: flex;
+            flex-direction: row; /* Horizontal layout by default */
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 8px;
+            background-color: #2575fc;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            flex: 1;
+        }
+
+        button:hover {
+            background-color: #6a11cb;
+            transform: translateY(-2px);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        #html-output {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 14px;
+            line-height: 1.5;
+            position: relative;
+            height: 200px; /* Fixed height for smaller screens */
+            overflow-y: auto;
+            overflow-x: auto;
+            box-sizing: border-box;
+        }
+
+        .output-buttons {
+            position: sticky;
+            top: 10px;
+            right: 10px;
+            display: flex;
+            gap: 6px;
+            float: right;
+            z-index: 10;
+        }
+
+        .output-buttons button {
+            padding: 6px 8px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.75rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .output-buttons button:hover {
+            background-color: #45a049;
+        }
+
+        .disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+
+        /* Footer and Ad Unit */
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #fff;
+            border-top: 1px solid #ddd;
+        }
+
+        .ad-unit {
+            margin: 10px auto;
+            max-width: 728px;
+            text-align: center;
+        }
+
+        .ad-unit ins {
+            display: block;
+            margin: 0 auto;
+        }
+
+        /* Responsive Design */
+        @media (min-width: 768px) {
+            /* Adjust layout for tablets and larger screens */
+            #html-tool {
+                flex-direction: row; /* Side-by-side layout */
+            }
+
+            textarea, #html-output {
+                height: calc(100vh - 200px); /* Full height minus header and padding */
+            }
+
+            .buttons {
+                flex-direction: row; /* Horizontal layout */
+            }
+        }
+
+        @media (max-width: 767px) {
+            /* Adjust layout for phones */
+            header h1 {
+                font-size: 1.5rem;
+            }
+
+            header p {
+                font-size: 0.9rem;
+            }
+
+            .buttons {
+                flex-direction: column; /* Stack buttons vertically */
+            }
+
+            button {
+                width: 100%; /* Full width buttons */
+            }
+
+            #html-output {
+                height: 300px; /* Fixed height for smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div>
+            <h1>HTML Validator & Formatter Tool</h1>
+            <p>Validate and format your HTML data online.</p>
+        </div>
+        <a href="/index.html">Home</a>
+    </header>
+
+    <main>
+        <!-- HTML Tool Section -->
+        <section id="html-tool">
+            <div id="html-input-container">
+                <textarea id="html-input" placeholder="Paste your HTML here..." aria-label="HTML Input"></textarea>
+                <div class="buttons">
+                    <button id="validate-btn" aria-label="Validate HTML">Validate HTML</button>
+                    <button id="format-btn" aria-label="Format HTML">Format HTML</button>
+                    <button id="clear-btn" aria-label="Clear Input">Clear</button>
+                </div>
+            </div>
+            <div id="html-output-container">
+                <div id="html-output">
+                    <div class="output-buttons">
+                        <button id="copy-btn" class="disabled" aria-label="Copy HTML">Copy</button>
+                    </div>
+                    <div id="output-content"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- AdSense Ad Unit -->
+    <footer>
+        <div class="ad-unit">
+            <!-- AdSense Code -->
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5011292240027163"
+                crossorigin="anonymous"></script>
+            <!-- footer -->
+            <ins class="adsbygoogle"
+                style="display:inline-block;width:728px;height:90px"
+                data-ad-client="ca-pub-5011292240027163"
+                data-ad-slot="1471788369"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript for HTML Validation, Formatting, and Copying Functionality
+        const htmlInput = document.getElementById('html-input');
+        const outputContent = document.getElementById('output-content');
+        const copyBtn = document.getElementById('copy-btn');
+        let currentHtml = null; // Store the formatted HTML for copying
+
+        // Function to validate HTML
+        function validateHtml(htmlString) {
+            try {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(htmlString, 'text/html');
+                const errors = doc.querySelectorAll('parsererror');
+
+                if (errors.length > 0) {
+                    throw new Error('Invalid HTML: ' + errors[0].textContent);
+                }
+                return true;
+            } catch (error) {
+                throw new Error(`Invalid HTML: ${error.message}`);
+            }
+        }
+
+        // Function to format HTML
+        function formatHtml(htmlString) {
+            const tab = '  '; // 2 spaces for indentation
+            let formattedHtml = '';
+            let indentLevel = 0;
+
+            htmlString.split(/>\s*</).forEach((node) => {
+                if (node.match(/^\/\w/)) indentLevel--; // Decrease level for closing tags
+                formattedHtml += `${tab.repeat(indentLevel)}<${node}>\n`;
+                if (node.match(/^<?\w[^>]*[^\/]$/)) indentLevel++; // Increase level for opening tags
+            });
+
+            return formattedHtml.trim();
+        }
+
+        // Validate HTML Button
+        document.getElementById('validate-btn').addEventListener('click', function() {
+            try {
+                validateHtml(htmlInput.value);
+                outputContent.innerHTML = '<span style="color: green;">✅ Valid HTML!</span>';
+                outputContent.classList.remove('error');
+            } catch (error) {
+                outputContent.innerHTML = `<span style="color: red;">❌ ${error.message}</span>`;
+                outputContent.classList.add('error');
+            }
+        });
+
+        // Format HTML Button
+        document.getElementById('format-btn').addEventListener('click', function() {
+            try {
+                const formattedHtml = formatHtml(htmlInput.value);
+                currentHtml = formattedHtml; // Store the formatted HTML
+                outputContent.textContent = formattedHtml;
+                outputContent.classList.remove('error');
+
+                // Enable the copy button
+                copyBtn.classList.remove('disabled');
+            } catch (error) {
+                outputContent.innerHTML = `<span style="color: red;">❌ ${error.message}</span>`;
+                outputContent.classList.add('error');
+                currentHtml = null; // Clear stored HTML on error
+
+                // Keep the copy button disabled if HTML is invalid
+                copyBtn.classList.add('disabled');
+            }
+        });
+
+        // Clear Button
+        document.getElementById('clear-btn').addEventListener('click', function() {
+            htmlInput.value = '';
+            outputContent.innerHTML = '';
+            outputContent.classList.remove('error');
+            currentHtml = null; // Clear stored HTML
+
+            // Disable the copy button
+            copyBtn.classList.add('disabled');
+        });
+
+        // Copy Button
+        copyBtn.addEventListener('click', function() {
+            if (currentHtml) {
+                navigator.clipboard.writeText(currentHtml)
+                    .then(() => {
+                        const originalText = copyBtn.textContent;
+                        copyBtn.textContent = 'Copied!';
+                        copyBtn.style.backgroundColor = '#2196F3';
+                        setTimeout(() => {
+                            copyBtn.textContent = originalText;
+                            copyBtn.style.backgroundColor = '#4CAF50';
+                        }, 1500);
+                    })
+                    .catch(err => {
+                        console.error('Failed to copy: ', err);
+                        copyBtn.textContent = 'Copy Failed';
+                        copyBtn.style.backgroundColor = '#f44336';
+                        setTimeout(() => {
+                            copyBtn.textContent = 'Copy';
+                            copyBtn.style.backgroundColor = '#4CAF50';
+                        }, 1500);
+                    });
+            } else {
+                copyBtn.textContent = 'Nothing to Copy';
+                copyBtn.style.backgroundColor = '#f44336';
+                setTimeout(() => {
+                    copyBtn.textContent = 'Copy';
+                    copyBtn.style.backgroundColor = '#4CAF50';
+                }, 1500);
+            }
+        });
+    </script>
+</body>
+</html>

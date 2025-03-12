@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free online JSON to XML Converter tool. Convert JSON data to XML format instantly with our easy-to-use tool.">
+    <meta name="keywords" content="JSON to XML, JSON XML converter, XML converter online, free JSON tools">
+    <meta name="author" content="Online Formatting Tools">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Free Online JSON to XML Converter">
+    <meta property="og:description" content="Convert JSON data to XML format instantly with our free online tool.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourwebsite.com/json-to-xml.html">
+
+    <title>Free Online JSON to XML Converter</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5011292240027163" crossorigin="anonymous"></script>
+
+    <style>
+        /* Reusing styles from JavaScript Formatter */
+        :root {
+            --primary-color: #2575fc;
+            --secondary-color: #6a11cb;
+            --accent-color: #ff6b6b;
+            --success-color: #22c55e;
+            --background-color: #f8f9fa;
+            --text-color: #333;
+            --border-color: #e2e8f0;
+            --card-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            color: white;
+            padding: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        main {
+            flex: 1;
+            padding: 30px 20px;
+            max-width: 1400px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .tool-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .tool-section {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 400px;
+            padding: 15px;
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
+            font-family: 'Fira Code', monospace;
+            font-size: 14px;
+            background: #fafafa;
+            resize: none;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 12px;
+        }
+
+        button {
+            padding: 12px 24px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: var(--transition);
+            flex: 1;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(37, 117, 252, 0.2);
+        }
+
+        .error {
+            color: var(--accent-color);
+            font-weight: 500;
+            background: rgba(255, 107, 107, 0.1);
+            padding: 10px;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        @media (max-width: 1024px) {
+            .tool-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.4rem;
+            }
+
+            .buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-content">
+            <h1><i class="fas fa-exchange-alt"></i> JSON to XML Converter</h1>
+        </div>
+    </header>
+
+    <main>
+        <div class="tool-container">
+            <div class="tool-section">
+                <h2>Input JSON</h2>
+                <textarea id="json-input" placeholder="Paste your JSON here..."></textarea>
+                <div class="buttons">
+                    <button id="convert-btn"><i class="fas fa-exchange-alt"></i> Convert</button>
+                    <button id="clear-btn"><i class="fas fa-trash-alt"></i> Clear</button>
+                </div>
+            </div>
+
+            <div class="tool-section">
+                <h2>Converted XML</h2>
+                <textarea id="xml-output" readonly></textarea>
+                <div class="buttons">
+                    <button id="copy-btn"><i class="fas fa-copy"></i> Copy XML</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function jsonToXml(obj, indent = '') {
+            if (typeof obj !== 'object' || obj === null) {
+                return obj;
+            }
+            let xml = '';
+            for (const key in obj) {
+                if (obj.hasOwnProperty(key)) {
+                    const value = obj[key];
+                    if (Array.isArray(value)) {
+                        value.forEach(item => {
+                            xml += `${indent}<${key}>\n${jsonToXml(item, indent + '  ')}\n${indent}</${key}>\n`;
+                        });
+                    } else if (typeof value === 'object') {
+                        xml += `${indent}<${key}>\n${jsonToXml(value, indent + '  ')}\n${indent}</${key}>\n`;
+                    } else {
+                        xml += `${indent}<${key}>${value}</${key}>\n`;
+                    }
+                }
+            }
+            return xml;
+        }
+
+        document.getElementById('convert-btn').addEventListener('click', () => {
+            try {
+                const jsonInput = document.getElementById('json-input').value;
+                const jsonObject = JSON.parse(jsonInput);
+                const xmlOutput = jsonToXml(jsonObject);
+                document.getElementById('xml-output').value = `<root>\n${xmlOutput}</root>`;
+            } catch (error) {
+                document.getElementById('xml-output').value = 'Error: Invalid JSON!';
+            }
+        });
+
+        document.getElementById('clear-btn').addEventListener('click', () => {
+            document.getElementById('json-input').value = '';
+            document.getElementById('xml-output').value = '';
+        });
+
+        document.getElementById('copy-btn').addEventListener('click', () => {
+            navigator.clipboard.writeText(document.getElementById('xml-output').value);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free online JavaScript Formatter and Beautifier tool. Format, beautify, and minify your JavaScript code instantly with our easy-to-use tool.">
+    <meta name="keywords" content="JavaScript formatter, JS beautifier, JavaScript beautifier, code formatter, JavaScript minifier, JS formatter online, free JavaScript tools">
+    <meta name="author" content="Online Formatting Tools">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Free Online JavaScript Formatter & Beautifier Tool">
+    <meta property="og:description" content="Format and beautify your JavaScript code instantly with our free online tool. Features include syntax highlighting and minification.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourwebsite.com/javascript.html">
+    
+    <title>Free Online JavaScript Formatter & Beautifier Tool</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Prettier for JavaScript formatting -->
+    <script src="https://unpkg.com/prettier@2.8.8/standalone.js"></script>
+    <script src="https://unpkg.com/prettier@2.8.8/parser-babel.js"></script>
+    
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5011292240027163" crossorigin="anonymous"></script>
+
+    <style>
+        /* Reuse the exact same styles from json.html */
+        :root {
+            --primary-color: #2575fc;
+            --secondary-color: #6a11cb;
+            --accent-color: #ff6b6b;
+            --success-color: #22c55e;
+            --background-color: #f8f9fa;
+            --text-color: #333;
+            --border-color: #e2e8f0;
+            --card-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            color: #fff;
+            padding: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #fff, #f0f0f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        header p {
+            margin: 5px 0 0;
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        header a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1rem;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        header a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        main {
+            flex: 1;
+            padding: 30px 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            padding-bottom: 0;
+        }
+
+        #json-tool {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            background: #fff;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 0;
+        }
+
+        .tool-section {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .section-header i {
+            font-size: 1.4rem;
+            color: var(--primary-color);
+        }
+
+        .section-header h2 {
+            margin: 0;
+            font-size: 1.4rem;
+            color: var(--text-color);
+        }
+
+        textarea {
+            width: 100%;
+            height: 400px;
+            padding: 20px;
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            font-family: 'Fira Code', monospace;
+            font-size: 14px;
+            line-height: 1.6;
+            resize: none;
+            transition: var(--transition);
+            background: #fafafa;
+        }
+
+        textarea:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(37, 117, 252, 0.1);
+        }
+
+        .buttons {
+            display: flex;
+            gap: 12px;
+        }
+
+        button {
+            padding: 12px 24px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            flex: 1;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(37, 117, 252, 0.2);
+        }
+
+        button i {
+            font-size: 1.1rem;
+        }
+
+        .error {
+            color: var(--accent-color);
+            font-weight: 500;
+            padding: 10px;
+            border-radius: 8px;
+            background: rgba(255, 107, 107, 0.1);
+            border-left: 4px solid var(--accent-color);
+        }
+
+        /* Format options styling */
+        .format-options {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            background: #fafafa;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .format-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .format-option label {
+            font-size: 0.9rem;
+            color: var(--text-color);
+        }
+
+        .format-option input[type="checkbox"],
+        .format-option input[type="number"] {
+            accent-color: var(--primary-color);
+        }
+
+        .format-option input[type="number"] {
+            width: 60px;
+            padding: 4px 8px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+        }
+
+        /* Ad Container */
+        .ad-container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 30px auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding: 0 20px;
+        }
+
+        .ad-unit {
+            background: #fff;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: var(--card-shadow);
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100px;
+        }
+
+        .ad-unit.horizontal {
+            min-height: 280px;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            color: #fff;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-links a {
+            color: #fff;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            #json-tool {
+                grid-template-columns: 1fr;
+            }
+
+            textarea {
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.4rem;
+            }
+
+            main {
+                padding: 20px 15px;
+            }
+
+            #json-tool {
+                padding: 20px;
+            }
+
+            .buttons {
+                flex-direction: column;
+            }
+
+            button {
+                width: 100%;
+            }
+
+            .ad-unit.horizontal {
+                min-height: 200px;
+            }
+            
+            .ad-container {
+                padding: 0 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div>
+                <h1><i class="fas fa-code"></i> JavaScript Formatter & Beautifier</h1>
+                <p>Format, beautify, and minify your JavaScript code instantly</p>
+            </div>
+            <nav>
+                <a href="/"><i class="fas fa-home"></i> Home</a>
+                <a href="/blog.html" class="blog-link"><i class="fas fa-blog"></i> Blog</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div id="json-tool">
+            <div class="tool-section">
+                <div class="section-header">
+                    <i class="fas fa-edit"></i>
+                    <h2>Input JavaScript</h2>
+                </div>
+                <div class="format-options">
+                    <div class="format-option">
+                        <input type="checkbox" id="semi" checked>
+                        <label for="semi">Semicolons</label>
+                    </div>
+                    <div class="format-option">
+                        <input type="checkbox" id="singleQuote">
+                        <label for="singleQuote">Single Quotes</label>
+                    </div>
+                    <div class="format-option">
+                        <label for="tabWidth">Tab Width:</label>
+                        <input type="number" id="tabWidth" value="2" min="1" max="8">
+                    </div>
+                </div>
+                <textarea id="js-input" placeholder="Paste your JavaScript code here..."></textarea>
+                <div class="buttons">
+                    <button id="format-btn"><i class="fas fa-magic"></i> Format Code</button>
+                    <button id="minify-btn"><i class="fas fa-compress-alt"></i> Minify</button>
+                    <button id="clear-btn"><i class="fas fa-trash-alt"></i> Clear</button>
+                </div>
+            </div>
+
+            <div class="tool-section">
+                <div class="section-header">
+                    <i class="fas fa-code"></i>
+                    <h2>Formatted Output</h2>
+                </div>
+                <textarea id="js-output" readonly></textarea>
+                <div class="buttons">
+                    <button id="copy-btn"><i class="fas fa-copy"></i> Copy Code</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="ad-container">
+        <!-- Horizontal Ad Unit -->
+        <div class="ad-unit horizontal">
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-5011292240027163"
+                data-ad-slot="1234567890"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </div>
+
+
+    <script>
+        const jsInput = document.getElementById('js-input');
+        const jsOutput = document.getElementById('js-output');
+        const formatBtn = document.getElementById('format-btn');
+        const minifyBtn = document.getElementById('minify-btn');
+        const clearBtn = document.getElementById('clear-btn');
+        const copyBtn = document.getElementById('copy-btn');
+        const semiCheckbox = document.getElementById('semi');
+        const singleQuoteCheckbox = document.getElementById('singleQuote');
+        const tabWidthInput = document.getElementById('tabWidth');
+
+        function formatCode(minify = false) {
+            try {
+                const code = jsInput.value;
+                if (!code.trim()) {
+                    jsOutput.value = '';
+                    return;
+                }
+
+                const options = {
+                    parser: 'babel',
+                    plugins: [prettierPlugins.babel],
+                    semi: semiCheckbox.checked,
+                    singleQuote: singleQuoteCheckbox.checked,
+                    tabWidth: parseInt(tabWidthInput.value),
+                    printWidth: minify ? 999999 : 80,
+                };
+
+                const formattedCode = prettier.format(code, options);
+                jsOutput.value = formattedCode;
+            } catch (error) {
+                jsOutput.value = `Error: ${error.message}`;
+            }
+        }
+
+        formatBtn.addEventListener('click', () => formatCode(false));
+        minifyBtn.addEventListener('click', () => formatCode(true));
+
+        clearBtn.addEventListener('click', () => {
+            jsInput.value = '';
+            jsOutput.value = '';
+        });
+
+        copyBtn.addEventListener('click', () => {
+            if (jsOutput.value) {
+                navigator.clipboard.writeText(jsOutput.value)
+                    .then(() => {
+                        const originalText = copyBtn.innerHTML;
+                        copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                        copyBtn.style.background = 'var(--success-color)';
+                        setTimeout(() => {
+                            copyBtn.innerHTML = originalText;
+                            copyBtn.style.background = '';
+                        }, 1500);
+                    })
+                    .catch(() => {
+                        copyBtn.innerHTML = '<i class="fas fa-times"></i> Copy Failed';
+                        copyBtn.style.background = 'var(--accent-color)';
+                        setTimeout(() => {
+                            copyBtn.innerHTML = '<i class="fas fa-copy"></i> Copy Code';
+                            copyBtn.style.background = '';
+                        }, 1500);
+                    });
+            }
+        });
+    </script>
+</body>
+</html> 

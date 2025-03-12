@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free online URL Encoder/Decoder tool. Convert special characters to URL-encoded format and decode encoded URLs back to their original form.">
+    <meta name="keywords" content="URL encoder, URL decoder, online URL tool, encode URL, decode URL, free encoding tools">
+    <meta name="author" content="Online Formatting Tools">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Free Online URL Encoder/Decoder | Convert to/from URL Encoding">
+    <meta property="og:description" content="Encode URLs or decode them back to their original form with our free online URL Encoder/Decoder tool.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourwebsite.com/url-encoder-decoder.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Free Online URL Encoder/Decoder">
+    <meta name="twitter:description" content="Encode URLs or decode them back to their original form.">
+
+    <title>Free Online URL Encoder/Decoder | Convert to/from URL Encoding</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-color: #2575fc;
+            --secondary-color: #6a11cb;
+            --background-color: #f8f9fa;
+            --text-color: #333;
+            --border-color: #e2e8f0;
+            --card-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            color: #fff;
+            padding: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        main {
+            flex: 1;
+            padding: 30px 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        #url-tool {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            background: #fff;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .tool-section {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-header i {
+            font-size: 1.4rem;
+            color: var(--primary-color);
+        }
+
+        textarea {
+            width: 100%;
+            height: 200px;
+            padding: 20px;
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            font-family: 'Fira Code', monospace;
+            font-size: 14px;
+            resize: none;
+            background: #fafafa;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 12px;
+        }
+
+        button {
+            padding: 12px 24px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex: 1;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(37, 117, 252, 0.2);
+        }
+
+        #url-output {
+            background: #fafafa;
+            padding: 20px;
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            font-family: 'Fira Code', monospace;
+            font-size: 14px;
+            height: 200px;
+            overflow: auto;
+            position: relative;
+        }
+
+        @media (max-width: 768px) {
+            #url-tool {
+                grid-template-columns: 1fr;
+            }
+
+            .buttons {
+                flex-direction: column;
+            }
+        }
+
+        footer {
+            padding: 20px;
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            color: #fff;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1><i class="fas fa-link"></i> URL Encoder/Decoder</h1>
+        </div>
+    </header>
+
+    <main>
+        <div id="url-tool">
+            <div class="tool-section">
+                <div class="section-header">
+                    <i class="fas fa-edit"></i>
+                    <h2>Input</h2>
+                </div>
+                <textarea id="url-input" placeholder="Enter text or URL to encode/decode..."></textarea>
+                <div class="buttons">
+                    <button id="encode-btn"><i class="fas fa-lock"></i> Encode</button>
+                    <button id="decode-btn"><i class="fas fa-unlock"></i> Decode</button>
+                    <button id="clear-btn"><i class="fas fa-trash-alt"></i> Clear</button>
+                </div>
+            </div>
+
+            <div class="tool-section">
+                <div class="section-header">
+                    <i class="fas fa-code"></i>
+                    <h2>Output</h2>
+                </div>
+                <div id="url-output"></div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Online Formatting Tools. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const urlInput = document.getElementById('url-input');
+        const urlOutput = document.getElementById('url-output');
+
+        document.getElementById('encode-btn').addEventListener('click', function() {
+            urlOutput.textContent = encodeURIComponent(urlInput.value);
+        });
+
+        document.getElementById('decode-btn').addEventListener('click', function() {
+            urlOutput.textContent = decodeURIComponent(urlInput.value);
+        });
+
+        document.getElementById('clear-btn').addEventListener('click', function() {
+            urlInput.value = '';
+            urlOutput.textContent = '';
+        });
+    </script>
+</body>
+</html>

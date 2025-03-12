@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SQ7K71TX9N"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-SQ7K71TX9N');
+    </script>
+    
+    <!-- SEO Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free online tools for developers - Format & validate JSON, XML, CSV, SQL, HTML & CSS. Fast, reliable & easy to use formatting tools with instant results.">
+    <meta name="keywords" content="JSON formatter, XML formatter, CSV formatter, SQL formatter, code formatter, online tools, data validation, developer tools, free formatting tools">
+    <meta name="author" content="Online Formatting Tools">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Online Formatting Tools - Free Developer Tools for JSON, XML, CSV & More">
+    <meta property="og:description" content="Free online tools for developers - Format & validate JSON, XML, CSV, SQL, HTML & CSS. Fast, reliable & easy to use formatting tools with instant results.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourwebsite.com">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="google-adsense-account" content="ca-pub-5011292240027163">
+    <meta name="google-site-verification" content="f47bb98d5514e418" />
+
+    <title>Online Formatting Tools - Free Developer Tools for JSON, XML, CSV & More</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+    <!-- Preconnect to External Resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-color: #4a90e2; /* Softer blue */
+            --secondary-color: #6a11cb; /* Purple */
+            --accent-color: #ff6b6b; /* Coral */
+            --background-color: #f8f9fa; /* Light gray */
+            --text-color: #333; /* Dark gray */
+            --header-bg: #ffffff; /* White header */
+            --header-text: #4a90e2; /* Blue text */
+            --card-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Softer shadow */
+            --transition: all 0.3s ease;
+        }
+
+        /* Dark Mode Variables */
+        [data-theme="dark"] {
+            --primary-color: #6a11cb; /* Purple */
+            --secondary-color: #4a90e2; /* Blue */
+            --accent-color: #ff6b6b; /* Coral */
+            --background-color: #1e1e1e; /* Dark background */
+            --text-color: #f8f9fa; /* Light text */
+            --header-bg: #2c3e50; /* Dark header */
+            --header-text: #f8f9fa; /* Light text */
+            --card-shadow: 0 4px 15px rgba(255, 255, 255, 0.1); /* Softer shadow */
+        }
+
+        /* Enhanced Footer */
+        footer {
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            color: #fff;
+            padding: 40px 20px;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-section h3 {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .footer-links a {
+            color: #fff;
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-color);
+            transform: translateX(5px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Footer Ad Styles */
+        .footer-ad {
+            max-width: 1400px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        .footer-ad .ad-unit {
+            background: #fff;
+            border-radius: 15px;
+            padding: 10px;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 20px;
+        }
+
+        /* Responsive adjustments for footer ad */
+        @media (max-width: 768px) {
+            .footer-ad .ad-unit {
+                padding: 10px;
+            }
+        }
+
+        /* Enhanced General Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 60vh;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.0;
+        }
+
+        /* Enhanced Header */
+        header {
+            background: var(--header-bg);
+            color: var(--header-text);
+            padding: 10px 0; /* Reduced padding */
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Softer shadow */
+        }
+
+        .header-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px; /* Reduced gap */
+            text-decoration: none;
+            color: var(--header-text);
+        }
+
+        .logo i {
+            font-size: 1.5rem; /* Reduced icon size */
+        }
+
+        .logo h1 {
+            margin: 0;
+            font-size: 1.5rem; /* Reduced font size */
+            font-weight: 600; /* Slightly lighter */
+            color: var(--header-text);
+        }
+
+        /* Enhanced Navigation */
+        nav {
+            display: flex;
+            gap: 20px; /* Reduced gap */
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--header-text);
+            text-decoration: none;
+            font-size: 1rem; /* Reduced font size */
+            font-weight: 500;
+            padding: 6px 12px; /* Reduced padding */
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        nav a:hover {
+            background: rgba(74, 144, 226, 0.1); /* Light blue hover */
+            transform: translateY(-2px);
+        }
+
+        .blog-link {
+            background: var(--accent-color);
+            padding: 8px 16px; /* Reduced padding */
+            border-radius: 25px;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+        }
+
+        .blog-link:hover {
+            background: #ff5252;
+            transform: translateY(-2px);
+        }
+
+        /* Dark Mode Toggle Button */
+        .theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: var(--header-text);
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            color: var(--accent-color);
+        }
+
+        /* Enhanced Dropdown Styles */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropbtn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            font-size: 1rem; /* Reduced font size */
+            color: var(--header-text);
+            text-decoration: none;
+            padding: 6px 12px; /* Reduced padding */
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .dropbtn:hover {
+            background: rgba(74, 144, 226, 0.1); /* Light blue hover */
+            transform: translateY(-2px);
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: var(--header-bg);
+            min-width: 280px;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            padding: 15px 0;
+            margin-top: 10px;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: opacity 0.3s, transform 0.3s;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .tool-category {
+            padding: 10px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .tool-category:last-child {
+            border-bottom: none;
+        }
+
+        .category-title {
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            padding: 0 5px;
+        }
+
+        .dropdown-content a {
+            color: var(--text-color);
+            padding: 8px 25px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+        }
+
+        .dropdown-content a i {
+            width: 20px;
+            color: var(--primary-color);
+            font-size: 1rem;
+        }
+
+        .dropdown-content a:hover {
+            background: linear-gradient(90deg, rgba(74, 144, 226, 0.1), transparent); /* Light blue hover */
+            color: var(--primary-color);
+            transform: translateX(5px);
+        }
+
+        /* Tool badge styles */
+        .tool-badge {
+            font-size: 0.7rem;
+            padding: 2px 6px;
+            border-radius: 12px;
+            margin-left: 5px;
+            font-weight: 500;
+        }
+
+        .badge-new {
+            background: #22c55e;
+            color: white;
+        }
+
+        .badge-popular {
+            background: #f59e0b;
+            color: white;
+        }
+
+        /* Main Content Layout */
+        .main-content {
+            display: flex;
+            gap: 10px;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 10px;
+        }
+
+        .ad-sidebar {
+            width: 200px; /* Reduced width for ads */
+            flex-shrink: 0;
+        }
+
+        .ad-sidebar .ad-unit {
+            background: var(--header-bg);
+            border-radius: 15px;
+            padding: 10px; /* Reduced padding */
+            box-shadow: var(--card-shadow);
+            margin-bottom: 20px;
+        }
+
+        .categories-grid {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1fr; /* Align categories one below the other */
+            gap: 20px;
+        }
+
+        /* Adjust the category card size */
+        .category-card {
+            background: var(--header-bg);
+            border-radius: 12px; /* Reduced border radius */
+            padding: 15px; /* Reduced padding */
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        }
+
+        .category-header {
+            cursor: pointer;
+            user-select: none;
+            transition: all 0.3s ease;
+            margin-bottom: 15px; /* Reduced margin */
+            text-align: center;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .category-header:hover {
+            opacity: 0.8;
+        }
+
+        .category-header i {
+            transition: transform 0.3s ease;
+        }
+
+        .category-header.active i {
+            transform: rotate(90deg);
+        }
+
+        .category-header h2 {
+            font-size: 1.1rem; /* Reduced font size */
+            margin: 0;
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .tools-list {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .category-card.active .tools-list {
+            max-height: 1000px; /* Adjust based on your content */
+        }
+
+        .tool-item {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        /* Adjust the tool link size */
+        .tool-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 12px; /* Reduced padding */
+            background: linear-gradient(to right, rgba(74, 144, 226, 0.05), transparent); /* Light blue hover */
+            border-radius: 8px; /* Reduced border radius */
+            text-decoration: none;
+            color: var(--text-color);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(74, 144, 226, 0.1); /* Light blue border */
+        }
+
+        .tool-link:hover {
+            transform: translateX(5px);
+            background: linear-gradient(to right, rgba(74, 144, 226, 0.1), transparent); /* Light blue hover */
+            border-color: rgba(74, 144, 226, 0.2); /* Light blue border */
+        }
+
+        /* Adjust the tool icon size */
+        .tool-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 20px; /* Reduced width */
+            height: 20px; /* Reduced height */
+            background: var(--header-bg);
+            border-radius: 6px; /* Reduced border radius */
+            box-shadow: 0 4px 15px rgba(74, 144, 226, 0.1); /* Light blue shadow */
+        }
+
+        .tool-icon i {
+            font-size: 0.9rem; /* Reduced font size */
+            color: var(--primary-color);
+        }
+
+        .tool-info {
+            flex: 1;
+        }
+
+        /* Adjust the tool name size */
+        .tool-name {
+            font-weight: 500;
+            font-size: 0.85rem; /* Reduced font size */
+            margin-bottom: 4px;
+            color: var(--text-color);
+        }
+
+        /* Adjust the tool description size */
+        .tool-description {
+            font-size: 0.4rem; /* Reduced font size */
+            color: #666;
+            margin: 0;
+        }
+
+        /* Adjust the tool badge size */
+        .tool-badge {
+            font-size: 0.6rem; /* Reduced font size */
+            padding: 2px 6px;
+            border-radius: 8px; /* Reduced border radius */
+            margin-left: 5px;
+            font-weight: 500;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+                padding: 10px;
+            }
+
+            .ad-sidebar {
+                width: 100%;
+            }
+
+            .categories-grid {
+                gap: 15px;
+            }
+
+            .category-card {
+                padding: 15px;
+            }
+
+            .category-header h2 {
+                font-size: 1.1rem;
+            }
+
+            .tool-link {
+                padding: 8px 12px;
+            }
+
+            .tool-icon {
+                width: 20px;
+                height: 20px;
+            }
+
+            .tool-name {
+                font-size: 0.85rem;
+            }
+        }
+
+        /* Loading Animation */
+        .loading-animation {
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1001;
+            animation: loading 2s infinite;
+        }
+
+        @keyframes loading {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        /* Eye icon and tooltip styles */
+        .category-header .fa-eye {
+            cursor: pointer;
+            color: var(--primary-color);
+            transition: color 0.3s ease;
+            margin-left: 10px; /* Add spacing between header and eye icon */
+        }
+
+        .category-header .fa-eye:hover {
+            color: var(--accent-color);
+        }
+
+        .description-tooltip {
+            display: none;
+            position: absolute;
+            background-color: var(--header-bg);
+            color: var(--text-color);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            font-size: 0.9rem;
+            line-height: 1.4;
+            z-index: 1000;
+            width: 250px;
+            text-align: left;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-top: 10px;
+        }
+
+        /* Show tooltip only when hovering over the eye icon */
+        .category-header .fa-eye:hover + .description-tooltip {
+            display: block;
+        }
+    </style>
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5011292240027163" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- Loading Animation -->
+    <div class="loading-animation"></div>
+
+    <header>
+        <div class="header-content">
+            <a href="/" class="logo">
+                <i class="fas fa-code"></i>
+                <h1>Online Formatting Tools</h1>
+            </a>
+            <nav>
+                <a href="/"><i class="fas fa-home"></i> Home</a>
+                <div class="dropdown">
+                    <a href="#" class="dropbtn"><i class="fas fa-tools"></i> Tools <i class="fas fa-chevron-down" style="font-size: 0.8rem;"></i></a>
+                    <div class="dropdown-content">
+                        <div class="tool-category">
+                            <div class="category-title">Developer Tools</div>
+                            <a href="DeveloperTools/json.html"><i class="fas fa-file-code"></i> JSON Formatter <span class="tool-badge badge-popular">Popular</span></a>
+                            <a href="DeveloperTools/xmlformatter.html"><i class="fas fa-code"></i> XML Formatter</a>
+                            <a href="DeveloperTools/htmlformatter.html"><i class="fab fa-html5"></i> HTML Formatter</a>
+                            <a href="DeveloperTools/cssformatter.html"><i class="fab fa-css3-alt"></i> CSS Formatter</a>
+                            <a href="DeveloperTools/javascript.html"><i class="fab fa-js"></i> JavaScript Formatter <span class="tool-badge badge-new">New</span></a>
+                        </div>
+                        <div class="tool-category">
+                            <div class="category-title">Data Tools</div>
+                            <a href="/csvformatter.html"><i class="fas fa-file-csv"></i> CSV Formatter</a>
+                            <a href="/sqlformatter.html"><i class="fas fa-database"></i> SQL Formatter</a>
+                            <a href="/yamlformatter.html"><i class="fas fa-file-alt"></i> YAML Formatter</a>
+                            <a href="/jsontoxml.html"><i class="fas fa-exchange-alt"></i> JSON to XML Converter</a>
+                        </div>
+                        <div class="tool-category">
+                            <div class="category-title">Text Tools</div>
+                            <a href="/textcompare.html"><i class="fas fa-file-alt"></i> Text Compare</a>
+                            <a href="/markdown.html"><i class="fab fa-markdown"></i> Markdown Editor <span class="tool-badge badge-new">New</span></a>
+                            <a href="/minify.html"><i class="fas fa-compress-alt"></i> Code Minifier</a>
+                            <a href="/beautifier.html"><i class="fas fa-expand-alt"></i> Code Beautifier</a>
+                        </div>
+                        <div class="tool-category">
+                            <div class="category-title">Utility Tools</div>
+                            <a href="/base64.html"><i class="fas fa-exchange-alt"></i> Base64 Encoder/Decoder</a>
+                            <a href="/urlencode.html"><i class="fas fa-link"></i> URL Encoder/Decoder</a>
+                            <a href="/hash.html"><i class="fas fa-hashtag"></i> Hash Generator</a>
+                            <a href="/regex.html"><i class="fas fa-search"></i> Regex Tester</a>
+                        </div>
+                    </div>
+                </div>
+                <a href="/blog.html" class="blog-link"><i class="fas fa-blog"></i> Blog</a>
+                <!-- Dark/Light Mode Toggle -->
+                <button class="theme-toggle" id="theme-toggle">
+                    <i class="fas fa-moon"></i> <!-- Default to moon (dark mode) -->
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="main-content">
+            <!-- Left Sidebar for Ads -->
+            <div class="ad-sidebar">
+                <div class="ad-unit">
+                    <ins class="adsbygoogle"
+                        style="display:block"
+                        data-ad-client="ca-pub-5011292240027163"
+                        data-ad-slot="1234567890"
+                        data-ad-format="auto"
+                        data-full-width-responsive="true"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="categories-grid">
+                <!-- Developer Tools Category -->
+                <div class="category-card">
+                    <div class="category-header" onclick="toggleCategory(this)">
+                        <h2>Developer Tools</h2>
+                        <i class="fas fa-eye"></i>
+                        <span class="description-tooltip">Professional tools for developers to format, validate, and beautify various programming languages and markup.</span>
+                    </div>
+                    <div class="tools-list">
+                        <div class="tool-item">
+                            <a href="/json.html" class="tool-link">
+                                <div class="tool-icon">
+                                    <i class="fas fa-file-code"></i>
+                                </div>
+                                <div class="tool-info">
+                                    <div class="tool-name">JSON Formatter</div>
+                                    <p class="tool-description">Format and validate JSON data</p>
+                                </div>
+                                <span class="tool-badge badge-popular">Popular</span>
+                            </a>
+                        </div>
+                        <div class="tool-item">
+                            <a href="/xmlformatter.html" class="tool-link">
+                                <div class="tool-icon">
+                                    <i class="fas fa-code"></i>
+                                </div>
+                                <div class="tool-info">
+                                    <div class="tool-name">XML Formatter</div>
+                                    <p class="tool-description">Clean and structure XML documents</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="tool-item">
+                            <a href="/htmlformatter.html" class="tool-link">
+                                <div class="tool-icon">
+                                    <i class="fab fa-html5"></i>
+                                </div>
+                                <div class="tool-info">
+                                    <div class="tool-name">HTML Formatter</div>
+                                    <p class="tool-description">Format and beautify HTML code</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="tool-item">
+                            <a href="/javascript.html" class="tool-link">
+                                <div class="tool-icon">
+                                    <i class="fab fa-js"></i>
+                                </div>
+                                <div class="tool-info">
+                                    <div class="tool-name">JavaScript Formatter</div>
+                                    <p class="tool-description">Format and optimize JavaScript code</p>
+                                </div>
+                                <span class="tool-badge badge-new">New</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Data Tools Category -->
+                <div class="category-card">
+                    <div class="category-header" onclick="toggleCategory(this)">
+                        <h2>Data Tools</h2>
+                        <i class="fas fa-eye"></i>
+                        <span class="description-tooltip">Transform and validate various data formats with our powerful data processing tools.</span>
+                    </div>
+                    <div class="tools-list">
+                        <div class="tool-item">
+                            <a href="/csvformatter.html" class="tool-link">
+                                <div class="tool-icon">
+                                    <i class="fas fa-file-csv"></i>
+                                </div>
+                                <div class="tool-info">
+                                    <div class="tool-name">CSV Formatter</div>
+                                    <p class="tool-description">Format and validate CSV files</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="tool-item">
+                            <a href="/sqlformatter.html" class="tool-link">
+                                <div class="tool-icon">
+                                    <i class="fas fa-database"></i>
+                                </div>
+                                <div class="tool-info">
+                                    <div class="tool-name">SQL Formatter</div>
+                                    <p class="tool-description">Format SQL queries and scripts</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="tool-item">
+                            <a href="/yamlformatter.html" class="tool-link">
+                                <div class="tool-icon">
+                                    <i class="fas fa-file-alt"></i>
+                                </div>
+                                <div class="tool-info">
+                                    <div class="tool-name">YAML Formatter</div>
+                                    <p class="tool-description">Format and validate YAML files</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Text Tools Category -->
+                <div class="category-card">
+                    <div class="category-header" onclick="toggleCategory(this)">
+                        <h2>Text Tools</h2>
+                        <i class="fas fa-eye"></i>
+                        <span class="description-tooltip">Advanced text manipulation tools for comparing, formatting, and transforming text content.</span>
+                    </div>
+                    <div class="tools-list">
+                        <div class="tool-item">
+                            <a href="/textcompare.html" class="tool-link">
+                                <div class="tool-icon">
+                                    <i class="fas fa-file-alt"></i>
+                                </div>
+                                <div class="tool-info">
+                                    <div class="tool-name">Text Compare</div>
+                                    <p class="tool-description">Compare and find differences in text</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="tool-item">
+                            <a href="/markdown.html" class="tool-link">
+                                <div class="tool-icon">
+                                    <i class="fab fa-markdown"></i>
+                                </div>
+                                <div class="tool-info">
+                                    <div class="tool-name">Markdown Editor</div>
+                                    <p class="tool-description">Edit and preview Markdown</p>
+                                </div>
+                                <span class="tool-badge badge-new">New</span>
+                            </a>
+                        </div>
+                        <div class="tool-item">
+                            <a href="/minify.html" class="tool-link">
+                                <div class="tool-icon">
+                                    <i class="fas fa-compress-alt"></i>
+                                </div>
+                                <div class="tool-info">
+                                    <div class="tool-name">Code Minifier</div>
+                                    <p class="tool-description">Minify code for production</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Utility Tools Category -->
+                <div class="category-card">
+                    <div class="category-header" onclick="toggleCategory(this)">
+                        <h2>Utility Tools</h2>
+                        <i class="fas fa-eye"></i>
+                        <span class="description-tooltip">Essential utility tools for encoding, decoding, and testing various formats.</span>
+                    </div>
+                    <div class="tools-list">
+                        <div class="tool-item">
+                            <a href="/base64.html" class="tool-link">
+                                <div class="tool-icon">
+                                    <i class="fas fa-exchange-alt"></i>
+                                </div>
+                                <div class="tool-info">
+                                    <div class="tool-name">Base64 Encoder/Decoder</div>
+                                    <p class="tool-description">Convert to/from Base64 format</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="tool-item">
+                            <a href="/urlencode.html" class="tool-link">
+                                <div class="tool-icon">
+                                    <i class="fas fa-link"></i>
+                                </div>
+                                <div class="tool-info">
+                                    <div class="tool-name">URL Encoder/Decoder</div>
+                                    <p class="tool-description">Encode and decode URLs</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="tool-item">
+                            <a href="/regex.html" class="tool-link">
+                                <div class="tool-icon">
+                                    <i class="fas fa-search"></i>
+                                </div>
+                                <div class="tool-info">
+                                    <div class="tool-name">Regex Tester</div>
+                                    <p class="tool-description">Test and validate regular expressions</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Sidebar for Ads -->
+            <div class="ad-sidebar">
+                <div class="ad-unit">
+                    <ins class="adsbygoogle"
+                        style="display:block"
+                        data-ad-client="ca-pub-5011292240027163"
+                        data-ad-slot="0987654321"
+                        data-ad-format="auto"
+                        data-full-width-responsive="true"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Ad Unit (Added above the footer content) -->
+    <div class="footer-ad">
+        <div class="ad-unit">
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-5011292240027163"
+                data-ad-slot="1234567890"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <div class="footer-links">
+                    <a href="/"><i class="fas fa-home"></i> Home</a>
+                    <a href="/blog.html"><i class="fas fa-blog"></i> Blog</a>
+                    <a href="/aboutus.html"><i class="fas fa-info-circle"></i> About Us</a>
+                    <a href="/contactus.html"><i class="fas fa-envelope"></i> Contact Us</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Popular Tools</h3>
+                <div class="footer-links">
+                    <a href="/json.html"><i class="fas fa-file-code"></i> JSON Formatter</a>
+                    <a href="/xmlformatter.html"><i class="fas fa-code"></i> XML Formatter</a>
+                    <a href="/csvformatter.html"><i class="fas fa-file-csv"></i> CSV Formatter</a>
+                    <a href="/sqlformatter.html"><i class="fas fa-database"></i> SQL Formatter</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Legal</h3>
+                <div class="footer-links">
+                    <a href="/privacypolicy.html"><i class="fas fa-shield-alt"></i> Privacy Policy</a>
+                    <a href="/termsofuse.html"><i class="fas fa-gavel"></i> Terms of Use</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2025 Online Formatting Tools. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Deferred JavaScript -->
+    <script>
+        // Add smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Remove loading animation after page load
+        window.addEventListener('load', function() {
+            document.querySelector('.loading-animation').style.display = 'none';
+        });
+
+        // Toggle category dropdown (only one open at a time)
+        function toggleCategory(header) {
+            const categoryCard = header.parentElement;
+            const allCategoryCards = document.querySelectorAll('.category-card');
+
+            allCategoryCards.forEach(card => {
+                if (card !== categoryCard) {
+                    card.classList.remove('active');
+                }
+            });
+
+            categoryCard.classList.toggle('active');
+        }
+
+        // Dark/Light Mode Toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const currentTheme = localStorage.getItem('theme');
+
+        // Set the initial theme based on localStorage
+        if (currentTheme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            themeToggle.innerHTML = '<i class="fas fa-sun"></i>'; // Sun icon for light mode
+        } else {
+            document.documentElement.setAttribute('data-theme', 'light');
+            themeToggle.innerHTML = '<i class="fas fa-moon"></i>'; // Moon icon for dark mode
+        }
+
+        // Toggle theme on button click
+        themeToggle.addEventListener('click', () => {
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            if (isDark) {
+                document.documentElement.setAttribute('data-theme', 'light');
+                localStorage.setItem('theme', 'light');
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i>'; // Moon icon for dark mode
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>'; // Sun icon for light mode
+            }
+        });
+    </script>
+</body>
+</html>
