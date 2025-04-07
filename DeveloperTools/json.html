@@ -22,7 +22,7 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
-    <!-- Add structured data for SEO -->
+    <!-- Structured Data for SEO -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -45,18 +45,32 @@
 
     <style>
         :root {
-            --primary-color: #2575fc;
+            --primary-color: #4a90e2;
             --secondary-color: #6a11cb;
             --accent-color: #ff6b6b;
             --success-color: #22c55e;
             --background-color: #f8f9fa;
             --text-color: #333;
             --border-color: #e2e8f0;
-            --card-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            --card-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
             --transition: all 0.3s ease;
+            --header-bg: linear-gradient(135deg, #74b9ff, #a29bfe, #f1f5f9);
+            --header-text: #2d3436;
         }
 
-        /* Enhanced General Styles */
+        [data-theme="dark"] {
+            --primary-color: #6a11cb;
+            --secondary-color: #4a90e2;
+            --accent-color: #ff6b6b;
+            --background-color: #1e1e1e;
+            --text-color: #f8f9fa;
+            --border-color: #4a5568;
+            --header-bg: linear-gradient(135deg, #2c3e50, #74b9ff, #a29bfe);
+            --header-text: #f8f9fa;
+            --card-shadow: 0 6px 20px rgba(255, 255, 255, 0.1);
+        }
+
+        /* General Styles */
         body {
             font-family: 'Poppins', sans-serif;
             margin: 0;
@@ -67,81 +81,120 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
+            font-size: 14px;
         }
 
-        /* Enhanced Header */
+        /* Header */
         header {
-            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
-            color: #fff;
-            padding: 20px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            background: var(--header-bg);
+            color: var(--header-text);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
         }
 
         .header-content {
             max-width: 1400px;
             margin: 0 auto;
+            padding: 0 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        header h1 {
-            margin: 0;
-            font-size: 1.8rem;
-            font-weight: 700;
-            background: linear-gradient(45deg, #fff, #f0f0f0);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        header p {
-            margin: 5px 0 0;
-            font-size: 1rem;
-            opacity: 0.9;
-        }
-
-        header a {
-            color: #fff;
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
             text-decoration: none;
-            font-size: 1rem;
+            color: var(--header-text);
+            transition: var(--transition);
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo i {
+            font-size: 2.2rem;
+            color: var(--header-text);
+        }
+
+        .logo h1 {
+            margin: 0;
+            font-size: 2rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--header-text);
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
             padding: 8px 16px;
             border-radius: 8px;
             transition: var(--transition);
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            position: relative;
         }
 
-        header a:hover {
-            background: rgba(255, 255, 255, 0.1);
+        nav a:hover {
+            background: rgba(255, 255, 255, 0.2);
             transform: translateY(-2px);
         }
 
-        /* Enhanced Main Content */
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            bottom: 0;
+            left: 50%;
+            transition: var(--transition);
+            transform: translateX(-50%);
+        }
+
+        nav a:hover::after {
+            width: 50%;
+        }
+
+        /* Main Content */
         main {
             flex: 1;
-            padding: 30px 20px;
+            padding: 20px;
             max-width: 1400px;
             margin: 0 auto;
             width: 100%;
             box-sizing: border-box;
             display: flex;
             flex-direction: column;
-            gap: 30px;
+            gap: 20px;
             padding-bottom: 0;
         }
 
-        /* Enhanced JSON Tool Section */
+        /* JSON Tool Section */
         #json-tool {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
+            display: flex; /* Changed to flex to stack vertically */
+            flex-direction: column; /* Stack sections vertically */
+            gap: 20px;
             background: #fff;
-            padding: 30px;
-            border-radius: 20px;
+            padding: 20px;
+            border-radius: 10px;
             box-shadow: var(--card-shadow);
             margin-bottom: 0;
+        }
+
+        [data-theme="dark"] #json-tool {
+            background: #2c3e50;
         }
 
         .tool-section {
@@ -155,47 +208,59 @@
             align-items: center;
             gap: 10px;
             margin-bottom: 10px;
+            background: var(--header-bg);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 700;
+            padding: 5px 15px;
+            border-radius: 8px;
         }
 
         .section-header i {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             color: var(--primary-color);
         }
 
         .section-header h2 {
             margin: 0;
-            font-size: 1.4rem;
-            color: var(--text-color);
+            font-size: 1.2rem;
         }
 
         textarea {
             width: 100%;
-            height: 400px;
-            padding: 20px;
+            height: 300px; /* Adjusted to match the image */
+            padding: 12px;
             border: 2px solid var(--border-color);
-            border-radius: 12px;
+            border-radius: 8px;
             font-family: 'Fira Code', monospace;
-            font-size: 14px;
-            line-height: 1.6;
+            font-size: 13px;
+            line-height: 1.5;
             resize: none;
             transition: var(--transition);
             background: #fafafa;
         }
 
+        [data-theme="dark"] textarea {
+            background: #2d3748;
+            color: #f8f9fa;
+        }
+
         textarea:focus {
             border-color: var(--primary-color);
             outline: none;
-            box-shadow: 0 0 0 3px rgba(37, 117, 252, 0.1);
+            box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
         }
 
-        /* Enhanced Buttons */
+        /* Buttons */
         .buttons {
             display: flex;
-            gap: 12px;
+            gap: 10px;
+            justify-content: space-between; /* Spread buttons evenly */
         }
 
         button {
-            padding: 12px 24px;
+            padding: 10px 20px;
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: #fff;
             border: none;
@@ -208,36 +273,41 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
-            flex: 1;
+            flex: 1; /* Make buttons take equal width */
         }
 
         button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(37, 117, 252, 0.2);
+            box-shadow: 0 4px 15px rgba(74, 144, 226, 0.2);
         }
 
         button i {
-            font-size: 1.1rem;
+            font-size: 1rem;
         }
 
-        /* Enhanced Output Section */
+        /* Output Section */
         #json-output {
             background: #fafafa;
-            padding: 20px;
+            padding: 12px;
             border: 2px solid var(--border-color);
-            border-radius: 12px;
+            border-radius: 8px;
             font-family: 'Fira Code', monospace;
-            font-size: 14px;
-            line-height: 1.6;
-            height: 400px;
+            font-size: 13px;
+            line-height: 1.5;
+            height: 300px; /* Adjusted to match the image */
             overflow: auto;
             position: relative;
         }
 
+        [data-theme="dark"] #json-output {
+            background: #2d3748;
+            color: #f8f9fa;
+        }
+
         .output-buttons {
             position: absolute;
-            top: 10px;
-            right: 10px;
+            top: 8px;
+            right: 8px;
             display: flex;
             gap: 8px;
             z-index: 10;
@@ -250,12 +320,12 @@
             border-radius: 6px;
         }
 
-        /* Enhanced JSON Formatting */
+        /* JSON Formatting */
         .json-node {
-            margin-left: 24px;
+            margin-left: 20px;
             padding: 0;
             list-style: none;
-            border-left: 1px dashed rgba(37, 117, 252, 0.2);
+            border-left: 1px dashed rgba(74, 144, 226, 0.2);
         }
 
         .json-key {
@@ -275,9 +345,9 @@
         .json-toggle {
             cursor: pointer;
             color: var(--primary-color);
-            margin-right: 8px;
-            width: 16px;
-            height: 16px;
+            margin-right: 6px;
+            width: 14px;
+            height: 14px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -286,7 +356,7 @@
 
         .json-toggle::before {
             content: "▶";
-            font-size: 12px;
+            font-size: 10px;
             transition: transform 0.2s ease;
         }
 
@@ -294,202 +364,132 @@
             transform: rotate(90deg);
         }
 
-        /* Enhanced Error Display */
+        /* Error Display */
         .error {
             color: var(--accent-color);
             font-weight: 500;
-            padding: 10px;
-            border-radius: 8px;
+            padding: 8px;
+            border-radius: 6px;
             background: rgba(255, 107, 107, 0.1);
-            border-left: 4px solid var(--accent-color);
+            border-left: 3px solid var(--accent-color);
         }
 
-        /* Responsive Design */
-        @media (max-width: 1024px) {
-            #json-tool {
-                grid-template-columns: 1fr;
-            }
-
-            textarea, #json-output {
-                height: 300px;
-            }
+        /* Footer Ad Unit */
+        footer {
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            padding: 20px;
+            text-align: center;
+            margin-top: auto;
         }
 
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 1.4rem;
-            }
-
-            main {
-                padding: 20px 15px;
-            }
-
-            #json-tool {
-                padding: 20px;
-            }
-
-            .buttons {
-                flex-direction: column;
-            }
-
-            button {
-                width: 100%;
-            }
-
-            .ad-unit.horizontal {
-                min-height: 200px;
-            }
-            
-            .ad-container {
-                padding: 0 15px;
-            }
-        }
-
-        /* Loading Animation */
-        .loading {
-            position: relative;
-        }
-
-        .loading::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.8);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 12px;
-        }
-
-        .loading::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 40px;
-            height: 40px;
-            border: 4px solid var(--primary-color);
-            border-top-color: transparent;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            z-index: 1;
-        }
-
-        @keyframes spin {
-            to { transform: translate(-50%, -50%) rotate(360deg); }
-        }
-
-        /* Enhanced Ad Container Styles */
-        .ad-container {
-            width: 100%;
+        .footer-ad {
             max-width: 1400px;
-            margin: 30px auto;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            padding: 0 20px;
+            margin: 0 auto;
+            padding: 15px 20px;
         }
 
         .ad-unit {
             background: #fff;
-            border-radius: 12px;
-            padding: 20px;
+            border-radius: 20px;
+            padding: 10px;
             box-shadow: var(--card-shadow);
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100px;
+            margin-bottom: 15px;
         }
 
-        .ad-unit.horizontal {
-            min-height: 280px;
+        [data-theme="dark"] .ad-unit {
+            background: #2c3e50;
         }
 
-        .ad-label {
-            text-align: center;
-            font-size: 0.8rem;
-            color: #666;
-            margin-bottom: 10px;
+        .ad-unit img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
         }
 
-        /* Footer adjustments */
-        footer {
-            margin-top: 0;
-            padding: 20px;
-            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
-            color: #fff;
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .header-content {
+                max-width: 100%;
+                padding: 0 15px;
+            }
+            textarea, #json-output {
+                height: 250px; /* Adjusted for medium screens */
+            }
         }
 
-        .footer-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .logo h1 {
+                font-size: 1.5rem;
+            }
+            .logo i {
+                font-size: 1.5rem;
+            }
+            nav {
+                flex-direction: column;
+                gap: 10px;
+            }
+            nav a {
+                font-size: 1rem;
+            }
+            main {
+                padding: 15px;
+            }
+            #json-tool {
+                padding: 15px;
+            }
+            .buttons {
+                flex-direction: column;
+            }
+            button {
+                width: 100%;
+            }
+            .section-header h2 {
+                font-size: 1rem;
+            }
+            textarea, #json-output {
+                height: 200px; /* Adjusted for smaller screens */
+            }
         }
 
-        .footer-links {
-            display: flex;
-            gap: 20px;
+        @media (max-width: 480px) {
+            .logo h1 {
+                font-size: 1.2rem;
+            }
+            .logo i {
+                font-size: 1.2rem;
+            }
+            nav a {
+                font-size: 0.9rem;
+                padding: 6px 12px;
+            }
+            .section-header h2 {
+                font-size: 0.9rem;
+            }
+            textarea, #json-output {
+                height: 150px; /* Adjusted for very small screens */
+            }
         }
 
-        .footer-links a {
-            color: #fff;
-            text-decoration: none;
-            opacity: 0.8;
-            transition: var(--transition);
-        }
-
-        .footer-links a:hover {
-            opacity: 1;
-        }
-
-        /* Sponsored Link Styles */
-        .sponsored-link {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            padding: 12px 20px;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: #fff;
-            text-decoration: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 500;
-            transition: var(--transition);
-            text-align: center;
-            margin: 0 auto;
-            max-width: 300px;
-        }
-
-        .sponsored-link:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(37, 117, 252, 0.2);
-        }
-
-        .sponsored-link i {
-            font-size: 1.1rem;
+        /* Hidden Advertisement Links */
+        .hidden-links {
+            display: none;
         }
     </style>
 </head>
 <body>
     <header>
         <div class="header-content">
-            <div>
-                <h1><i class="fas fa-code"></i> JSON Formatter & Validator</h1>
-                <p>Format, validate, and beautify your JSON data instantly</p>
-            </div>
+            <a href="/" class="logo">
+                <i class="fas fa-code"></i>
+                <h1>Online Formatting Tools</h1>
+            </a>
             <nav>
                 <a href="/"><i class="fas fa-home"></i> Home</a>
-                <a href="/blog.html" class="blog-link"><i class="fas fa-blog"></i> Blog</a>
+                <a href="/blog.html"><i class="fas fa-blog"></i> Blog</a>
             </nav>
         </div>
     </header>
@@ -516,8 +516,8 @@
                 </div>
                 <div id="json-output">
                     <div class="output-buttons">
-                        <button id="expand-all-btn" class="disabled"><i class="fas fa-expand-alt"></i> Expand All</button>
-                        <button id="collapse-all-btn" class="disabled"><i class="fas fa-compress-alt"></i> Collapse All</button>
+                        <button id="expand-all-btn" class="disabled"><i class="fas fa-expand-alt"></i> Expand</button>
+                        <button id="collapse-all-btn" class="disabled"><i class="fas fa-compress-alt"></i> Collapse</button>
                         <button id="copy-btn" class="disabled"><i class="fas fa-copy"></i> Copy</button>
                     </div>
                     <div id="output-content"></div>
@@ -526,224 +526,171 @@
         </div>
     </main>
 
-    <!-- Ad Container for Direct Link -->
-    <div class="ad-container">
+    <!-- Footer with Ad Unit -->
+    <div class="footer-ad">
         <div class="ad-unit">
-            <p class="ad-label">Affiliate Link</p>
-            <a href="https://024eai0hz9fq8l7gi7p40v3bpo.hop.clickbank.net" target="_blank" rel="noopener noreferrer" class="sponsored-link">
-                <i class="fas fa-external-link-alt"></i> Instant Wordpress Website!
-            </a>
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-5011292240027163"
+                 data-ad-slot="1234567890"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
         </div>
-          <div class="ad-unit">
-            <p class="ad-label">Affiliate Link</p>
-            <a href="https://aa98982c4dfw0wa6xfpb78ewex.hop.clickbank.net" target="_blank" rel="noopener noreferrer" class="sponsored-link">
-                <i class="fas fa-external-link-alt"></i> Mitolyn Health Amazing Deals!
-            </a>
-        </div>
-    
     </div>
 
-    <!-- Footer Section -->
     <footer>
-        <div class="footer-content">
-            <p>&copy; 2023 Online Formatting Tools. All rights reserved.</p>
-            <div class="footer-links">
-                <a href="/privacy-policy">Privacy Policy</a>
-                <a href="/terms-of-service">Terms of Service</a>
-            </div>
+        <!-- Hidden Advertisement Links -->
+        <div class="hidden-links">
+            <a href="https://ptakeemsaifegro.net/4/9066913" target="_blank" rel="noopener noreferrer"></a>
+            <a href="https://ptakeemsaifegro.net/4/9060213" target="_blank" rel="noopener noreferrer"></a>
+            <a href="https://ptakeemsaifegro.net/4/9060288" target="_blank" rel="noopener noreferrer"></a>
+            <a href="https://ptakeemsaifegro.net/4/9064436" target="_blank" rel="noopener noreferrer"></a>
         </div>
     </footer>
 
     <script>
-        // JavaScript for JSON Validation, Formatting, and Copying Functionality
-        const jsonInput = document.getElementById('json-input');
-        const outputContent = document.getElementById('output-content');
-        const copyBtn = document.getElementById('copy-btn');
-        const expandAllBtn = document.getElementById('expand-all-btn');
-        const collapseAllBtn = document.getElementById('collapse-all-btn');
-        let currentJson = null; // Store the parsed JSON for copying
+        document.addEventListener('DOMContentLoaded', function () {
+            const jsonInput = document.getElementById('json-input');
+            const validateBtn = document.getElementById('validate-btn');
+            const formatBtn = document.getElementById('format-btn');
+            const clearBtn = document.getElementById('clear-btn');
+            const expandAllBtn = document.getElementById('expand-all-btn');
+            const collapseAllBtn = document.getElementById('collapse-all-btn');
+            const copyBtn = document.getElementById('copy-btn');
+            const outputContent = document.getElementById('output-content');
 
-        document.getElementById('validate-btn').addEventListener('click', function() {
-            try {
-                JSON.parse(jsonInput.value);
-                outputContent.innerHTML = '<span style="color: var(--success-color);">✅ Valid JSON!</span>';
-                outputContent.classList.remove('error');
-            } catch (error) {
-                outputContent.innerHTML = `<span class="error">❌ Invalid JSON: ${error.message}</span>`;
-                outputContent.classList.add('error');
+            let formattedJSON = ''; // Store formatted JSON for copying
+
+            // Function to recursively expand or collapse all child nodes
+            function toggleAllChildren(element, expand) {
+                const childUl = element.querySelector('ul');
+                if (childUl) {
+                    childUl.style.display = expand ? 'block' : 'none';
+                    const childToggles = childUl.querySelectorAll('.json-toggle');
+                    childToggles.forEach(toggle => {
+                        toggle.classList.toggle('expanded', expand);
+                        toggleAllChildren(toggle.parentElement, expand);
+                    });
+                }
             }
-        });
 
-        document.getElementById('format-btn').addEventListener('click', function() {
-            try {
-                const parsedJson = JSON.parse(jsonInput.value);
-                currentJson = parsedJson; // Store the parsed JSON
-                outputContent.innerHTML = ''; // Clear previous content
-                renderJson(parsedJson, outputContent);
-                outputContent.classList.remove('error');
+            // Function to render JSON with individual toggles
+            function renderJSON(data, parentElement) {
+                if (typeof data === 'object' && data !== null) {
+                    const ul = document.createElement('ul');
+                    ul.classList.add('json-node');
+                    for (const key in data) {
+                        const li = document.createElement('li');
+                        const toggle = document.createElement('span');
+                        toggle.classList.add('json-toggle');
+                        toggle.addEventListener('click', function () {
+                            toggle.classList.toggle('expanded');
+                            toggleAllChildren(li, toggle.classList.contains('expanded'));
+                        });
+                        li.appendChild(toggle);
+                        const keySpan = document.createElement('span');
+                        keySpan.classList.add('json-key');
+                        keySpan.textContent = key + ': ';
+                        li.appendChild(keySpan);
+                        if (typeof data[key] === 'object' && data[key] !== null) {
+                            const childUl = document.createElement('ul');
+                            childUl.classList.add('json-node');
+                            childUl.style.display = 'none'; // Initially collapsed
+                            li.appendChild(childUl);
+                            renderJSON(data[key], childUl);
+                        } else {
+                            const valueSpan = document.createElement('span');
+                            valueSpan.classList.add('json-value');
+                            if (typeof data[key] === 'string') {
+                                valueSpan.classList.add('json-string');
+                            } else if (typeof data[key] === 'number') {
+                                valueSpan.classList.add('json-number');
+                            } else if (typeof data[key] === 'boolean') {
+                                valueSpan.classList.add('json-boolean');
+                            } else if (data[key] === null) {
+                                valueSpan.classList.add('json-null');
+                            }
+                            valueSpan.textContent = JSON.stringify(data[key]);
+                            li.appendChild(valueSpan);
+                        }
+                        ul.appendChild(li);
+                    }
+                    parentElement.appendChild(ul);
+                }
+            }
 
-                // Enable the buttons
-                expandAllBtn.classList.remove('disabled');
-                collapseAllBtn.classList.remove('disabled');
-                copyBtn.classList.remove('disabled');
-            } catch (error) {
-                outputContent.innerHTML = `<span class="error">❌ Invalid JSON: ${error.message}</span>`;
-                outputContent.classList.add('error');
-                currentJson = null; // Clear stored JSON on error
+            // Function to validate JSON
+            function validateJSON() {
+                try {
+                    JSON.parse(jsonInput.value);
+                    outputContent.innerHTML = '<div class="success">Valid JSON</div>';
+                } catch (e) {
+                    outputContent.innerHTML = `<div class="error">Invalid JSON: ${e.message}</div>`;
+                }
+            }
 
-                // Keep the buttons disabled if JSON is invalid
+            // Function to format JSON
+            function formatJSON() {
+                try {
+                    const parsedJSON = JSON.parse(jsonInput.value);
+                    formattedJSON = JSON.stringify(parsedJSON, null, 4); // Store formatted JSON
+                    outputContent.innerHTML = '';
+                    renderJSON(parsedJSON, outputContent);
+                    expandAllBtn.classList.remove('disabled');
+                    collapseAllBtn.classList.remove('disabled');
+                    copyBtn.classList.remove('disabled');
+                } catch (e) {
+                    outputContent.innerHTML = `<div class="error">Invalid JSON: ${e.message}</div>`;
+                }
+            }
+
+            // Function to clear input and output
+            function clear() {
+                jsonInput.value = '';
+                outputContent.innerHTML = '';
                 expandAllBtn.classList.add('disabled');
                 collapseAllBtn.classList.add('disabled');
                 copyBtn.classList.add('disabled');
             }
-        });
 
-        document.getElementById('clear-btn').addEventListener('click', function() {
-            jsonInput.value = '';
-            outputContent.innerHTML = '';
-            outputContent.classList.remove('error');
-            currentJson = null; // Clear stored JSON
-
-            // Disable the buttons
-            expandAllBtn.classList.add('disabled');
-            collapseAllBtn.classList.add('disabled');
-            copyBtn.classList.add('disabled');
-        });
-
-        copyBtn.addEventListener('click', function() {
-            if (currentJson) {
-                // Convert the stored JSON to a formatted string
-                const formattedJson = JSON.stringify(currentJson, null, 2);
-                navigator.clipboard.writeText(formattedJson)
-                    .then(() => {
-                        const originalText = copyBtn.innerHTML;
-                        copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
-                        copyBtn.style.background = 'var(--success-color)';
-                        setTimeout(() => {
-                            copyBtn.innerHTML = originalText;
-                            copyBtn.style.background = '';
-                        }, 1500);
-                    })
-                    .catch(err => {
-                        console.error('Failed to copy: ', err);
-                        copyBtn.innerHTML = '<i class="fas fa-times"></i> Copy Failed';
-                        copyBtn.style.background = 'var(--accent-color)';
-                        setTimeout(() => {
-                            copyBtn.innerHTML = '<i class="fas fa-copy"></i> Copy';
-                            copyBtn.style.background = '';
-                        }, 1500);
-                    });
-            }
-        });
-
-        // Expand All and Collapse All Functionality
-        expandAllBtn.addEventListener('click', function() {
-            if (!expandAllBtn.classList.contains('disabled')) {
-                const toggles = outputContent.querySelectorAll('.json-toggle');
+            // Function to expand all nodes
+            function expandAll() {
+                const toggles = document.querySelectorAll('.json-toggle');
                 toggles.forEach(toggle => {
                     toggle.classList.add('expanded');
-                    const li = toggle.parentElement;
-                    const nestedUl = li.querySelector('ul');
-                    if (nestedUl) {
-                        nestedUl.style.display = 'block';
-                    }
+                    toggleAllChildren(toggle.parentElement, true);
                 });
             }
-        });
 
-        collapseAllBtn.addEventListener('click', function() {
-            if (!collapseAllBtn.classList.contains('disabled')) {
-                const toggles = outputContent.querySelectorAll('.json-toggle');
+            // Function to collapse all nodes
+            function collapseAll() {
+                const toggles = document.querySelectorAll('.json-toggle');
                 toggles.forEach(toggle => {
                     toggle.classList.remove('expanded');
-                    const li = toggle.parentElement;
-                    const nestedUl = li.querySelector('ul');
-                    if (nestedUl) {
-                        nestedUl.style.display = 'none';
-                    }
+                    toggleAllChildren(toggle.parentElement, false);
                 });
             }
-        });
 
-        // Custom JSON Renderer with Collapsible Nodes
-        function renderJson(data, container) {
-            const ul = document.createElement('ul');
-            ul.classList.add('json-node');
-            renderJsonNode(data, ul);
-            container.appendChild(ul);
-        }
-
-        function renderJsonNode(data, parentElement) {
-            if (typeof data === 'object' && data !== null) {
-                for (const key in data) {
-                    const li = document.createElement('li');
-                    const spanKey = document.createElement('span');
-                    spanKey.classList.add('json-key');
-                    spanKey.textContent = key + ': ';
-                    
-                    if (typeof data[key] === 'object' && data[key] !== null) {
-                        const toggle = document.createElement('span');
-                        toggle.classList.add('json-toggle');
-                        
-                        toggle.addEventListener('click', function() {
-                            toggle.classList.toggle('expanded');
-                            const nestedUl = toggle.parentElement.querySelector('ul');
-                            if (nestedUl) {
-                                nestedUl.style.display = toggle.classList.contains('expanded') ? 'block' : 'none';
-                            }
-                        });
-                        
-                        li.appendChild(toggle);
-                        li.appendChild(spanKey);
-
-                        const ul = document.createElement('ul');
-                        ul.classList.add('json-node');
-                        ul.style.display = 'none'; // Initially collapsed
-                        renderJsonNode(data[key], ul);
-                        li.appendChild(ul);
-                    } else {
-                        li.appendChild(spanKey);
-                        const spanValue = document.createElement('span');
-                        spanValue.classList.add('json-value');
-                        
-                        // Add specific classes for different value types
-                        if (typeof data[key] === 'string') {
-                            spanValue.classList.add('json-string');
-                        } else if (typeof data[key] === 'number') {
-                            spanValue.classList.add('json-number');
-                        } else if (typeof data[key] === 'boolean') {
-                            spanValue.classList.add('json-boolean');
-                        } else if (data[key] === null) {
-                            spanValue.classList.add('json-null');
-                        }
-                        
-                        spanValue.textContent = JSON.stringify(data[key]);
-                        li.appendChild(spanValue);
-                    }
-
-                    parentElement.appendChild(li);
-                }
-            } else {
-                const li = document.createElement('li');
-                const spanValue = document.createElement('span');
-                spanValue.classList.add('json-value');
-                
-                // Add specific classes for different value types
-                if (typeof data === 'string') {
-                    spanValue.classList.add('json-string');
-                } else if (typeof data === 'number') {
-                    spanValue.classList.add('json-number');
-                } else if (typeof data === 'boolean') {
-                    spanValue.classList.add('json-boolean');
-                } else if (data === null) {
-                    spanValue.classList.add('json-null');
-                }
-                
-                spanValue.textContent = JSON.stringify(data);
-                li.appendChild(spanValue);
-                parentElement.appendChild(li);
+            // Function to copy formatted JSON to clipboard
+            function copyJSON() {
+                navigator.clipboard.writeText(formattedJSON).then(() => {
+                    alert('Formatted JSON copied to clipboard!');
+                }).catch(() => {
+                    alert('Failed to copy JSON to clipboard.');
+                });
             }
-        }
+
+            // Event listeners
+            validateBtn.addEventListener('click', validateJSON);
+            formatBtn.addEventListener('click', formatJSON);
+            clearBtn.addEventListener('click', clear);
+            expandAllBtn.addEventListener('click', expandAll);
+            collapseAllBtn.addEventListener('click', collapseAll);
+            copyBtn.addEventListener('click', copyJSON);
+        });
     </script>
 </body>
 </html>
