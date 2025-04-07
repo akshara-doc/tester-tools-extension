@@ -54,7 +54,7 @@
             --border-color: #e2e8f0;
             --card-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
             --transition: all 0.3s ease;
-            --header-bg: linear-gradient(135deg, #74b9ff, #a29bfe, #f1f5f9);
+            --header-bg: #f8f9fa; /* Simplified to match the image */
             --header-text: #2d3436;
         }
 
@@ -65,7 +65,7 @@
             --background-color: #1e1e1e;
             --text-color: #f8f9fa;
             --border-color: #4a5568;
-            --header-bg: linear-gradient(135deg, #2c3e50, #74b9ff, #a29bfe);
+            --header-bg: #2c3e50;
             --header-text: #f8f9fa;
             --card-shadow: 0 6px 20px rgba(255, 255, 255, 0.1);
         }
@@ -88,11 +88,11 @@
         header {
             background: var(--header-bg);
             color: var(--header-text);
-            padding: 20px 0;
+            padding: 10px 0; /* Reduced padding to match the image */
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* Lighter shadow */
         }
 
         .header-content {
@@ -107,7 +107,7 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 10px;
             text-decoration: none;
             color: var(--header-text);
             transition: var(--transition);
@@ -118,37 +118,37 @@
         }
 
         .logo i {
-            font-size: 2.2rem;
+            font-size: 1.5rem; /* Adjusted to match the image */
             color: var(--header-text);
         }
 
         .logo h1 {
             margin: 0;
-            font-size: 2rem;
+            font-size: 1.5rem; /* Adjusted to match the image */
             font-weight: 600;
             letter-spacing: 1px;
         }
 
         nav {
             display: flex;
-            gap: 20px;
+            gap: 15px;
             align-items: center;
         }
 
         nav a {
             color: var(--header-text);
             text-decoration: none;
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 500;
-            padding: 8px 16px;
-            border-radius: 8px;
+            padding: 6px 12px;
+            border-radius: 6px;
             transition: var(--transition);
             position: relative;
         }
 
         nav a:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateY(-2px);
+            background: rgba(0, 0, 0, 0.05);
+            transform: translateY(-1px);
         }
 
         nav a::after {
@@ -183,8 +183,8 @@
 
         /* JSON Tool Section */
         #json-tool {
-            display: flex; /* Changed to flex to stack vertically */
-            flex-direction: column; /* Stack sections vertically */
+            display: flex;
+            flex-direction: column; /* Single-column layout to match the image */
             gap: 20px;
             background: #fff;
             padding: 20px;
@@ -208,13 +208,9 @@
             align-items: center;
             gap: 10px;
             margin-bottom: 10px;
-            background: var(--header-bg);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+            color: var(--text-color); /* Simplified to match the image */
             font-weight: 700;
-            padding: 5px 15px;
-            border-radius: 8px;
+            padding: 5px 0;
         }
 
         .section-header i {
@@ -256,7 +252,7 @@
         .buttons {
             display: flex;
             gap: 10px;
-            justify-content: space-between; /* Spread buttons evenly */
+            justify-content: space-between;
         }
 
         button {
@@ -273,7 +269,7 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
-            flex: 1; /* Make buttons take equal width */
+            flex: 1;
         }
 
         button:hover {
@@ -376,9 +372,8 @@
 
         /* Footer Ad Unit */
         footer {
-            background: linear-gradient(135deg, #2c3e50, #3498db);
-            padding: 20px;
-            text-align: center;
+            background: transparent; /* Simplified to match the image */
+            padding: 0;
             margin-top: auto;
         }
 
@@ -389,21 +384,20 @@
         }
 
         .ad-unit {
-            background: #fff;
-            border-radius: 20px;
-            padding: 10px;
-            box-shadow: var(--card-shadow);
-            margin-bottom: 15px;
+            background: transparent; /* No background to match the image */
+            border-radius: 0;
+            padding: 0;
+            box-shadow: none;
+            margin-bottom: 0;
         }
 
         [data-theme="dark"] .ad-unit {
-            background: #2c3e50;
+            background: transparent;
         }
 
-        .ad-unit img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 6px;
+        .ad-unit ins {
+            width: 100%;
+            height: 90px; /* Adjusted to match the ad height in the image */
         }
 
         /* Responsive Design */
@@ -413,27 +407,27 @@
                 padding: 0 15px;
             }
             textarea, #json-output {
-                height: 250px; /* Adjusted for medium screens */
+                height: 250px;
             }
         }
 
         @media (max-width: 768px) {
             .header-content {
                 flex-direction: column;
-                gap: 15px;
+                gap: 10px;
             }
             .logo h1 {
-                font-size: 1.5rem;
+                font-size: 1.3rem;
             }
             .logo i {
-                font-size: 1.5rem;
+                font-size: 1.3rem;
             }
             nav {
                 flex-direction: column;
-                gap: 10px;
+                gap: 8px;
             }
             nav a {
-                font-size: 1rem;
+                font-size: 0.9rem;
             }
             main {
                 padding: 15px;
@@ -451,26 +445,26 @@
                 font-size: 1rem;
             }
             textarea, #json-output {
-                height: 200px; /* Adjusted for smaller screens */
+                height: 200px;
             }
         }
 
         @media (max-width: 480px) {
             .logo h1 {
-                font-size: 1.2rem;
+                font-size: 1.1rem;
             }
             .logo i {
-                font-size: 1.2rem;
+                font-size: 1.1rem;
             }
             nav a {
-                font-size: 0.9rem;
-                padding: 6px 12px;
+                font-size: 0.8rem;
+                padding: 5px 10px;
             }
             .section-header h2 {
                 font-size: 0.9rem;
             }
             textarea, #json-output {
-                height: 150px; /* Adjusted for very small screens */
+                height: 150px;
             }
         }
 
@@ -527,21 +521,20 @@
     </main>
 
     <!-- Footer with Ad Unit -->
-    <div class="footer-ad">
-        <div class="ad-unit">
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-5011292240027163"
-                 data-ad-slot="1234567890"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
-            <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
-        </div>
-    </div>
-
     <footer>
+        <div class="footer-ad">
+            <div class="ad-unit">
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-5011292240027163"
+                     data-ad-slot="1234567890"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        </div>
         <!-- Hidden Advertisement Links -->
         <div class="hidden-links">
             <a href="https://ptakeemsaifegro.net/4/9066913" target="_blank" rel="noopener noreferrer"></a>
