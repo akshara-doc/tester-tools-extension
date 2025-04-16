@@ -111,35 +111,6 @@
             transform: translateY(-2px);
         }
 
-        /* Dropdown */
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background: var(--header-bg);
-            min-width: 280px;
-            border-radius: 0.5rem;
-            box-shadow: var(--card-shadow);
-            z-index: 1000;
-            padding: 1rem 0;
-            top: 100%;
-            left: 0;
-            opacity: 0;
-            transition: opacity 0.2s ease;
-        }
-        .dropdown:hover .dropdown-content {
-            display: block;
-            opacity: 1;
-        }
-
-        /* Tool Category */
-        .tool-category {
-            padding: 0.5rem 1.25rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        .tool-category:last-child {
-            border-bottom: none;
-        }
-
         /* Accessibility */
         :focus {
             outline: 2px solid var(--primary-color);
@@ -233,49 +204,10 @@
                 </a>
                 <nav class="flex items-center gap-6">
                     <a href="/" class="nav-link text-[var(--header-text)] text-base font-medium px-3 py-2 rounded-lg hover:bg-[var(--primary-color)]/10" aria-label="Home"><i class="fas fa-home mr-1"></i> Home</a>
-                    <div class="dropdown relative">
-                        <a href="#" class="dropbtn flex items-center gap-2 text-[var(--header-text)] text-base font-medium px-3 py-2 rounded-lg hover:bg-[var(--primary-color)]/10" aria-label="Tools Menu">
-                            <i class="fas fa-tools"></i> Tools <i class="fas fa-chevron-down text-xs"></i>
-                        </a>
-                        <div class="dropdown-content">
-                            <div class="tool-category">
-                                <div class="category-title text-[var(--secondary-color)] text-xs font-semibold uppercase tracking-wide mb-2">Developer Tools</div>
-                                <a href="/DeveloperTools/json.html" class="flex items-center gap-2 py-2 px-5 text-[var(--text-color)] text-sm hover:bg-[var(--primary-color)]/10 hover:text-[var(--primary-color)]"><i class="fas fa-file-code w-5"></i> JSON Formatter <span class="tool-badge badge-popular bg-green-500 text-white text-xs px-2 py-1 rounded-full">Popular</span></a>
-                                <a href="/DeveloperTools/xmlformatter.html" class="flex items-center gap-2 py-2 px-5 text-[var(--text-color)] text-sm hover:bg-[var(--primary-color)]/10 hover:text-[var(--primary-color)]"><i class="fas fa-code w-5"></i> XML Formatter</a>
-                                <a href="/DeveloperTools/htmlformatter.html" class="flex items-center gap-2 py-2 px-5 text-[var(--text-color)] text-sm hover:bg-[var(--primary-color)]/10 hover:text-[var(--primary-color)]"><i class="fab fa-html5 w-5"></i> HTML Formatter</a>
-                                <a href="/DeveloperTools/cssformatter.html" class="flex items-center gap-2 py-2 px-5 text-[var(--text-color)] text-sm hover:bg-[var(--primary-color)]/10 hover:text-[var(--primary-color)]"><i class="fab fa-css3-alt w-5"></i> CSS Formatter</a>
-                                <a href="/DeveloperTools/javascript.html" class="flex items-center gap-2 py-2 px-5 text-[var(--text-color)] text-sm hover:bg-[var(--primary-color)]/10 hover:text-[var(--primary-color)]"><i class="fab fa-js w-5"></i> JavaScript Formatter <span class="tool-badge badge-new bg-amber-500 text-white text-xs px-2 py-1 rounded-full">New</span></a>
-                                <a href="/DeveloperTools/csvtojson.html" class="flex items-center gap-2 py-2 px-5 text-[var(--text-color)] text-sm hover:bg-[var(--primary-color)]/10 hover:text-[var(--primary-color)]"><i class="fas fa-file-csv w-5"></i> CSV to JSON Converter <span class="tool-badge badge-new bg-amber-500 text-white text-xs px-2 py-1 rounded-full">New</span></a>
-                                <a href="/DeveloperTools/exceltojson.html" class="flex items-center gap-2 py-2 px-5 text-[var(--text-color)] text-sm hover:bg-[var(--primary-color)]/10 hover:text-[var(--primary-color)]"><i class="fas fa-file-excel w-5"></i> Excel to JSON Converter <span class="tool-badge badge-new bg-amber-500 text-white text-xs px-2 py-1 rounded-full">New</span></a>
-                            </div>
-                            <div class="tool-category">
-                                <div class="category-title text-[var(--secondary-color)] text-xs font-semibold uppercase tracking-wide mb-2">Data Tools</div>
-                                <a href="/DataTools/csvformatter.html" class="flex items-center gap-2 py-2 px-5 text-[var(--text-color)] text-sm hover:bg-[var(--primary-color)]/10 hover:text-[var(--primary-color)]"><i class="fas fa-file-csv w-5"></i> CSV Formatter</a>
-                                <a href="/DataTools/sqlformatter.html" class="flex items-center gap-2 py-2 px-5 text-[var(--text-color)] text-sm hover:bg-[var(--primary-color)]/10 hover:text-[var(--primary-color)]"><i class="fas fa-database w-5"></i> SQL Formatter</a>
-                                <a href="/DataTools/yamlformatter.html" class="flex items-center gap-2 py-2 px-5 text-[var(--text-color)] text-sm hover:bg-[var(--primary-color)]/10 hover:text-[var(--primary-color)]"><i class="fas fa-file-alt w-5"></i> YAML Formatter</a>
-                                <a href="/DataTools/jsontoxml.html" class="flex items-center gap-2 py-2 px-5 text-[var(--text-color)] text-sm hover:bg-[var(--primary-color)]/10 hover:text-[var(--primary-color)]"><i class="fas fa-exchange-alt w-5"></i> JSON to XML Converter</a>
-                            </div>
-                            <div class="tool-category">
-                                <div class="category-title text-[var(--secondary-color)] text-xs font-semibold uppercase tracking-wide mb-2">Text Tools</div>
-                                <a href="/TextTools/textcompare.html" class="flex items-center gap-2 py-2 px-5 text-[var(--text-color)] text-sm hover:bg-[var(--primary-color)]/10 hover:text-[var(--primary-color)]"><i class="fas fa-file-alt w-5"></i> Text Compare</a>
-                                <a href="/TextTools/jsoncompare.html" class="flex items-center gap-2 py-2 px-5 text-[var(--text-color)] text-sm hover:bg-[var(--primary-color)]/10 hover:text-[var(--primary-color)]"><i class="fas fa-file-code w-5"></i> Json Compare</a>
-                                <a href="/TextTools/markdown.html" class="flex items-center gap-2 py-2 px-5 text-[var(--text-color)] text-sm hover:bg-[var(--primary-color)]/10 hover:text-[var(--primary-color)]"><i class="fab fa-markdown w-5"></i> Markdown Editor <span class="tool-badge badge-new bg-amber-500 text-white text-xs px-2 py-1 rounded-full">New</span></a>
-                                <a href="/TextTools/minify.html" class="flex items-center gap-2 py-2 px-5 text-[var(--text-color)] text-sm hover:bg-[var(--primary-color)]/10 hover:text-[var(--primary-color)]"><i class="fas fa-compress-alt w-5"></i> Code Minifier</a>
-                            </div>
-                            <div class="tool-category">
-                                <div class="category-title text-[var(--secondary-color)] text-xs font-semibold uppercase tracking-wide mb-2">Utility Tools</div>
-                                <a href="/UtilityTools/base64.html" class="flex items-center gap-2 py-2 px-5 text-[var(--text-color)] text-sm hover:bg-[var(--primary-color)]/10 hover:text-[var(--primary-color)]"><i class="fas fa-exchange-alt w-5"></i> Base64 Encoder/Decoder</a>
-                                <a href="/UtilityTools/urlencode.html" class="flex items-center gap-2 py-2 px-5 text-[var(--text-color)] text-sm hover:bg-[var(--primary-color)]/10 hover:text-[var(--primary-color)]"><i class="fas fa-link w-5"></i> URL Encoder/Decoder</a>
-                                <a href="/UtilityTools/hash.html" class="flex items-center gap-2 py-2 px-5 text-[var(--text-color)] text-sm hover:bg-[var(--primary-color)]/10 hover:text-[var(--primary-color)]"><i class="fas fa-hashtag w-5"></i> Hash Generator</a>
-                                <a href="/UtilityTools/regex.html" class="flex items-center gap-2 py-2 px-5 text-[var(--text-color)] text-sm hover:bg-[var(--primary-color)]/10 hover:text-[var(--primary-color)]"><i class="fas fa-search w-5"></i> Regex Tester</a>
-                            </div>
-                        </div>
-                    </div>
                     <a href="/blog.html" class="blog-link bg-[var(--primary-color)] text-white px-4 py-2 rounded-full font-semibold shadow-md hover:bg-[var(--secondary-color)]" aria-label="Blog"><i class="fas fa-blog mr-1"></i> Blog</a>
                     <button class="theme-toggle text-[var(--header-text)] text-xl hover:text-[var(--accent-color)]" id="theme-toggle" aria-label="Toggle Theme">
                         <i class="fas fa-moon"></i>
                     </button>
-                    <a href="/DeveloperTools/json.html" class="nav-link bg-[var(--secondary-color)] text-white px-4 py-2 rounded-full font-semibold shadow-md hover:bg-[var(--primary-color)]" aria-label="Try a Tool">Try a Tool</a>
                 </nav>
             </div>
         </header>
@@ -325,48 +257,15 @@
                     (adsbygoogle = window.adsbygoogle || []).push({});
                 </script>
             </div>
+            <!-- Hidden Advertisement Links -->
+            <div class="hidden-links hidden">
+                <a href="https://ptakeemsaifegro.net/4/9066913" target="_blank" rel="noopener noreferrer"></a>
+                <a href="https://ptakeemsaifegro.net/4/9060213" target="_blank" rel="noopener noreferrer"></a>
+                <a href="https://ptakeemsaifegro.net/4/9060288" target="_blank" rel="noopener noreferrer"></a>
+                <a href="https://ptakeemsaifegro.net/4/9064436" target="_blank" rel="noopener noreferrer"></a>
+            </div>
         </div>
     </div>
-
-    <footer class="bg-gradient-to-r from-gray-900 to-[var(--primary-color)] text-white py-6 mt-auto w-full">
-        <div class="footer-content max-w-[1800px] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4">
-            <div class="footer-section">
-                <h3 class="text-lg font-semibold mb-3">Quick Links</h3>
-                <div class="footer-links flex flex-col gap-2">
-                    <a href="/" class="flex items-center gap-2 text-sm hover:text-[var(--accent-color)]" aria-label="Home"><i class="fas fa-home"></i> Home</a>
-                    <a href="/blog.html" class="flex items-center gap-2 text-sm hover:text-[var(--accent-color)]" aria-label="Blog"><i class="fas fa-blog"></i> Blog</a>
-                    <a href="/Legal/aboutus.html" class="flex items-center gap-2 text-sm hover:text-[var(--accent-color)]" aria-label="About Us"><i class="fas fa-info-circle"></i> About Us</a>
-                    <a href="/Legal/contactus.html" class="flex items-center gap-2 text-sm hover:text-[var(--accent-color)]" aria-label="Contact Us"><i class="fas fa-envelope"></i> Contact Us</a>
-                </div>
-            </div>
-            <div class="footer-section">
-                <h3 class="text-lg font-semibold mb-3">Popular Tools</h3>
-                <div class="footer-links flex flex-col gap-2">
-                    <a href="/DeveloperTools/json.html" class="flex items-center gap-2 text-sm hover:text-[var(--accent-color)]" aria-label="JSON Formatter"><i class="fas fa-file-code"></i> JSON Formatter</a>
-                    <a href="/DeveloperTools/xmlformatter.html" class="flex items-center gap-2 text-sm hover:text-[var(--accent-color)]" aria-label="XML Formatter"><i class="fas fa-code"></i> XML Formatter</a>
-                    <a href="/DataTools/csvformatter.html" class="flex items-center gap-2 text-sm hover:text-[var(--accent-color)]" aria-label="CSV Formatter"><i class="fas fa-file-csv"></i> CSV Formatter</a>
-                    <a href="/DataTools/sqlformatter.html" class="flex items-center gap-2 text-sm hover:text-[var(--accent-color)]" aria-label="SQL Formatter"><i class="fas fa-database"></i> SQL Formatter</a>
-                </div>
-            </div>
-            <div class="footer-section">
-                <h3 class="text-lg font-semibold mb-3">Legal</h3>
-                <div class="footer-links flex flex-col gap-2">
-                    <a href="/Legal/privacypolicy.html" class="flex items-center gap-2 text-sm hover:text-[var(--accent-color)]" aria-label="Privacy Policy"><i class="fas fa-shield-alt"></i> Privacy Policy</a>
-                    <a href="/Legal/termsofuse.html" class="flex items-center gap-2 text-sm hover:text-[var(--accent-color)]" aria-label="Terms of Use"><i class="fas fa-gavel"></i> Terms of Use</a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom text-center mt-4 pt-4 border-t border-white/10 text-sm">
-            <p>© 2025 Online Formatting Tools. All rights reserved.</p>
-        </div>
-        <!-- Hidden Advertisement Links -->
-        <div class="hidden-links hidden">
-            <a href="https://ptakeemsaifegro.net/4/9066913" target="_blank" rel="noopener noreferrer"></a>
-            <a href="https://ptakeemsaifegro.net/4/9060213" target="_blank" rel="noopener noreferrer"></a>
-            <a href="https://ptakeemsaifegro.net/4/9060288" target="_blank" rel="noopener noreferrer"></a>
-            <a href="https://ptakeemsaifegro.net/4/9064436" target="_blank" rel="noopener noreferrer"></a>
-        </div>
-    </footer>
 
     <script defer>
         document.addEventListener('DOMContentLoaded', function () {
@@ -523,24 +422,6 @@
                     localStorage.setItem('theme', 'dark');
                     themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
                 }
-            });
-
-            // Dropdown Hover
-            const dropdown = document.querySelector('.dropdown');
-            const dropdownContent = document.querySelector('.dropdown-content');
-            let timeoutId;
-
-            dropdown.addEventListener('mouseenter', () => {
-                clearTimeout(timeoutId);
-                dropdownContent.style.display = 'block';
-                dropdownContent.style.opacity = '1';
-            });
-
-            dropdown.addEventListener('mouseleave', () => {
-                timeoutId = setTimeout(() => {
-                    dropdownContent.style.display = 'none';
-                    dropdownContent.style.opacity = '0';
-                }, 200);
             });
 
             // Fade-in Animation
