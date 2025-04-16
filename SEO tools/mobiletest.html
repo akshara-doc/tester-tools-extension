@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Check your website's mobile compatibility with our free online tool. Enter a URL or paste HTML to get a detailed report and score instantly.">
+    <meta name="keywords" content="mobile compatibility checker, mobile-friendly test, responsive design tool, free mobile audit, mobile SEO tool, mobile score">
+    <meta name="author" content="Online Formatting Tools">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Free Mobile Compatibility Checker | Test Your Website">
+    <meta property="og:description" content="Test your website's mobile-friendliness with our free tool. Enter a URL or HTML for an instant report and score on viewport, images, and more.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourwebsite.com/mobile-checker.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Free Mobile Compatibility Checker Tool">
+    <meta name="twitter:description" content="Instantly test your website's mobile compatibility and get a score with our free tool.">
+    
+    <title>Free Mobile Compatibility Checker | Test Your Website Instantly</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Mobile Compatibility Checker",
+      "description": "Free online tool to test website mobile compatibility",
+      "url": "https://yourwebsite.com/mobile-checker.html",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5011292240027163" crossorigin="anonymous"></script>
+
+    <style>
+        :root {
+            --primary-color: #2575fc;
+            --secondary-color: #6a11cb;
+            --accent-color: #ff6b6b;
+            --success-color: #22c55e;
+            --background-color: #f8f9fa;
+            --text-color: #333;
+            --border-color: #e2e8f0;
+            --card-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            --transition: all 0.3s ease;
+            --header-bg: #ffffff;
+            --header-text: #333;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            min-height: 100vh;
+            font-size: 16px;
+        }
+
+        header {
+            background: var(--header-bg);
+            color: var(--header-text);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--header-text);
+        }
+
+        .logo i {
+            font-size: 2rem;
+            color: var(--primary-color);
+        }
+
+        .logo h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: var(--header-text);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 8px 12px;
+            border-radius: 6px;
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+            background: rgba(37, 117, 252, 0.1);
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+            flex: 1;
+        }
+
+        .intro {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .intro h1 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin: 0 0 10px;
+        }
+
+        .intro p {
+            font-size: 1.1rem;
+            color: var(--text-color);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        #mobile-tool {
+            background: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .input-section {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        input[type="url"], textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: var(--transition);
+            background: #fafafa;
+        }
+
+        textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        input[type="url"]:focus, textarea:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(37, 117, 252, 0.1);
+        }
+
+        .buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex: 1;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(37, 117, 252, 0.2);
+        }
+
+        button i {
+            font-size: 1rem;
+        }
+
+        #mobile-output {
+            margin-top: 20px;
+            padding: 20px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            position: relative;
+        }
+
+        .mobile-score {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .mobile-score h2 {
+            font-size: 1.8rem;
+            color: var(--success-color);
+            margin: 0;
+        }
+
+        .mobile-score p {
+            font-size: 1rem;
+            color: var(--text-color);
+        }
+
+        .mobile-result {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            border-left: 4px solid var(--primary-color);
+            background: #fafafa;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .mobile-result i {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .mobile-result .content {
+            flex: 1;
+        }
+
+        .mobile-result h3 {
+            margin: 0 0 5px 0;
+            font-size: 1.1rem;
+            color: var(--text-color);
+        }
+
+        .mobile-result p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: var(--text-color);
+        }
+
+        .mobile-result .warning {
+            color: var(--accent-color);
+            font-weight: 500;
+        }
+
+        .error {
+            color: var(--accent-color);
+            font-weight: 500;
+            padding: 10px;
+            border-radius: 6px;
+            background: rgba(255, 107, 107, 0.1);
+            border-left: 4px solid var(--accent-color);
+            text-align: center;
+        }
+
+        .output-buttons {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .output-buttons button {
+            padding: 8px 12px;
+            background: var(--success-color);
+            font-size: 0.9rem;
+            border-radius: 6px;
+        }
+
+        footer {
+            background: var(--header-bg);
+            padding: 20px;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            margin-top: 20px;
+        }
+
+        .ad-unit {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px;
+            background: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .ad-unit p {
+            font-size: 0.8rem;
+            color: #777;
+            margin: 5px 0;
+        }
+
+        .ad-unit ins {
+            display: block;
+            width: 100%;
+            height: 90px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            .intro h1 {
+                font-size: 1.5rem;
+            }
+
+            .intro p {
+                font-size: 1rem;
+            }
+
+            .buttons {
+                flex-direction: column;
+            }
+
+            button {
+                width: 100%;
+            }
+
+            .mobile-result {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <a href="/" class="logo">
+                <i class="fas fa-mobile-alt"></i>
+                <h1>Online Formatting Tools</h1>
+            </a>
+            <nav>
+                <a href="/">Home</a>
+                <a href="/blog.html">Blog</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="intro">
+            <h1>Free Mobile Compatibility Checker</h1>
+            <p>Ensure your website looks great on mobile devices with our free tool. Enter a URL or paste HTML below to get a detailed report and score instantly!</p>
+        </div>
+
+        <div id="mobile-tool">
+            <div class="input-section">
+                <input type="url" id="mobile-input" placeholder="https://example.com">
+                <textarea id="html-input" placeholder="Or paste your HTML here if URL fetching fails..."></textarea>
+                <div class="buttons">
+                    <button id="analyze-btn"><i class="fas fa-mobile-alt"></i> Check Mobile Compatibility</button>
+                    <button id="clear-btn"><i class="fas fa-trash-alt"></i> Clear</button>
+                </div>
+            </div>
+
+            <div id="mobile-output"></div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="ad-unit">
+            <p>Advertisement</p>
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-5011292240027163"
+                 data-ad-slot="1234567890"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const mobileInput = document.getElementById('mobile-input');
+            const htmlInput = document.getElementById('html-input');
+            const analyzeBtn = document.getElementById('analyze-btn');
+            const clearBtn = document.getElementById('clear-btn');
+            const mobileOutput = document.getElementById('mobile-output');
+
+            let mobileResultsText = '';
+
+            // Function to fetch page content using a proxy
+            async function fetchPageContent(url) {
+                const proxyUrl = 'https://api.allorigins.win/raw?url=';
+                try {
+                    const response = await fetch(proxyUrl + encodeURIComponent(url));
+                    if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+                    return await response.text();
+                } catch (error) {
+                    throw new Error(`Failed to fetch URL: ${error.message}. Try pasting the HTML content instead or check the URL.`);
+                }
+            }
+
+            // Function to create a result block
+            function createResultBlock(iconClass, title, content, isWarning = false) {
+                const div = document.createElement('div');
+                div.classList.add('mobile-result');
+                div.innerHTML = `
+                    <i class="${iconClass}"></i>
+                    <div class="content">
+                        <h3>${title}</h3>
+                        <p ${isWarning ? 'class="warning"' : ''}>${content}</p>
+                    </div>
+                `;
+                return div;
+            }
+
+            // Function to calculate mobile compatibility score
+            function calculateMobileScore(data) {
+                let score = 0;
+                const maxScore = 100;
+                const weights = {
+                    viewport: 30,      // Viewport meta tag with width=device-width
+                    images: 25,        // Images with reasonable size or responsive attributes
+                    links: 20,         // Links present and likely tappable
+                    text: 15,          // Readable text (basic check via headings)
+                    css: 10            // Presence of media queries or responsive design hints
+                };
+
+                // Viewport check
+                if (data.hasViewport && data.viewportContent.includes('width=device-width')) score += weights.viewport;
+                else if (data.hasViewport) score += weights.viewport * 0.5;
+
+                // Images check
+                if (data.imgTotal > 0) {
+                    if (data.imgResponsive >= data.imgTotal * 0.8) score += weights.images;
+                    else score += weights.images * (data.imgResponsive / data.imgTotal);
+                } else {
+                    score += weights.images * 0.5; // Neutral if no images
+                }
+
+                // Links check
+                if (data.linkTotal > 0) {
+                    if (data.linkTotal >= 3) score += weights.links;
+                    else score += weights.links * (data.linkTotal / 3);
+                }
+
+                // Text check (basic)
+                if (data.h1Count > 0 || data.h2Count > 0) score += weights.text;
+
+                // CSS check (basic)
+                if (data.hasMediaQueries) score += weights.css;
+
+                return Math.round((score / maxScore) * 100);
+            }
+
+            // Function to analyze mobile compatibility
+            async function analyzeMobileCompatibility() {
+                const url = mobileInput.value.trim();
+                const htmlContent = htmlInput.value.trim();
+                let doc;
+
+                mobileOutput.innerHTML = '<p>Analyzing...</p>';
+
+                // Try fetching URL first
+                if (url && url.match(/^https?:\/\/.+/)) {
+                    try {
+                        const html = await fetchPageContent(url);
+                        const parser = new DOMParser();
+                        doc = parser.parseFromString(html, 'text/html');
+                    } catch (e) {
+                        if (htmlContent) {
+                            mobileOutput.innerHTML = `<div class="error">${e.message} Using provided HTML instead.</div>`;
+                            const parser = new DOMParser();
+                            doc = parser.parseFromString(htmlContent, 'text/html');
+                        } else {
+                            mobileOutput.innerHTML = `<div class="error">${e.message}</div>`;
+                            return;
+                        }
+                    }
+                } else if (htmlContent) {
+                    const parser = new DOMParser();
+                    doc = parser.parseFromString(htmlContent, 'text/html');
+                } else {
+                    mobileOutput.innerHTML = '<div class="error">Please enter a valid URL or paste HTML content.</div>';
+                    return;
+                }
+
+                // Mobile Compatibility Analysis
+                const viewportMeta = doc.querySelector('meta[name="viewport"]');
+                const hasViewport = !!viewportMeta;
+                const viewportContent = viewportMeta ? viewportMeta.getAttribute('content') || '' : 'Not found';
+                const imgTotal = doc.querySelectorAll('img').length;
+                const imgResponsive = Array.from(doc.querySelectorAll('img')).filter(img => 
+                    img.hasAttribute('width') || img.hasAttribute('height') || 
+                    img.style.width || img.style.maxWidth || img.className.includes('responsive')
+                ).length;
+                const linkTotal = doc.querySelectorAll('a').length;
+                const h1Count = doc.querySelectorAll('h1').length;
+                const h2Count = doc.querySelectorAll('h2').length;
+                const cssLinks = doc.querySelectorAll('link[rel="stylesheet"]');
+                const hasMediaQueries = Array.from(cssLinks).some(link => 
+                    link.outerHTML.includes('media') || link.href.includes('responsive')
+                ) || doc.querySelector('style')?.textContent.includes('@media');
+
+                // Calculate Mobile Score
+                const score = calculateMobileScore({ 
+                    hasViewport, 
+                    viewportContent, 
+                    imgTotal, 
+                    imgResponsive, 
+                    linkTotal, 
+                    h1Count, 
+                    h2Count, 
+                    hasMediaQueries 
+                });
+
+                // Build output
+                mobileOutput.innerHTML = `
+                    <div class="output-buttons">
+                        <button id="copy-btn"><i class="fas fa-copy"></i> Copy Results</button>
+                    </div>
+                `;
+                const scoreDiv = document.createElement('div');
+                scoreDiv.classList.add('mobile-score');
+                scoreDiv.innerHTML = `<h2>Your Mobile Compatibility Score: ${score}%</h2><p>Based on key mobile-friendly factors</p>`;
+                mobileOutput.appendChild(scoreDiv);
+
+                mobileOutput.appendChild(createResultBlock('fas fa-mobile-alt', 'Viewport Meta Tag', hasViewport ? viewportContent : 'Not found', !hasViewport || !viewportContent.includes('width=device-width')));
+                mobileOutput.appendChild(createResultBlock('fas fa-image', 'Images', `Total: ${imgTotal}, Responsive: ${imgResponsive}`, imgTotal > 0 && imgResponsive < imgTotal));
+                mobileOutput.appendChild(createResultBlock('fas fa-link', 'Links', `Total: ${linkTotal}`, linkTotal < 3));
+                mobileOutput.appendChild(createResultBlock('fas fa-text-height', 'Readable Text', `H1: ${h1Count}, H2: ${h2Count}`, h1Count + h2Count === 0));
+                mobileOutput.appendChild(createResultBlock('fas fa-desktop', 'Responsive Design', hasMediaQueries ? 'Media queries detected' : 'No media queries found', !hasMediaQueries));
+
+                // Store results for copying
+                mobileResultsText = `
+                    Mobile Compatibility Score: ${score}%
+                    Viewport Meta Tag: ${hasViewport ? viewportContent : 'Not found'}
+                    Images: Total: ${imgTotal}, Responsive: ${imgResponsive}
+                    Links: Total: ${linkTotal}
+                    Readable Text: H1: ${h1Count}, H2: ${h2Count}
+                    Responsive Design: ${hasMediaQueries ? 'Media queries detected' : 'No media queries found'}
+                `;
+
+                document.getElementById('copy-btn').addEventListener('click', copyMobileResults);
+            }
+
+            // Function to clear input and output
+            function clear() {
+                mobileInput.value = '';
+                htmlInput.value = '';
+                mobileOutput.innerHTML = '';
+            }
+
+            // Function to copy results to clipboard
+            function copyMobileResults() {
+                navigator.clipboard.writeText(mobileResultsText).then(() => {
+                    alert('Mobile compatibility results copied to clipboard!');
+                }).catch(() => {
+                    alert('Failed to copy results to clipboard.');
+                });
+            }
+
+            // Event listeners
+            analyzeBtn.addEventListener('click', analyzeMobileCompatibility);
+            clearBtn.addEventListener('click', clear);
+        });
+    </script>
+</body>
+</html>

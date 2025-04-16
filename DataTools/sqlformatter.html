@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free online SQL Validator and Formatter tool. Instantly format, validate, and beautify your SQL queries with our easy-to-use tool. Features include syntax highlighting, error detection, and copy functionality.">
+    <meta name="keywords" content="SQL validator, SQL formatter, SQL beautifier, SQL tool, online SQL tool, SQL parser, SQL syntax checker, SQL pretty print, SQL editor online, free SQL tools">
+    <meta name="author" content="Online Formatting Tools">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Free Online SQL Validator & Formatter Tool | SQL Tools">
+    <meta property="og:description" content="Format, validate and beautify your SQL queries instantly with our free online SQL formatter tool. Features include syntax highlighting and error detection.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourwebsite.com/sql.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Free Online SQL Validator & Formatter Tool">
+    <meta name="twitter:description" content="Format, validate and beautify your SQL queries instantly with our free online SQL formatter tool.">
+    
+    <title>Free Online SQL Validator & Formatter Tool | Best SQL Formatter</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Add structured data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "SQL Formatter & Validator",
+      "description": "Free online tool to format and validate SQL queries",
+      "url": "https://yourwebsite.com/sql.html",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5011292240027163" crossorigin="anonymous"></script>
+
+    <style>
+        :root {
+            --primary-color: #2575fc;
+            --secondary-color: #6a11cb;
+            --accent-color: #ff6b6b;
+            --success-color: #22c55e;
+            --background-color: #f8f9fa;
+            --text-color: #333;
+            --border-color: #e2e8f0;
+            --card-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            --transition: all 0.3s ease;
+            --header-bg: #ffffff;
+            --header-text: #333;
+        }
+
+        /* General Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            font-size: 14px;
+        }
+
+        /* Header */
+        header {
+            background: var(--header-bg);
+            color: var(--header-text);
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: var(--header-text);
+        }
+
+        .logo i {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .logo h1 {
+            margin: 0;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--header-text);
+        }
+
+        nav {
+            display: flex;
+            gap: 15px;
+        }
+
+        nav a {
+            color: var(--header-text);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 6px 10px;
+            border-radius: 6px;
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+            background: rgba(37, 117, 252, 0.1);
+        }
+
+        /* Main Content */
+        main {
+            flex: 1;
+            padding: 15px;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            padding-bottom: 0;
+        }
+
+        /* SQL Tool Section */
+        #sql-tool {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            background: #fff;
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 0;
+        }
+
+        .tool-section {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 6px;
+        }
+
+        .section-header i {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+        }
+
+        .section-header h2 {
+            margin: 0;
+            font-size: 0.8rem;
+            color: var(--text-color);
+        }
+
+        textarea {
+            width: 100%;
+            height: 300px;
+            padding: 12px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-family: 'Fira Code', monospace;
+            font-size: 13px;
+            line-height: 1.5;
+            resize: none;
+            transition: var(--transition);
+            background: #fafafa;
+        }
+
+        textarea:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(37, 117, 252, 0.1);
+        }
+
+        /* Buttons */
+        .buttons {
+            display: flex;
+            gap: 8px;
+        }
+
+        button {
+            padding: 8px 16px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            flex: 1;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(37, 117, 252, 0.2);
+        }
+
+        button i {
+            font-size: 0.8rem;
+        }
+
+        /* Output Section */
+        #sql-output {
+            background: #fafafa;
+            padding: 12px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-family: 'Fira Code', monospace;
+            font-size: 13px;
+            line-height: 1.5;
+            height: 300px;
+            overflow: auto;
+            position: relative;
+        }
+
+        .output-buttons {
+            position: absolute;
+            top: 6px;
+            right: 6px;
+            display: flex;
+            gap: 6px;
+            z-index: 10;
+        }
+
+        .output-buttons button {
+            padding: 6px 10px;
+            background: var(--success-color);
+            font-size: 0.7rem;
+            border-radius: 6px;
+        }
+
+        /* SQL Formatting */
+        .sql-keyword {
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+
+        .sql-string {
+            color: var(--secondary-color);
+        }
+
+        .sql-number {
+            color: #22c55e;
+        }
+
+        .sql-comment {
+            color: #6b7280;
+            font-style: italic;
+        }
+
+        .sql-function {
+            color: #ff6b6b;
+        }
+
+        .sql-operator {
+            color: #6a11cb;
+        }
+
+        /* Error Display */
+        .error {
+            color: var(--accent-color);
+            font-weight: 500;
+            padding: 8px;
+            border-radius: 6px;
+            background: rgba(255, 107, 107, 0.1);
+            border-left: 3px solid var(--accent-color);
+        }
+
+        /* Footer Ad Unit */
+        footer {
+            background: var(--header-bg);
+            padding: 20px;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .ad-unit {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px;
+            background: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .ad-unit img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            #sql-tool {
+                grid-template-columns: 1fr;
+            }
+
+            textarea, #sql-output {
+                height: 250px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.2rem;
+            }
+
+            main {
+                padding: 10px;
+            }
+
+            #sql-tool {
+                padding: 10px;
+            }
+
+            .buttons {
+                flex-direction: column;
+            }
+
+            button {
+                width: 100%;
+            }
+
+            .ad-unit {
+                padding: 10px;
+            }
+        }
+
+        /* Hidden Advertisement Links */
+        .hidden-links {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <a href="/" class="logo">
+                <i class="fas fa-code"></i>
+                <h1>Online Formatting Tools</h1>
+            </a>
+            <nav>
+                <a href="/">Home</a>
+                <a href="/blog.html">Blog</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div id="sql-tool">
+            <div class="tool-section">
+                <div class="section-header">
+                    <i class="fas fa-edit"></i>
+                    <h2>Input SQL</h2>
+                </div>
+                <textarea id="sql-input" placeholder="Paste your SQL query here..."></textarea>
+                <div class="buttons">
+                    <button id="validate-btn"><i class="fas fa-check-circle"></i> Validate SQL</button>
+                    <button id="format-btn"><i class="fas fa-magic"></i> Format SQL</button>
+                    <button id="clear-btn"><i class="fas fa-trash-alt"></i> Clear</button>
+                </div>
+            </div>
+
+            <div class="tool-section">
+                <div class="section-header">
+                    <i class="fas fa-code"></i>
+                    <h2>Formatted Output</h2>
+                </div>
+                <div id="sql-output">
+                    <div class="output-buttons">
+                        <button id="copy-btn" class="disabled"><i class="fas fa-copy"></i> Copy</button>
+                    </div>
+                    <div id="output-content"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer with Ad Unit Placeholder -->
+    <footer>
+        <div class="ad-unit">
+            <img src="https://via.placeholder.com/1200x200" alt="">
+        </div>
+    </footer>
+
+    <!-- Hidden Advertisement Links in Footer -->
+    <footer class="hidden-links">
+  <a href="https://ptakeemsaifegro.net/4/9066913" target="_blank" rel="noopener noreferrer"></a>
+        <a href="https://ptakeemsaifegro.net/4/9060213" target="_blank" rel="noopener noreferrer"></a>
+        <a href="https://ptakeemsaifegro.net/4/9060288" target="_blank" rel="noopener noreferrer"></a>
+        <a href="https://ptakeemsaifegro.net/4/9064436" target="_blank" rel="noopener noreferrer"></a>
+        
+        <a href="https://ptakeemsaifegro.net/4/9066911" target="_blank" rel="noopener noreferrer"></a>
+        <a href="https://ptakeemsaifegro.net/4/9066909" target="_blank" rel="noopener noreferrer"></a>
+        <a href="https://ptakeemsaifegro.net/4/9057331" target="_blank" rel="noopener noreferrer"></a>
+        <a href="https://ptakeemsaifegro.net/4/9066910" target="_blank" rel="noopener noreferrer"></a>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const sqlInput = document.getElementById('sql-input');
+            const validateBtn = document.getElementById('validate-btn');
+            const formatBtn = document.getElementById('format-btn');
+            const clearBtn = document.getElementById('clear-btn');
+            const copyBtn = document.getElementById('copy-btn');
+            const outputContent = document.getElementById('output-content');
+
+            let formattedSQL = ''; // Store formatted SQL for copying
+
+            // Function to validate SQL
+            function validateSQL() {
+                try {
+                    // Basic SQL validation (check for common keywords)
+                    const sql = sqlInput.value.trim().toLowerCase();
+                    if (!sql.startsWith('select') && !sql.startsWith('insert') && !sql.startsWith('update') && !sql.startsWith('delete')) {
+                        throw new Error('Invalid SQL query. Must start with SELECT, INSERT, UPDATE, or DELETE.');
+                    }
+                    outputContent.innerHTML = '<div class="success">Valid SQL</div>';
+                } catch (e) {
+                    outputContent.innerHTML = `<div class="error">Invalid SQL: ${e.message}</div>`;
+                }
+            }
+
+            // Function to format SQL
+            function formatSQL() {
+                try {
+                    // Using a simple formatting approach (for demonstration purposes)
+                    formattedSQL = sql_beautify(sqlInput.value, {
+                        indent: '    ', // 4 spaces
+                        wrapWidth: 80, // Wrap lines at 80 characters
+                    });
+                    outputContent.textContent = formattedSQL;
+                    copyBtn.classList.remove('disabled');
+                } catch (e) {
+                    outputContent.innerHTML = `<div class="error">Error formatting SQL: ${e.message}</div>`;
+                }
+            }
+
+            // Function to clear input and output
+            function clear() {
+                sqlInput.value = '';
+                outputContent.innerHTML = '';
+                copyBtn.classList.add('disabled');
+            }
+
+            // Function to copy formatted SQL to clipboard
+            function copySQL() {
+                navigator.clipboard.writeText(formattedSQL).then(() => {
+                    alert('Formatted SQL copied to clipboard!');
+                }).catch(() => {
+                    alert('Failed to copy SQL to clipboard.');
+                });
+            }
+
+            // Event listeners
+            validateBtn.addEventListener('click', validateSQL);
+            formatBtn.addEventListener('click', formatSQL);
+            clearBtn.addEventListener('click', clear);
+            copyBtn.addEventListener('click', copySQL);
+        });
+    </script>
+    <!-- Include sql-beautify library for formatting -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sql-formatter/4.0.2/sql-formatter.min.js"></script>
+</body>
+</html>

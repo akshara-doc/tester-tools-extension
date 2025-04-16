@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free online JSON Validator and Formatter tool. Instantly format, validate, and beautify your JSON data with our easy-to-use tool. Features include syntax highlighting, error detection, and copy functionality.">
+    <meta name="keywords" content="JSON validator, JSON formatter, JSON beautifier, JSON tool, online JSON tool, JSON parser, JSON syntax checker, JSON pretty print, JSON editor online, free JSON tools">
+    <meta name="author" content="Online Formatting Tools">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Free Online JSON Validator & Formatter Tool | JSON Tools">
+    <meta property="og:description" content="Format, validate and beautify your JSON data instantly with our free online JSON formatter tool. Features include syntax highlighting and error detection.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourwebsite.com/json.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Free Online JSON Validator & Formatter Tool">
+    <meta name="twitter:description" content="Format, validate and beautify your JSON data instantly with our free online JSON formatter tool.">
+    
+    <title>Free Online JSON Validator & Formatter Tool | Best JSON Formatter</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "JSON Formatter & Validator",
+      "description": "Free online tool to format and validate JSON data",
+      "url": "https://yourwebsite.com/json.html",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5011292240027163" crossorigin="anonymous"></script>
+
+    <style>
+        :root {
+            --primary-color: #4a90e2;
+            --secondary-color: #6a11cb;
+            --accent-color: #ff6b6b;
+            --success-color: #22c55e;
+            --background-color: #f8f9fa;
+            --text-color: #333;
+            --border-color: #e2e8f0;
+            --card-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+            --header-bg: linear-gradient(135deg, #74b9ff, #a29bfe, #f1f5f9); /* Lighter gradient */
+            --header-text: #2d3436;
+        }
+
+        [data-theme="dark"] {
+            --primary-color: #6a11cb;
+            --secondary-color: #4a90e2;
+            --accent-color: #ff6b6b;
+            --background-color: #1e1e1e;
+            --text-color: #f8f9fa;
+            --border-color: #4a5568;
+            --header-bg: linear-gradient(135deg, #2c3e50, #74b9ff, #a29bfe); /* Adjusted for dark mode */
+            --header-text: #f8f9fa;
+            --card-shadow: 0 6px 20px rgba(255, 255, 255, 0.1);
+        }
+
+        /* General Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            font-size: 14px;
+        }
+
+        /* Header */
+        header {
+            background: var(--header-bg);
+            color: var(--header-text);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+            color: var(--header-text);
+            transition: var(--transition);
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo i {
+            font-size: 2.2rem;
+            color: var(--header-text);
+        }
+
+        .logo h1 {
+            margin: 0;
+            font-size: 2rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--header-text);
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        nav a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            bottom: 0;
+            left: 50%;
+            transition: var(--transition);
+            transform: translateX(-50%);
+        }
+
+        nav a:hover::after {
+            width: 50%;
+        }
+
+        /* Main Content */
+        main {
+            flex: 1;
+            padding: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding-bottom: 0;
+        }
+
+        /* JSON Tool Section */
+        #json-tool {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 0;
+        }
+
+        [data-theme="dark"] #json-tool {
+            background: #2c3e50;
+        }
+
+        .tool-section {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            background: var(--header-bg);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 700;
+            padding: 5px 15px;
+            border-radius: 8px;
+        }
+
+        .section-header i {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .section-header h2 {
+            margin: 0;
+            font-size: 1.2rem;
+        }
+
+        textarea {
+            width: 100%;
+            height: 500px; /* Increased size towards footer */
+            padding: 12px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-family: 'Fira Code', monospace;
+            font-size: 13px;
+            line-height: 1.5;
+            resize: none;
+            transition: var(--transition);
+            background: #fafafa;
+        }
+
+        [data-theme="dark"] textarea {
+            background: #2d3748;
+            color: #f8f9fa;
+        }
+
+        textarea:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+        }
+
+        /* Buttons */
+        .buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            flex: 1;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(74, 144, 226, 0.2);
+        }
+
+        button i {
+            font-size: 1rem;
+        }
+
+        /* Output Section */
+        #json-output {
+            background: #fafafa;
+            padding: 12px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-family: 'Fira Code', monospace;
+            font-size: 13px;
+            line-height: 1.5;
+            height: 500px; /* Increased size towards footer */
+            overflow: auto;
+            position: relative;
+        }
+
+        [data-theme="dark"] #json-output {
+            background: #2d3748;
+            color: #f8f9fa;
+        }
+
+        .output-buttons {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            display: flex;
+            gap: 8px;
+            z-index: 10;
+        }
+
+        .output-buttons button {
+            padding: 8px 12px;
+            background: var(--success-color);
+            font-size: 0.9rem;
+            border-radius: 6px;
+        }
+
+        /* JSON Formatting */
+        .json-node {
+            margin-left: 20px;
+            padding: 0;
+            list-style: none;
+            border-left: 1px dashed rgba(74, 144, 226, 0.2);
+        }
+
+        .json-key {
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+
+        .json-value {
+            color: var(--secondary-color);
+        }
+
+        .json-string { color: #22c55e; }
+        .json-number { color: #f59e0b; }
+        .json-boolean { color: #6366f1; }
+        .json-null { color: #ef4444; }
+
+        .json-toggle {
+            cursor: pointer;
+            color: var(--primary-color);
+            margin-right: 6px;
+            width: 14px;
+            height: 14px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .json-toggle::before {
+            content: "▶";
+            font-size: 10px;
+            transition: transform 0.2s ease;
+        }
+
+        .json-toggle.expanded::before {
+            transform: rotate(90deg);
+        }
+
+        /* Error Display */
+        .error {
+            color: var(--accent-color);
+            font-weight: 500;
+            padding: 8px;
+            border-radius: 6px;
+            background: rgba(255, 107, 107, 0.1);
+            border-left: 3px solid var(--accent-color);
+        }
+
+        /* Footer Ad Unit */
+        footer {
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            padding: 20px;
+            text-align: center;
+            margin-top: auto;
+        }
+
+        .footer-ad {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 15px 20px;
+        }
+
+        .ad-unit {
+            background: #fff;
+            border-radius: 20px;
+            padding: 10px;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 15px;
+        }
+
+        [data-theme="dark"] .ad-unit {
+            background: #2c3e50;
+        }
+
+        .ad-unit img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .header-content {
+                max-width: 100%;
+                padding: 0 15px;
+            }
+            #json-tool {
+                grid-template-columns: 1fr;
+            }
+            textarea, #json-output {
+                height: 450px; /* Adjusted for medium screens */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .logo h1 {
+                font-size: 1.5rem;
+            }
+            .logo i {
+                font-size: 1.5rem;
+            }
+            nav {
+                flex-direction: column;
+                gap: 10px;
+            }
+            nav a {
+                font-size: 1rem;
+            }
+            main {
+                padding: 15px;
+            }
+            #json-tool {
+                padding: 15px;
+            }
+            .buttons {
+                flex-direction: column;
+            }
+            button {
+                width: 100%;
+            }
+            .section-header h2 {
+                font-size: 1rem;
+            }
+            textarea, #json-output {
+                height: 400px; /* Adjusted for smaller screens */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo h1 {
+                font-size: 1.2rem;
+            }
+            .logo i {
+                font-size: 1.2rem;
+            }
+            nav a {
+                font-size: 0.9rem;
+                padding: 6px 12px;
+            }
+            .section-header h2 {
+                font-size: 0.9rem;
+            }
+            textarea, #json-output {
+                height: 300px; /* Adjusted for very small screens */
+            }
+        }
+
+        /* Hidden Advertisement Links */
+        .hidden-links {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <a href="/" class="logo">
+                <i class="fas fa-code"></i>
+                <h1>Online Formatting Tools</h1>
+            </a>
+            <nav>
+                <a href="/"><i class="fas fa-home"></i> Home</a>
+                <a href="/blog.html"><i class="fas fa-blog"></i> Blog</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div id="json-tool">
+            <div class="tool-section">
+                <div class="section-header">
+                    <i class="fas fa-edit"></i>
+                    <h2>Input JSON</h2>
+                </div>
+                <textarea id="json-input" placeholder="Paste your JSON here..."></textarea>
+                <div class="buttons">
+                    <button id="validate-btn"><i class="fas fa-check-circle"></i> Validate JSON</button>
+                    <button id="format-btn"><i class="fas fa-magic"></i> Format JSON</button>
+                    <button id="clear-btn"><i class="fas fa-trash-alt"></i> Clear</button>
+                </div>
+            </div>
+
+            <div class="tool-section">
+                <div class="section-header">
+                    <i class="fas fa-code"></i>
+                    <h2>Formatted Output</h2>
+                </div>
+                <div id="json-output">
+                    <div class="output-buttons">
+                        <button id="expand-all-btn" class="disabled"><i class="fas fa-expand-alt"></i> Expand</button>
+                        <button id="collapse-all-btn" class="disabled"><i class="fas fa-compress-alt"></i> Collapse</button>
+                        <button id="copy-btn" class="disabled"><i class="fas fa-copy"></i> Copy</button>
+                    </div>
+                    <div id="output-content"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer with Ad Unit -->
+    <div class="footer-ad">
+        <div class="ad-unit">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-5011292240027163"
+                 data-ad-slot="1234567890"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </div>
+
+    <footer>
+        <!-- Hidden Advertisement Links -->
+        <div class="hidden-links">
+            <a href="https://ptakeemsaifegro.net/4/9066913" target="_blank" rel="noopener noreferrer"></a>
+            <a href="https://ptakeemsaifegro.net/4/9060213" target="_blank" rel="noopener noreferrer"></a>
+            <a href="https://ptakeemsaifegro.net/4/9060288" target="_blank" rel="noopener noreferrer"></a>
+            <a href="https://ptakeemsaifegro.net/4/9064436" target="_blank" rel="noopener noreferrer"></a>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const jsonInput = document.getElementById('json-input');
+            const validateBtn = document.getElementById('validate-btn');
+            const formatBtn = document.getElementById('format-btn');
+            const clearBtn = document.getElementById('clear-btn');
+            const expandAllBtn = document.getElementById('expand-all-btn');
+            const collapseAllBtn = document.getElementById('collapse-all-btn');
+            const copyBtn = document.getElementById('copy-btn');
+            const outputContent = document.getElementById('output-content');
+
+            let formattedJSON = ''; // Store formatted JSON for copying
+
+            // Function to recursively expand or collapse all child nodes
+            function toggleAllChildren(element, expand) {
+                const childUl = element.querySelector('ul');
+                if (childUl) {
+                    childUl.style.display = expand ? 'block' : 'none';
+                    const childToggles = childUl.querySelectorAll('.json-toggle');
+                    childToggles.forEach(toggle => {
+                        toggle.classList.toggle('expanded', expand);
+                        toggleAllChildren(toggle.parentElement, expand);
+                    });
+                }
+            }
+
+            // Function to render JSON with individual toggles
+            function renderJSON(data, parentElement) {
+                if (typeof data === 'object' && data !== null) {
+                    const ul = document.createElement('ul');
+                    ul.classList.add('json-node');
+                    for (const key in data) {
+                        const li = document.createElement('li');
+                        const toggle = document.createElement('span');
+                        toggle.classList.add('json-toggle');
+                        toggle.addEventListener('click', function () {
+                            toggle.classList.toggle('expanded');
+                            toggleAllChildren(li, toggle.classList.contains('expanded'));
+                        });
+                        li.appendChild(toggle);
+                        const keySpan = document.createElement('span');
+                        keySpan.classList.add('json-key');
+                        keySpan.textContent = key + ': ';
+                        li.appendChild(keySpan);
+                        if (typeof data[key] === 'object' && data[key] !== null) {
+                            const childUl = document.createElement('ul');
+                            childUl.classList.add('json-node');
+                            childUl.style.display = 'none'; // Initially collapsed
+                            li.appendChild(childUl);
+                            renderJSON(data[key], childUl);
+                        } else {
+                            const valueSpan = document.createElement('span');
+                            valueSpan.classList.add('json-value');
+                            if (typeof data[key] === 'string') {
+                                valueSpan.classList.add('json-string');
+                            } else if (typeof data[key] === 'number') {
+                                valueSpan.classList.add('json-number');
+                            } else if (typeof data[key] === 'boolean') {
+                                valueSpan.classList.add('json-boolean');
+                            } else if (data[key] === null) {
+                                valueSpan.classList.add('json-null');
+                            }
+                            valueSpan.textContent = JSON.stringify(data[key]);
+                            li.appendChild(valueSpan);
+                        }
+                        ul.appendChild(li);
+                    }
+                    parentElement.appendChild(ul);
+                }
+            }
+
+            // Function to validate JSON
+            function validateJSON() {
+                try {
+                    JSON.parse(jsonInput.value);
+                    outputContent.innerHTML = '<div class="success">Valid JSON</div>';
+                } catch (e) {
+                    outputContent.innerHTML = `<div class="error">Invalid JSON: ${e.message}</div>`;
+                }
+            }
+
+            // Function to format JSON
+            function formatJSON() {
+                try {
+                    const parsedJSON = JSON.parse(jsonInput.value);
+                    formattedJSON = JSON.stringify(parsedJSON, null, 4); // Store formatted JSON
+                    outputContent.innerHTML = '';
+                    renderJSON(parsedJSON, outputContent);
+                    expandAllBtn.classList.remove('disabled');
+                    collapseAllBtn.classList.remove('disabled');
+                    copyBtn.classList.remove('disabled');
+                } catch (e) {
+                    outputContent.innerHTML = `<div class="error">Invalid JSON: ${e.message}</div>`;
+                }
+            }
+
+            // Function to clear input and output
+            function clear() {
+                jsonInput.value = '';
+                outputContent.innerHTML = '';
+                expandAllBtn.classList.add('disabled');
+                collapseAllBtn.classList.add('disabled');
+                copyBtn.classList.add('disabled');
+            }
+
+            // Function to expand all nodes
+            function expandAll() {
+                const toggles = document.querySelectorAll('.json-toggle');
+                toggles.forEach(toggle => {
+                    toggle.classList.add('expanded');
+                    toggleAllChildren(toggle.parentElement, true);
+                });
+            }
+
+            // Function to collapse all nodes
+            function collapseAll() {
+                const toggles = document.querySelectorAll('.json-toggle');
+                toggles.forEach(toggle => {
+                    toggle.classList.remove('expanded');
+                    toggleAllChildren(toggle.parentElement, false);
+                });
+            }
+
+            // Function to copy formatted JSON to clipboard
+            function copyJSON() {
+                navigator.clipboard.writeText(formattedJSON).then(() => {
+                    alert('Formatted JSON copied to clipboard!');
+                }).catch(() => {
+                    alert('Failed to copy JSON to clipboard.');
+                });
+            }
+
+            // Event listeners
+            validateBtn.addEventListener('click', validateJSON);
+            formatBtn.addEventListener('click', formatJSON);
+            clearBtn.addEventListener('click', clear);
+            expandAllBtn.addEventListener('click', expandAll);
+            collapseAllBtn.addEventListener('click', collapseAll);
+            copyBtn.addEventListener('click', copyJSON);
+        });
+    </script>
+</body>
+</html>

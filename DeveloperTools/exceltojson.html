@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excel to JSON Converter</title>
+    <style>
+        :root {
+            --primary-color: #2575fc;
+            --secondary-color: #6a11cb;
+            --accent-color: #ff6b6b;
+            --success-color: #22c55e;
+            --background-color: #f8f9fa;
+            --text-color: #333;
+            --border-color: #e2e8f0;
+            --card-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .converter-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .panel {
+            background: white;
+            border-radius: 8px;
+            box-shadow: var(--card-shadow);
+            padding: 20px;
+        }
+
+        .panel-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .panel-header h2 {
+            margin: 0;
+            font-size: 1.2rem;
+            color: var(--text-color);
+        }
+
+        .upload-message {
+            color: var(--success-color);
+            font-weight: bold;
+            margin-left: 10px;
+            display: none;
+        }
+
+        .upload-area {
+            border: 2px dashed var(--border-color);
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .upload-area:hover {
+            border-color: var(--primary-color);
+            background: rgba(37, 117, 252, 0.05);
+        }
+
+        .upload-area i {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        #fileInput {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        textarea {
+            width: 100%;
+            height: 300px;
+            padding: 15px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-family: 'Fira Code', monospace;
+            font-size: 14px;
+            resize: none;
+            transition: var(--transition);
+        }
+
+        textarea:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(37, 117, 252, 0.1);
+        }
+
+        .options {
+            margin: 20px 0;
+        }
+
+        .option {
+            margin-bottom: 15px;
+        }
+
+        .option label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+
+        .option input[type="checkbox"] {
+            accent-color: var(--primary-color);
+        }
+
+        .option input[type="text"],
+        .option input[type="number"] {
+            padding: 8px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            width: 50px;
+            text-align: center;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            flex: 1;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(37, 117, 252, 0.2);
+        }
+
+        button.secondary {
+            background: #e2e8f0;
+            color: #333;
+        }
+
+        button.secondary:hover {
+            background: #cbd5e1;
+        }
+
+        .output-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .converter-wrapper {
+                grid-template-columns: 1fr;
+            }
+            
+            .buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Fira+Code:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- SheetJS library for XLSX parsing -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Excel to JSON Converter</h1>
+        
+        <div class="converter-wrapper">
+            <div class="panel">
+                <div class="panel-header">
+                    <h2>Input Excel file</h2>
+                    <span id="uploadMessage" class="upload-message">File uploaded!</span>
+                </div>
+                
+                <div class="upload-area" id="uploadArea">
+                    <i class="fas fa-file-excel"></i>
+                    <p>Click to upload Excel file or drag and drop</p>
+                    <p><small>Supports .xlsx, .xls files</small></p>
+                    <input type="file" id="fileInput" accept=".xlsx,.xls">
+                </div>
+                
+                <div class="options">
+                    <div class="option">
+                        <label>
+                            <input type="checkbox" id="formatValues" checked>
+                            Format values by type (numbers, booleans)
+                        </label>
+                    </div>
+                    <div class="option">
+                        <label>
+                            <input type="checkbox" id="firstRowHeaders" checked>
+                            Use first row as headers
+                        </label>
+                    </div>
+                    <div class="option">
+                        <label>
+                            Sheet name: 
+                            <input type="text" id="sheetName" placeholder="(first sheet)">
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="buttons">
+                    <button id="convertBtn"><i class="fas fa-exchange-alt"></i> Convert to JSON</button>
+                    <button id="clearBtn" class="secondary"><i class="fas fa-trash-alt"></i> Clear</button>
+                </div>
+            </div>
+            
+            <div class="panel">
+                <div class="panel-header">
+                    <h2>JSON Output</h2>
+                </div>
+                
+                <textarea id="jsonOutput" placeholder="JSON output will appear here..." readonly></textarea>
+                
+                <div class="output-buttons">
+                    <button id="copyBtn"><i class="fas fa-copy"></i> Copy JSON</button>
+                    <button id="downloadBtn"><i class="fas fa-download"></i> Download JSON</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // DOM elements
+            const jsonOutput = document.getElementById('jsonOutput');
+            const convertBtn = document.getElementById('convertBtn');
+            const clearBtn = document.getElementById('clearBtn');
+            const copyBtn = document.getElementById('copyBtn');
+            const downloadBtn = document.getElementById('downloadBtn');
+            const fileInput = document.getElementById('fileInput');
+            const uploadArea = document.getElementById('uploadArea');
+            const uploadMessage = document.getElementById('uploadMessage');
+            
+            // Options
+            const formatValues = document.getElementById('formatValues');
+            const firstRowHeaders = document.getElementById('firstRowHeaders');
+            const sheetName = document.getElementById('sheetName');
+            
+            let workbook = null;
+            let fileName = '';
+            
+            // File upload handling
+            fileInput.addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (!file) return;
+                
+                fileName = file.name;
+                uploadMessage.style.display = 'inline';
+                
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    try {
+                        const data = new Uint8Array(e.target.result);
+                        workbook = XLSX.read(data, { type: 'array' });
+                    } catch (error) {
+                        uploadMessage.style.display = 'none';
+                        alert('Error reading Excel file: ' + error.message);
+                    }
+                };
+                reader.onerror = function() {
+                    uploadMessage.style.display = 'none';
+                    alert('Error reading file');
+                };
+                reader.readAsArrayBuffer(file);
+            });
+            
+            // Drag and drop handling
+            uploadArea.addEventListener('dragover', function(e) {
+                e.preventDefault();
+                uploadArea.style.borderColor = 'var(--primary-color)';
+                uploadArea.style.backgroundColor = 'rgba(37, 117, 252, 0.1)';
+            });
+            
+            uploadArea.addEventListener('dragleave', function() {
+                uploadArea.style.borderColor = 'var(--border-color)';
+                uploadArea.style.backgroundColor = '';
+            });
+            
+            uploadArea.addEventListener('drop', function(e) {
+                e.preventDefault();
+                uploadArea.style.borderColor = 'var(--border-color)';
+                uploadArea.style.backgroundColor = '';
+                
+                const file = e.dataTransfer.files[0];
+                if (!file) return;
+                
+                fileName = file.name;
+                fileInput.files = e.dataTransfer.files;
+                uploadMessage.style.display = 'inline';
+                
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    try {
+                        const data = new Uint8Array(e.target.result);
+                        workbook = XLSX.read(data, { type: 'array' });
+                    } catch (error) {
+                        uploadMessage.style.display = 'none';
+                        alert('Error reading XLSX file: ' + error.message);
+                    }
+                };
+                reader.onerror = function() {
+                    uploadMessage.style.display = 'none';
+                    alert('Error reading file');
+                };
+                reader.readAsArrayBuffer(file);
+            });
+            
+            // Convert XLSX to JSON
+            convertBtn.addEventListener('click', function() {
+                try {
+                    if (!workbook) {
+                        alert('Please upload an XLSX file first');
+                        return;
+                    }
+                    
+                    // Get the sheet
+                    const sheet = sheetName.value 
+                        ? workbook.Sheets[sheetName.value] 
+                        : workbook.Sheets[workbook.SheetNames[0]];
+                    
+                    if (!sheet) {
+                        alert('Sheet not found');
+                        return;
+                    }
+                    
+                    // Convert to JSON with proper formatting
+                    const jsonData = XLSX.utils.sheet_to_json(sheet, {
+                        header: firstRowHeaders.checked ? 1 : undefined,
+                        defval: '',
+                        raw: !formatValues.checked
+                    });
+                    
+                    // Format the output with proper JSON structure
+                    const formattedJson = JSON.stringify(jsonData, (key, value) => {
+                        // Convert undefined to null for proper JSON
+                        if (value === undefined) return null;
+                        return value;
+                    }, 2);
+                    
+                    jsonOutput.value = formattedJson;
+                    
+                } catch (error) {
+                    alert('Conversion error: ' + error.message);
+                    console.error(error);
+                }
+            });
+            
+            // Clear button
+            clearBtn.addEventListener('click', function() {
+                jsonOutput.value = '';
+                fileInput.value = '';
+                workbook = null;
+                uploadMessage.style.display = 'none';
+            });
+            
+            // Copy button
+            copyBtn.addEventListener('click', function() {
+                if (!jsonOutput.value) {
+                    alert('No JSON to copy');
+                    return;
+                }
+                
+                jsonOutput.select();
+                document.execCommand('copy');
+                alert('JSON copied to clipboard');
+            });
+            
+            // Download button
+            downloadBtn.addEventListener('click', function() {
+                if (!jsonOutput.value) {
+                    alert('No JSON to download');
+                    return;
+                }
+                
+                const blob = new Blob([jsonOutput.value], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = fileName.replace(/\.[^/.]+$/, '') + '.json';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            });
+        });
+    </script>
+</body>
+</html>

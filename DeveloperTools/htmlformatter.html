@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free online HTML Validator and Formatter tool. Instantly format, validate, and beautify your HTML code with our easy-to-use tool. Features include syntax highlighting, error detection, and copy functionality.">
+    <meta name="keywords" content="HTML validator, HTML formatter, HTML beautifier, HTML tool, online HTML tool, HTML parser, HTML syntax checker, HTML pretty print, HTML editor online, free HTML tools">
+    <meta name="author" content="Online Formatting Tools">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Free Online HTML Validator & Formatter Tool | HTML Tools">
+    <meta property="og:description" content="Format, validate and beautify your HTML code instantly with our free online HTML formatter tool. Features include syntax highlighting and error detection.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourwebsite.com/html.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Free Online HTML Validator & Formatter Tool">
+    <meta name="twitter:description" content="Format, validate and beautify your HTML code instantly with our free online HTML formatter tool.">
+    
+    <title>Free Online HTML Validator & Formatter Tool | Best HTML Formatter</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Add structured data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "HTML Formatter & Validator",
+      "description": "Free online tool to format and validate HTML code",
+      "url": "https://yourwebsite.com/html.html",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5011292240027163" crossorigin="anonymous"></script>
+
+    <style>
+        :root {
+            --primary-color: #2575fc;
+            --secondary-color: #6a11cb;
+            --accent-color: #ff6b6b;
+            --success-color: #22c55e;
+            --background-color: #f8f9fa;
+            --text-color: #333;
+            --border-color: #e2e8f0;
+            --card-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            --transition: all 0.3s ease;
+            --header-bg: #ffffff;
+            --header-text: #333;
+        }
+
+        /* General Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            font-size: 14px;
+        }
+
+        /* Header */
+        header {
+            background: var(--header-bg);
+            color: var(--header-text);
+            padding: 10px 0; /* Reduced padding */
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px; /* Reduced gap */
+            text-decoration: none;
+            color: var(--header-text);
+        }
+
+        .logo i {
+            font-size: 1.5rem; /* Reduced icon size */
+            color: var(--primary-color);
+        }
+
+        .logo h1 {
+            margin: 0;
+            font-size: 1.2rem; /* Reduced font size */
+            font-weight: 600;
+            color: var(--header-text);
+        }
+
+        nav {
+            display: flex;
+            gap: 15px; /* Reduced gap */
+        }
+
+        nav a {
+            color: var(--header-text);
+            text-decoration: none;
+            font-size: 0.9rem; /* Reduced font size */
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 6px 10px; /* Reduced padding */
+            border-radius: 6px;
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+            background: rgba(37, 117, 252, 0.1);
+        }
+
+        /* Main Content */
+        main {
+            flex: 1;
+            padding: 15px; /* Reduced padding */
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 15px; /* Reduced gap */
+            padding-bottom: 0;
+        }
+
+        /* HTML Tool Section */
+        #html-tool {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px; /* Reduced gap */
+            background: #fff;
+            padding: 15px; /* Reduced padding */
+            border-radius: 12px; /* Reduced border radius */
+            box-shadow: var(--card-shadow);
+            margin-bottom: 0;
+        }
+
+        .tool-section {
+            display: flex;
+            flex-direction: column;
+            gap: 10px; /* Reduced gap */
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 6px; /* Reduced gap */
+            margin-bottom: 6px; /* Reduced margin */
+        }
+
+        .section-header i {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+        }
+
+        .section-header h2 {
+            margin: 0;
+            font-size: 0.8rem;
+            color: var(--text-color);
+        }
+
+        textarea {
+            width: 100%;
+            height: 300px; /* Adjusted height */
+            padding: 12px; /* Reduced padding */
+            border: 2px solid var(--border-color);
+            border-radius: 8px; /* Reduced border radius */
+            font-family: 'Fira Code', monospace;
+            font-size: 13px;
+            line-height: 1.5;
+            resize: none;
+            transition: var(--transition);
+            background: #fafafa;
+        }
+
+        textarea:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(37, 117, 252, 0.1);
+        }
+
+        /* Buttons */
+        .buttons {
+            display: flex;
+            gap: 8px; /* Reduced gap */
+        }
+
+        button {
+            padding: 8px 16px; /* Reduced padding */
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: #fff;
+            border: none;
+            border-radius: 6px; /* Reduced border radius */
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            flex: 1;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(37, 117, 252, 0.2);
+        }
+
+        button i {
+            font-size: 0.8rem;
+        }
+
+        /* Output Section */
+        #html-output {
+            background: #fafafa;
+            padding: 12px; /* Reduced padding */
+            border: 2px solid var(--border-color);
+            border-radius: 8px; /* Reduced border radius */
+            font-family: 'Fira Code', monospace;
+            font-size: 13px;
+            line-height: 1.5;
+            height: 300px; /* Adjusted height */
+            overflow: auto;
+            position: relative;
+        }
+
+        .output-buttons {
+            position: absolute;
+            top: 6px; /* Adjusted position */
+            right: 6px; /* Adjusted position */
+            display: flex;
+            gap: 6px;
+            z-index: 10;
+        }
+
+        .output-buttons button {
+            padding: 6px 10px;
+            background: var(--success-color);
+            font-size: 0.7rem;
+            border-radius: 6px;
+        }
+
+        /* HTML Formatting */
+        .html-tag {
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+
+        .html-attribute {
+            color: var(--secondary-color);
+        }
+
+        .html-value {
+            color: #22c55e;
+        }
+
+        .html-comment {
+            color: #6b7280;
+            font-style: italic;
+        }
+
+        .html-toggle {
+            cursor: pointer;
+            color: var(--primary-color);
+            margin-right: 6px;
+            width: 14px;
+            height: 14px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .html-toggle::before {
+            content: "▶";
+            font-size: 10px;
+            transition: transform 0.2s ease;
+        }
+
+        .html-toggle.expanded::before {
+            transform: rotate(90deg);
+        }
+
+        /* Error Display */
+        .error {
+            color: var(--accent-color);
+            font-weight: 500;
+            padding: 8px;
+            border-radius: 6px;
+            background: rgba(255, 107, 107, 0.1);
+            border-left: 3px solid var(--accent-color);
+        }
+
+        /* Footer Ad Unit */
+        footer {
+            background: var(--header-bg);
+            padding: 20px;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .ad-unit {
+            max-width: 1200px; /* Increased max-width */
+            margin: 0 auto;
+            padding: 15px;
+            background: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .ad-unit img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            #html-tool {
+                grid-template-columns: 1fr;
+            }
+
+            textarea, #html-output {
+                height: 250px; /* Adjusted height */
+            }
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.2rem;
+            }
+
+            main {
+                padding: 10px; /* Reduced padding */
+            }
+
+            #html-tool {
+                padding: 10px; /* Reduced padding */
+            }
+
+            .buttons {
+                flex-direction: column;
+            }
+
+            button {
+                width: 100%;
+            }
+
+            .ad-unit {
+                padding: 10px;
+            }
+        }
+
+        /* Hidden Advertisement Links */
+        .hidden-links {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <a href="/" class="logo">
+                <i class="fas fa-code"></i>
+                <h1>Online Formatting Tools</h1>
+            </a>
+            <nav>
+                <a href="/">Home</a>
+                <a href="/blog.html">Blog</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div id="html-tool">
+            <div class="tool-section">
+                <div class="section-header">
+                    <i class="fas fa-edit"></i>
+                    <h2>Input HTML</h2>
+                </div>
+                <textarea id="html-input" placeholder="Paste your HTML here..."></textarea>
+                <div class="buttons">
+                    <button id="validate-btn"><i class="fas fa-check-circle"></i> Validate HTML</button>
+                    <button id="format-btn"><i class="fas fa-magic"></i> Format HTML</button>
+                    <button id="clear-btn"><i class="fas fa-trash-alt"></i> Clear</button>
+                </div>
+            </div>
+
+            <div class="tool-section">
+                <div class="section-header">
+                    <i class="fas fa-code"></i>
+                    <h2>Formatted Output</h2>
+                </div>
+                <div id="html-output">
+                    <div class="output-buttons">
+                        <button id="expand-all-btn" class="disabled"><i class="fas fa-expand-alt"></i> Expand </button>
+                        <button id="collapse-all-btn" class="disabled"><i class="fas fa-compress-alt"></i> Collapse </button>
+                        <button id="copy-btn" class="disabled"><i class="fas fa-copy"></i> Copy</button>
+                    </div>
+                    <div id="output-content"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer with Ad Unit Placeholder -->
+    <footer>
+        <div class="ad-unit">
+            <img src="https://via.placeholder.com/1200x200" alt=""> <!-- Increased size -->
+        </div>
+    </footer>
+
+    <!-- Hidden Advertisement Links in Footer -->
+    <footer class="hidden-links">
+        <a href="https://ptakeemsaifegro.net/4/9066913" target="_blank" rel="noopener noreferrer"></a>
+        <a href="https://ptakeemsaifegro.net/4/9060213" target="_blank" rel="noopener noreferrer"></a>
+        <a href="https://ptakeemsaifegro.net/4/9060288" target="_blank" rel="noopener noreferrer"></a>
+        <a href="https://ptakeemsaifegro.net/4/9064436" target="_blank" rel="noopener noreferrer"></a>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const htmlInput = document.getElementById('html-input');
+            const validateBtn = document.getElementById('validate-btn');
+            const formatBtn = document.getElementById('format-btn');
+            const clearBtn = document.getElementById('clear-btn');
+            const expandAllBtn = document.getElementById('expand-all-btn');
+            const collapseAllBtn = document.getElementById('collapse-all-btn');
+            const copyBtn = document.getElementById('copy-btn');
+            const outputContent = document.getElementById('output-content');
+
+            let formattedHTML = ''; // Store formatted HTML for copying
+
+            // Function to recursively expand or collapse all child nodes
+            function toggleAllChildren(element, expand) {
+                const childUl = element.querySelector('ul');
+                if (childUl) {
+                    childUl.style.display = expand ? 'block' : 'none';
+                    const childToggles = childUl.querySelectorAll('.html-toggle');
+                    childToggles.forEach(toggle => {
+                        toggle.classList.toggle('expanded', expand);
+                        toggleAllChildren(toggle.parentElement, expand);
+                    });
+                }
+            }
+
+            // Function to render HTML with individual toggles
+            function renderHTML(htmlString, parentElement) {
+                try {
+                    const parser = new DOMParser();
+                    const htmlDoc = parser.parseFromString(htmlString, 'text/html');
+                    if (htmlDoc.querySelector('parsererror')) {
+                        throw new Error('Invalid HTML');
+                    }
+                    formattedHTML = new XMLSerializer().serializeToString(htmlDoc); // Store formatted HTML
+                    outputContent.innerHTML = '';
+                    renderNode(htmlDoc.documentElement, outputContent);
+                    expandAllBtn.classList.remove('disabled');
+                    collapseAllBtn.classList.remove('disabled');
+                    copyBtn.classList.remove('disabled');
+                } catch (e) {
+                    outputContent.innerHTML = `<div class="error">Invalid HTML: ${e.message}</div>`;
+                }
+            }
+
+            // Function to render a single HTML node
+            function renderNode(node, parentElement) {
+                const ul = document.createElement('ul');
+                ul.classList.add('html-node');
+                const li = document.createElement('li');
+                const toggle = document.createElement('span');
+                toggle.classList.add('html-toggle');
+                toggle.addEventListener('click', function () {
+                    toggle.classList.toggle('expanded');
+                    toggleAllChildren(li, toggle.classList.contains('expanded'));
+                });
+                li.appendChild(toggle);
+                const tagSpan = document.createElement('span');
+                tagSpan.classList.add('html-tag');
+                tagSpan.textContent = `<${node.nodeName.toLowerCase()}>`;
+                li.appendChild(tagSpan);
+                if (node.attributes && node.attributes.length > 0) {
+                    const attrSpan = document.createElement('span');
+                    attrSpan.classList.add('html-attribute');
+                    for (let i = 0; i < node.attributes.length; i++) {
+                        const attr = node.attributes[i];
+                        attrSpan.textContent += ` ${attr.name}="${attr.value}"`;
+                    }
+                    li.appendChild(attrSpan);
+                }
+                if (node.childNodes.length > 0) {
+                    const childUl = document.createElement('ul');
+                    childUl.classList.add('html-node');
+                    childUl.style.display = 'none'; // Initially collapsed
+                    li.appendChild(childUl);
+                    node.childNodes.forEach(child => {
+                        if (child.nodeType === Node.ELEMENT_NODE) {
+                            renderNode(child, childUl);
+                        } else if (child.nodeType === Node.TEXT_NODE && child.textContent.trim()) {
+                            const valueSpan = document.createElement('span');
+                            valueSpan.classList.add('html-value');
+                            valueSpan.textContent = child.textContent.trim();
+                            li.appendChild(valueSpan);
+                        }
+                    });
+                }
+                ul.appendChild(li);
+                parentElement.appendChild(ul);
+            }
+
+            // Function to validate HTML
+            function validateHTML() {
+                try {
+                    const parser = new DOMParser();
+                    const htmlDoc = parser.parseFromString(htmlInput.value, 'text/html');
+                    if (htmlDoc.querySelector('parsererror')) {
+                        throw new Error('Invalid HTML');
+                    }
+                    outputContent.innerHTML = '<div class="success">Valid HTML</div>';
+                } catch (e) {
+                    outputContent.innerHTML = `<div class="error">Invalid HTML: ${e.message}</div>`;
+                }
+            }
+
+            // Function to format HTML
+            function formatHTML() {
+                renderHTML(htmlInput.value, outputContent);
+            }
+
+            // Function to clear input and output
+            function clear() {
+                htmlInput.value = '';
+                outputContent.innerHTML = '';
+                expandAllBtn.classList.add('disabled');
+                collapseAllBtn.classList.add('disabled');
+                copyBtn.classList.add('disabled');
+            }
+
+            // Function to expand all nodes
+            function expandAll() {
+                const toggles = document.querySelectorAll('.html-toggle');
+                toggles.forEach(toggle => {
+                    toggle.classList.add('expanded');
+                    toggleAllChildren(toggle.parentElement, true);
+                });
+            }
+
+            // Function to collapse all nodes
+            function collapseAll() {
+                const toggles = document.querySelectorAll('.html-toggle');
+                toggles.forEach(toggle => {
+                    toggle.classList.remove('expanded');
+                    toggleAllChildren(toggle.parentElement, false);
+                });
+            }
+
+            // Function to copy formatted HTML to clipboard
+            function copyHTML() {
+                navigator.clipboard.writeText(formattedHTML).then(() => {
+                    alert('Formatted HTML copied to clipboard!');
+                }).catch(() => {
+                    alert('Failed to copy HTML to clipboard.');
+                });
+            }
+
+            // Event listeners
+            validateBtn.addEventListener('click', validateHTML);
+            formatBtn.addEventListener('click', formatHTML);
+            clearBtn.addEventListener('click', clear);
+            expandAllBtn.addEventListener('click', expandAll);
+            collapseAllBtn.addEventListener('click', collapseAll);
+            copyBtn.addEventListener('click', copyHTML);
+        });
+    </script>
+</body>
+</html>

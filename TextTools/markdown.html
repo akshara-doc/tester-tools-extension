@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free online Markdown Editor. Write and preview Markdown in real-time with syntax highlighting and live rendering. Perfect for creating READMEs, documentation, and more.">
+    <meta name="keywords" content="Markdown editor, Markdown preview, Markdown tool, online Markdown editor, Markdown syntax, Markdown renderer, Markdown live preview, free Markdown tools">
+    <meta name="author" content="Online Formatting Tools">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Free Online Markdown Editor | Markdown Tools">
+    <meta property="og:description" content="Write and preview Markdown in real-time with our free online Markdown editor. Perfect for creating READMEs, documentation, and more.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourwebsite.com/markdown.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Free Online Markdown Editor">
+    <meta name="twitter:description" content="Write and preview Markdown in real-time with our free online Markdown editor.">
+    
+    <title>Free Online Markdown Editor | Best Markdown Tool</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Add structured data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Markdown Editor",
+      "description": "Free online tool to write and preview Markdown in real-time",
+      "url": "https://yourwebsite.com/markdown.html",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5011292240027163" crossorigin="anonymous"></script>
+
+    <style>
+        :root {
+            --primary-color: #2575fc;
+            --secondary-color: #6a11cb;
+            --accent-color: #ff6b6b;
+            --success-color: #22c55e;
+            --background-color: #f8f9fa;
+            --text-color: #333;
+            --border-color: #e2e8f0;
+            --card-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            --transition: all 0.3s ease;
+        }
+
+        /* Enhanced General Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Enhanced Header */
+        header {
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            color: #fff;
+            padding: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #fff, #f0f0f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        header p {
+            margin: 5px 0 0;
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        header a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1rem;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        header a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Enhanced Main Content */
+        main {
+            flex: 1;
+            padding: 30px 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            padding-bottom: 0;
+        }
+
+        /* Enhanced Markdown Tool Section */
+        #markdown-tool {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            background: #fff;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 0;
+        }
+
+        .tool-section {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .section-header i {
+            font-size: 1.4rem;
+            color: var(--primary-color);
+        }
+
+        .section-header h2 {
+            margin: 0;
+            font-size: 1.4rem;
+            color: var(--text-color);
+        }
+
+        textarea {
+            width: 100%;
+            height: 400px;
+            padding: 20px;
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            font-family: 'Fira Code', monospace;
+            font-size: 14px;
+            line-height: 1.6;
+            resize: none;
+            transition: var(--transition);
+            background: #fafafa;
+        }
+
+        textarea:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(37, 117, 252, 0.1);
+        }
+
+        /* Enhanced Buttons */
+        .buttons {
+            display: flex;
+            gap: 12px;
+        }
+
+        button {
+            padding: 12px 24px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            flex: 1;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(37, 117, 252, 0.2);
+        }
+
+        button i {
+            font-size: 1.1rem;
+        }
+
+        /* Enhanced Output Section */
+        #markdown-output {
+            background: #fafafa;
+            padding: 20px;
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            line-height: 1.6;
+            height: 400px;
+            overflow: auto;
+            position: relative;
+        }
+
+        .output-buttons {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            display: flex;
+            gap: 8px;
+            z-index: 10;
+        }
+
+        .output-buttons button {
+            padding: 8px 12px;
+            background: var(--success-color);
+            font-size: 0.9rem;
+            border-radius: 6px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            #markdown-tool {
+                grid-template-columns: 1fr;
+            }
+
+            textarea, #markdown-output {
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.4rem;
+            }
+
+            main {
+                padding: 20px 15px;
+            }
+
+            #markdown-tool {
+                padding: 20px;
+            }
+
+            .buttons {
+                flex-direction: column;
+            }
+
+            button {
+                width: 100%;
+            }
+
+            .ad-unit.horizontal {
+                min-height: 200px;
+            }
+            
+            .ad-container {
+                padding: 0 15px;
+            }
+        }
+
+        /* Loading Animation */
+        .loading {
+            position: relative;
+        }
+
+        .loading::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+        }
+
+        .loading::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            border: 4px solid var(--primary-color);
+            border-top-color: transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            z-index: 1;
+        }
+
+        @keyframes spin {
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        /* Enhanced Ad Container Styles */
+        .ad-container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 30px auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding: 0 20px;
+        }
+
+        .ad-unit {
+            background: #fff;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: var(--card-shadow);
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100px;
+        }
+
+        .ad-unit.horizontal {
+            min-height: 280px;
+        }
+
+        .ad-label {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        /* Footer adjustments */
+        footer {
+            margin-top: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            color: #fff;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-links a {
+            color: #fff;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        /* Sponsored Link Styles */
+        .sponsored-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 20px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: #fff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: var(--transition);
+            text-align: center;
+            margin: 0 auto;
+            max-width: 300px;
+        }
+
+        .sponsored-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(37, 117, 252, 0.2);
+        }
+
+        .sponsored-link i {
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div>
+                <h1><i class="fas fa-code"></i> Markdown Editor</h1>
+                <p>Write and preview Markdown in real-time</p>
+            </div>
+            <nav>
+                <a href="/"><i class="fas fa-home"></i> Home</a>
+                <a href="/blog.html" class="blog-link"><i class="fas fa-blog"></i> Blog</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div id="markdown-tool">
+            <div class="tool-section">
+                <div class="section-header">
+                    <i class="fas fa-edit"></i>
+                    <h2>Input Markdown</h2>
+                </div>
+                <textarea id="markdown-input" placeholder="Write your Markdown here..."></textarea>
+                <div class="buttons">
+                    <button id="clear-btn"><i class="fas fa-trash-alt"></i> Clear</button>
+                </div>
+            </div>
+
+            <div class="tool-section">
+                <div class="section-header">
+                    <i class="fas fa-eye"></i>
+                    <h2>Preview</h2>
+                </div>
+                <div id="markdown-output">
+                    <div class="output-buttons">
+                        <button id="copy-btn" class="disabled"><i class="fas fa-copy"></i> Copy HTML</button>
+                    </div>
+                    <div id="output-content"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Ad Container for Direct Link -->
+    <div class="ad-container">
+        <div class="ad-unit">
+            <p class="ad-label">Affiliate Link</p>
+            <a href="https://024eai0hz9fq8l7gi7p40v3bpo.hop.clickbank.net" target="_blank" rel="noopener noreferrer" class="sponsored-link">
+                <i class="fas fa-external-link-alt"></i> Instant Wordpress Website!
+            </a>
+        </div>
+          <div class="ad-unit">
+            <p class="ad-label">Affiliate Link</p>
+            <a href="https://aa98982c4dfw0wa6xfpb78ewex.hop.clickbank.net" target="_blank" rel="noopener noreferrer" class="sponsored-link">
+                <i class="fas fa-external-link-alt"></i> Mitolyn Health Amazing Deals!
+            </a>
+        </div>
+    
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2023 Online Formatting Tools. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="/privacy-policy">Privacy Policy</a>
+                <a href="/terms-of-service">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript for Markdown Rendering and Copying Functionality
+        const markdownInput = document.getElementById('markdown-input');
+        const outputContent = document.getElementById('output-content');
+        const copyBtn = document.getElementById('copy-btn');
+
+        // Markdown rendering function
+        function renderMarkdown(markdown) {
+            // Convert Markdown to HTML using a simple parser
+            const html = marked.parse(markdown);
+            outputContent.innerHTML = html;
+        }
+
+        // Real-time rendering
+        markdownInput.addEventListener('input', function() {
+            renderMarkdown(markdownInput.value);
+            copyBtn.classList.remove('disabled');
+        });
+
+        // Clear input
+        document.getElementById('clear-btn').addEventListener('click', function() {
+            markdownInput.value = '';
+            outputContent.innerHTML = '';
+            copyBtn.classList.add('disabled');
+        });
+
+        // Copy HTML output
+        copyBtn.addEventListener('click', function() {
+            if (outputContent.innerHTML) {
+                navigator.clipboard.writeText(outputContent.innerHTML)
+                    .then(() => {
+                        const originalText = copyBtn.innerHTML;
+                        copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                        copyBtn.style.background = 'var(--success-color)';
+                        setTimeout(() => {
+                            copyBtn.innerHTML = originalText;
+                            copyBtn.style.background = '';
+                        }, 1500);
+                    })
+                    .catch(err => {
+                        console.error('Failed to copy: ', err);
+                        copyBtn.innerHTML = '<i class="fas fa-times"></i> Copy Failed';
+                        copyBtn.style.background = 'var(--accent-color)';
+                        setTimeout(() => {
+                            copyBtn.innerHTML = '<i class="fas fa-copy"></i> Copy HTML';
+                            copyBtn.style.background = '';
+                        }, 1500);
+                    });
+            }
+        });
+
+        // Load Marked.js library for Markdown parsing
+        const script = document.createElement('script');
+        script.src = 'https://cdn.jsdelivr.net/npm/marked/marked.min.js';
+        document.head.appendChild(script);
+    </script>
+</body>
+</html>

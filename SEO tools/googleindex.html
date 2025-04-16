@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Check if your URL is indexed by Google with our free online tool. Enter a URL and get guidance on verifying its indexing status.">
+    <meta name="keywords" content="google index checker, SEO tool, check google indexing, site index status, free SEO tool">
+    <meta name="author" content="Online Formatting Tools">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Free Google Index Checker | Verify Indexing Status">
+    <meta property="og:description" content="Verify if your URL is indexed by Google with our free tool. Get guidance on checking your site’s indexing status.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourwebsite.com/google-index-checker.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Free Google Index Checker Tool">
+    <meta name="twitter:description" content="Check your URL’s Google indexing status with our free SEO tool.">
+    
+    <title>Free Google Index Checker | Verify Indexing Status</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Google Index Checker",
+      "description": "Free online tool to check if a URL is indexed by Google",
+      "url": "https://yourwebsite.com/google-index-checker.html",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5011292240027163" crossorigin="anonymous"></script>
+
+    <style>
+        :root {
+            --primary-color: #2575fc;
+            --secondary-color: #6a11cb;
+            --accent-color: #ff6b6b;
+            --success-color: #22c55e;
+            --background-color: #f8f9fa;
+            --text-color: #333;
+            --border-color: #e2e8f0;
+            --card-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            --transition: all 0.3s ease;
+            --header-bg: #ffffff;
+            --header-text: #333;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            min-height: 100vh;
+            font-size: 16px;
+        }
+
+        header {
+            background: var(--header-bg);
+            color: var(--header-text);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--header-text);
+        }
+
+        .logo i {
+            font-size: 2rem;
+            color: var(--primary-color);
+        }
+
+        .logo h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: var(--header-text);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 8px 12px;
+            border-radius: 6px;
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+            background: rgba(37, 117, 252, 0.1);
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+            flex: 1;
+        }
+
+        .intro {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .intro h1 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin: 0 0 10px;
+        }
+
+        .intro p {
+            font-size: 1.1rem;
+            color: var(--text-color);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        #index-tool {
+            background: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .input-section {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        input[type="url"] {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: var(--transition);
+            background: #fafafa;
+        }
+
+        input[type="url"]:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(37, 117, 252, 0.1);
+        }
+
+        .buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex: 1;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(37, 117, 252, 0.2);
+        }
+
+        button i {
+            font-size: 1rem;
+        }
+
+        #index-output {
+            margin-top: 20px;
+            padding: 20px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            position: relative;
+        }
+
+        .index-result {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            border-left: 4px solid var(--primary-color);
+            background: #fafafa;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .index-result i {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .index-result .content {
+            flex: 1;
+        }
+
+        .index-result h3 {
+            margin: 0 0 5px 0;
+            font-size: 1.1rem;
+            color: var(--text-color);
+        }
+
+        .index-result p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: var(--text-color);
+        }
+
+        .index-result .warning {
+            color: var(--accent-color);
+            font-weight: 500;
+        }
+
+        .index-result .success {
+            color: var(--success-color);
+            font-weight: 500;
+        }
+
+        .error {
+            color: var(--accent-color);
+            font-weight: 500;
+            padding: 10px;
+            border-radius: 6px;
+            background: rgba(255, 107, 107, 0.1);
+            border-left: 4px solid var(--accent-color);
+            text-align: center;
+        }
+
+        .output-buttons {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .output-buttons button {
+            padding: 8px 12px;
+            background: var(--success-color);
+            font-size: 0.9rem;
+            border-radius: 6px;
+        }
+
+        footer {
+            background: var(--header-bg);
+            padding: 20px;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            margin-top: 20px;
+        }
+
+        .ad-unit {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px;
+            background: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .ad-unit p {
+            font-size: 0.8rem;
+            color: #777;
+            margin: 5px 0;
+        }
+
+        .ad-unit ins {
+            display: block;
+            width: 100%;
+            height: 90px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            .intro h1 {
+                font-size: 1.5rem;
+            }
+
+            .intro p {
+                font-size: 1rem;
+            }
+
+            .buttons {
+                flex-direction: column;
+            }
+
+            button {
+                width: 100%;
+            }
+
+            .index-result {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <a href="/" class="logo">
+                <i class="fas fa-search"></i>
+                <h1>Online Formatting Tools</h1>
+            </a>
+            <nav>
+                <a href="/">Home</a>
+                <a href="/blog.html">Blog</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="intro">
+            <h1>Free Google Index Checker</h1>
+            <p>Verify if your URL is indexed by Google with our free tool. Enter a URL and get guidance on checking its indexing status!</p>
+        </div>
+
+        <div id="index-tool">
+            <div class="input-section">
+                <input type="url" id="url-input" placeholder="https://example.com">
+                <div class="buttons">
+                    <button id="check-btn"><i class="fas fa-search"></i> Check Index</button>
+                    <button id="clear-btn"><i class="fas fa-trash-alt"></i> Clear</button>
+                </div>
+            </div>
+
+            <div id="index-output"></div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="ad-unit">
+            <p>Advertisement</p>
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-5011292240027163"
+                 data-ad-slot="1234567890"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const urlInput = document.getElementById('url-input');
+            const checkBtn = document.getElementById('check-btn');
+            const clearBtn = document.getElementById('clear-btn');
+            const indexOutput = document.getElementById('index-output');
+
+            let indexResultsText = '';
+
+            // Function to create a result block
+            function createResultBlock(iconClass, title, content, statusClass = '') {
+                const div = document.createElement('div');
+                div.classList.add('index-result');
+                div.innerHTML = `
+                    <i class="${iconClass}"></i>
+                    <div class="content">
+                        <h3>${title}</h3>
+                        <p class="${statusClass}">${content}</p>
+                    </div>
+                `;
+                return div;
+            }
+
+            // Function to check indexing status (simulated due to proxy limitations)
+            function checkIndexStatus() {
+                const url = urlInput.value.trim();
+                indexOutput.innerHTML = '<p>Checking...</p>';
+
+                if (!url || !url.match(/^https?:\/\/.+/)) {
+                    indexOutput.innerHTML = '<div class="error">Please enter a valid URL (e.g., https://example.com)!</div>';
+                    return;
+                }
+
+                // Simulated logic: Known indexed domains for demo purposes
+                const knownIndexed = [
+                    'https://example.com',
+                    'https://google.com',
+                    'https://wikipedia.org'
+                ];
+                const isLikelyIndexed = knownIndexed.some(known => url.toLowerCase().startsWith(known.toLowerCase()));
+                const googleSearchLink = `https://www.google.com/search?q=site:${encodeURIComponent(url)}`;
+
+                const message = isLikelyIndexed
+                    ? `The URL <a href="${url}" target="_blank">${url}</a> is likely indexed by Google (based on common domains).`
+                    : `The URL <a href="${url}" target="_blank">${url}</a> may not be indexed by Google, but this cannot be confirmed without server-side access.`;
+                const note = `Due to technical limitations, automatic checking is unreliable in this client-side tool. For accurate results, manually search <a href="${googleSearchLink}" target="_blank">site:${url}</a> on Google or use a server-side solution.`;
+
+                // Build output
+                indexOutput.innerHTML = `
+                    <div class="output-buttons">
+                        <button id="copy-btn"><i class="fas fa-copy"></i> Copy Results</button>
+                    </div>
+                `;
+                indexOutput.appendChild(createResultBlock(
+                    isLikelyIndexed ? 'fas fa-check-circle' : 'fas fa-exclamation-circle',
+                    'Indexing Status',
+                    `${message}<br>${note}`,
+                    isLikelyIndexed ? 'success' : 'warning'
+                ));
+
+                // Store results for copying
+                indexResultsText = `
+                    URL: ${url}
+                    Indexing Status: ${isLikelyIndexed ? 'Likely Indexed' : 'Uncertain'}
+                    Details: ${message}
+                    Note: ${note}
+                `;
+
+                document.getElementById('copy-btn').addEventListener('click', copyIndexResults);
+            }
+
+            // Function to clear input and output
+            function clear() {
+                urlInput.value = '';
+                indexOutput.innerHTML = '';
+            }
+
+            // Function to copy results to clipboard
+            function copyIndexResults() {
+                navigator.clipboard.writeText(indexResultsText).then(() => {
+                    alert('Index check results copied to clipboard!');
+                }).catch(() => {
+                    alert('Failed to copy results to clipboard.');
+                });
+            }
+
+            // Event listeners
+            checkBtn.addEventListener('click', checkIndexStatus);
+            clearBtn.addEventListener('click', clear);
+        });
+    </script>
+</body>
+</html>

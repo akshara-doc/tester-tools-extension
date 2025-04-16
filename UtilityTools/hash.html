@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free online Hash Generator tool. Instantly generate MD5, SHA-1, SHA-256, and SHA-512 hashes from your text with our easy-to-use tool. Features include multiple hash algorithms and copy functionality.">
+    <meta name="keywords" content="hash generator, hash tool, online hash tool, MD5 hash, SHA-1 hash, SHA-256 hash, SHA-512 hash, hash calculator, free hash tools">
+    <meta name="author" content="Online Formatting Tools">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Free Online Hash Generator Tool | Hash Tools">
+    <meta property="og:description" content="Generate MD5, SHA-1, SHA-256, and SHA-512 hashes from your text instantly with our free online hash generator tool.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourwebsite.com/hash.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Free Online Hash Generator Tool">
+    <meta name="twitter:description" content="Generate MD5, SHA-1, SHA-256, and SHA-512 hashes from your text instantly with our free online hash generator tool.">
+    
+    <title>Free Online Hash Generator Tool | Best Hash Calculator</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Structured data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Hash Generator",
+      "description": "Free online tool to generate MD5, SHA-1, SHA-256, and SHA-512 hashes",
+      "url": "https://yourwebsite.com/hash.html",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5011292240027163" crossorigin="anonymous"></script>
+
+    <!-- CryptoJS for hash generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+
+    <style>
+        :root {
+            --primary-color: #2575fc;
+            --secondary-color: #6a11cb;
+            --accent-color: #ff6b6b;
+            --success-color: #22c55e;
+            --background-color: #f8f9fa;
+            --text-color: #333;
+            --border-color: #e2e8f0;
+            --card-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            --transition: all 0.3s ease;
+            --header-bg: #ffffff;
+            --header-text: #333;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            font-size: 14px;
+        }
+
+        header {
+            background: var(--header-bg);
+            color: var(--header-text);
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: var(--header-text);
+        }
+
+        .logo i {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .logo h1 {
+            margin: 0;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--header-text);
+        }
+
+        nav {
+            display: flex;
+            gap: 15px;
+        }
+
+        nav a {
+            color: var(--header-text);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 6px 10px;
+            border-radius: 6px;
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+            background: rgba(37, 117, 252, 0.1);
+        }
+
+        main {
+            flex: 1;
+            padding: 15px;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            padding-bottom: 0;
+        }
+
+        #hash-tool {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            background: #fff;
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 0;
+        }
+
+        .tool-section {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 6px;
+        }
+
+        .section-header i {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+        }
+
+        .section-header h2 {
+            margin: 0;
+            font-size: 0.8rem;
+            color: var(--text-color);
+        }
+
+        textarea {
+            width: 100%;
+            height: 300px;
+            padding: 12px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-family: 'Fira Code', monospace;
+            font-size: 13px;
+            line-height: 1.5;
+            resize: none;
+            transition: var(--transition);
+            background: #fafafa;
+        }
+
+        textarea:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(37, 117, 252, 0.1);
+        }
+
+        .buttons {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 8px 16px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            flex: 1;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(37, 117, 252, 0.2);
+        }
+
+        button i {
+            font-size: 0.8rem;
+        }
+
+        #hash-output {
+            background: #fafafa;
+            padding: 12px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-family: 'Fira Code', monospace;
+            font-size: 13px;
+            line-height: 1.5;
+            height: 300px;
+            overflow: auto;
+            position: relative;
+        }
+
+        .output-buttons {
+            position: absolute;
+            top: 6px;
+            right: 6px;
+            display: flex;
+            gap: 6px;
+            z-index: 10;
+        }
+
+        .output-buttons button {
+            padding: 6px 10px;
+            background: var(--success-color);
+            font-size: 0.7rem;
+            border-radius: 6px;
+        }
+
+        .hash-result {
+            margin-bottom: 10px;
+        }
+
+        .hash-label {
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+
+        .hash-value {
+            word-break: break-all;
+        }
+
+        .error {
+            color: var(--accent-color);
+            font-weight: 500;
+            padding: 8px;
+            border-radius: 6px;
+            background: rgba(255, 107, 107, 0.1);
+            border-left: 3px solid var(--accent-color);
+        }
+
+        footer {
+            background: var(--header-bg);
+            padding: 20px;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .ad-unit {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px;
+            background: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .ad-unit img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+        }
+
+        @media (max-width: 1024px) {
+            #hash-tool {
+                grid-template-columns: 1fr;
+            }
+
+            textarea, #hash-output {
+                height: 250px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.2rem;
+            }
+
+            main {
+                padding: 10px;
+            }
+
+            #hash-tool {
+                padding: 10px;
+            }
+
+            .buttons {
+                flex-direction: column;
+            }
+
+            button {
+                width: 100%;
+            }
+
+            .ad-unit {
+                padding: 10px;
+            }
+        }
+
+        .hidden-links {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <a href="/" class="logo">
+                <i class="fas fa-code"></i>
+                <h1>Online Formatting Tools</h1>
+            </a>
+            <nav>
+                <a href="/">Home</a>
+                <a href="/blog.html">Blog</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div id="hash-tool">
+            <div class="tool-section">
+                <div class="section-header">
+                    <i class="fas fa-edit"></i>
+                    <h2>Input Text</h2>
+                </div>
+                <textarea id="hash-input" placeholder="Paste your text here to generate hashes..."></textarea>
+                <div class="buttons">
+                    <button id="md5-btn"><i class="fas fa-fingerprint"></i> MD5</button>
+                    <button id="sha1-btn"><i class="fas fa-fingerprint"></i> SHA-1</button>
+                    <button id="sha256-btn"><i class="fas fa-fingerprint"></i> SHA-256</button>
+                    <button id="sha512-btn"><i class="fas fa-fingerprint"></i> SHA-512</button>
+                    <button id="clear-btn"><i class="fas fa-trash-alt"></i> Clear</button>
+                </div>
+            </div>
+
+            <div class="tool-section">
+                <div class="section-header">
+                    <i class="fas fa-code"></i>
+                    <h2>Hash Output</h2>
+                </div>
+                <div id="hash-output">
+                    <div class="output-buttons">
+                        <button id="copy-btn" class="disabled"><i class="fas fa-copy"></i> Copy</button>
+                    </div>
+                    <div id="output-content"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="ad-unit">
+            <img src="https://via.placeholder.com/1200x200" alt="">
+        </div>
+    </footer>
+
+    <footer class="hidden-links">
+        <a href="https://ptakeemsaifegro.net/4/9066913" target="_blank" rel="noopener noreferrer"></a>
+        <a href="https://ptakeemsaifegro.net/4/9060213" target="_blank" rel="noopener noreferrer"></a>
+        <a href="https://ptakeemsaifegro.net/4/9060288" target="_blank" rel="noopener noreferrer"></a>
+        <a href="https://ptakeemsaifegro.net/4/9064436" target="_blank" rel="noopener noreferrer"></a>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const hashInput = document.getElementById('hash-input');
+            const md5Btn = document.getElementById('md5-btn');
+            const sha1Btn = document.getElementById('sha1-btn');
+            const sha256Btn = document.getElementById('sha256-btn');
+            const sha512Btn = document.getElementById('sha512-btn');
+            const clearBtn = document.getElementById('clear-btn');
+            const copyBtn = document.getElementById('copy-btn');
+            const outputContent = document.getElementById('output-content');
+
+            let outputText = ''; // Store output text for copying
+
+            // Function to generate hash based on algorithm
+            function generateHash(algorithm) {
+                const inputText = hashInput.value;
+                if (!inputText) {
+                    outputContent.innerHTML = '<div class="error">Please enter some text to hash.</div>';
+                    return;
+                }
+
+                let hash;
+                switch (algorithm) {
+                    case 'md5':
+                        hash = CryptoJS.MD5(inputText).toString();
+                        break;
+                    case 'sha1':
+                        hash = CryptoJS.SHA1(inputText).toString();
+                        break;
+                    case 'sha256':
+                        hash = CryptoJS.SHA256(inputText).toString();
+                        break;
+                    case 'sha512':
+                        hash = CryptoJS.SHA512(inputText).toString();
+                        break;
+                }
+
+                outputText = hash;
+                outputContent.innerHTML = `
+                    <div class="hash-result">
+                        <span class="hash-label">${algorithm.toUpperCase()} Hash:</span>
+                        <div class="hash-value">${hash}</div>
+                    </div>
+                `;
+                copyBtn.classList.remove('disabled');
+            }
+
+            // Function to clear input and output
+            function clear() {
+                hashInput.value = '';
+                outputContent.innerHTML = '';
+                copyBtn.classList.add('disabled');
+            }
+
+            // Function to copy output to clipboard
+            function copyOutput() {
+                navigator.clipboard.writeText(outputText).then(() => {
+                    alert('Hash copied to clipboard!');
+                }).catch(() => {
+                    alert('Failed to copy hash to clipboard.');
+                });
+            }
+
+            // Event listeners
+            md5Btn.addEventListener('click', () => generateHash('md5'));
+            sha1Btn.addEventListener('click', () => generateHash('sha1'));
+            sha256Btn.addEventListener('click', () => generateHash('sha256'));
+            sha512Btn.addEventListener('click', () => generateHash('sha512'));
+            clearBtn.addEventListener('click', clear);
+            copyBtn.addEventListener('click', copyOutput);
+        });
+    </script>
+</body>
+</html>

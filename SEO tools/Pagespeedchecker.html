@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Check your website's page speed with our free online tool. Enter a URL or paste HTML to get a detailed report and score instantly.">
+    <meta name="keywords" content="page speed checker, website speed test, load time tool, free speed audit, SEO speed tool, page performance">
+    <meta name="author" content="Online Formatting Tools">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Free Page Speed Checker | Test Your Website Performance">
+    <meta property="og:description" content="Test your website's loading speed with our free tool. Enter a URL or HTML for an instant report and score on resources, size, and more.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourwebsite.com/speed-checker.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Free Page Speed Checker Tool">
+    <meta name="twitter:description" content="Instantly test your website's page speed and get a score with our free tool.">
+    
+    <title>Free Page Speed Checker | Test Your Website Performance</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Page Speed Checker",
+      "description": "Free online tool to test website page speed and performance",
+      "url": "https://yourwebsite.com/speed-checker.html",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5011292240027163" crossorigin="anonymous"></script>
+
+    <style>
+        :root {
+            --primary-color: #2575fc;
+            --secondary-color: #6a11cb;
+            --accent-color: #ff6b6b;
+            --success-color: #22c55e;
+            --background-color: #f8f9fa;
+            --text-color: #333;
+            --border-color: #e2e8f0;
+            --card-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            --transition: all 0.3s ease;
+            --header-bg: #ffffff;
+            --header-text: #333;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            min-height: 100vh;
+            font-size: 16px;
+        }
+
+        header {
+            background: var(--header-bg);
+            color: var(--header-text);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--header-text);
+        }
+
+        .logo i {
+            font-size: 2rem;
+            color: var(--primary-color);
+        }
+
+        .logo h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: var(--header-text);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 8px 12px;
+            border-radius: 6px;
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+            background: rgba(37, 117, 252, 0.1);
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+            flex: 1;
+        }
+
+        .intro {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .intro h1 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin: 0 0 10px;
+        }
+
+        .intro p {
+            font-size: 1.1rem;
+            color: var(--text-color);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        #speed-tool {
+            background: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .input-section {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        input[type="url"], textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: var(--transition);
+            background: #fafafa;
+        }
+
+        textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        input[type="url"]:focus, textarea:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(37, 117, 252, 0.1);
+        }
+
+        .buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex: 1;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(37, 117, 252, 0.2);
+        }
+
+        button i {
+            font-size: 1rem;
+        }
+
+        #speed-output {
+            margin-top: 20px;
+            padding: 20px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            position: relative;
+        }
+
+        .speed-score {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .speed-score h2 {
+            font-size: 1.8rem;
+            color: var(--success-color);
+            margin: 0;
+        }
+
+        .speed-score p {
+            font-size: 1rem;
+            color: var(--text-color);
+        }
+
+        .speed-result {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            border-left: 4px solid var(--primary-color);
+            background: #fafafa;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .speed-result i {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .speed-result .content {
+            flex: 1;
+        }
+
+        .speed-result h3 {
+            margin: 0 0 5px 0;
+            font-size: 1.1rem;
+            color: var(--text-color);
+        }
+
+        .speed-result p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: var(--text-color);
+        }
+
+        .speed-result .warning {
+            color: var(--accent-color);
+            font-weight: 500;
+        }
+
+        .error {
+            color: var(--accent-color);
+            font-weight: 500;
+            padding: 10px;
+            border-radius: 6px;
+            background: rgba(255, 107, 107, 0.1);
+            border-left: 4px solid var(--accent-color);
+            text-align: center;
+        }
+
+        .output-buttons {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .output-buttons button {
+            padding: 8px 12px;
+            background: var(--success-color);
+            font-size: 0.9rem;
+            border-radius: 6px;
+        }
+
+        footer {
+            background: var(--header-bg);
+            padding: 20px;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            margin-top: 20px;
+        }
+
+        .ad-unit {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px;
+            background: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .ad-unit p {
+            font-size: 0.8rem;
+            color: #777;
+            margin: 5px 0;
+        }
+
+        .ad-unit ins {
+            display: block;
+            width: 100%;
+            height: 90px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            .intro h1 {
+                font-size: 1.5rem;
+            }
+
+            .intro p {
+                font-size: 1rem;
+            }
+
+            .buttons {
+                flex-direction: column;
+            }
+
+            button {
+                width: 100%;
+            }
+
+            .speed-result {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <a href="/" class="logo">
+                <i class="fas fa-tachometer-alt"></i>
+                <h1>Online Formatting Tools</h1>
+            </a>
+            <nav>
+                <a href="/">Home</a>
+                <a href="/blog.html">Blog</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="intro">
+            <h1>Free Page Speed Checker</h1>
+            <p>Optimize your website’s performance with our free tool. Enter a URL or paste HTML below to get a detailed speed report and score instantly!</p>
+        </div>
+
+        <div id="speed-tool">
+            <div class="input-section">
+                <input type="url" id="speed-input" placeholder="https://example.com">
+                <textarea id="html-input" placeholder="Or paste your HTML here if URL fetching fails..."></textarea>
+                <div class="buttons">
+                    <button id="analyze-btn"><i class="fas fa-tachometer-alt"></i> Check Speed</button>
+                    <button id="clear-btn"><i class="fas fa-trash-alt"></i> Clear</button>
+                </div>
+            </div>
+
+            <div id="speed-output"></div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="ad-unit">
+            <p>Advertisement</p>
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-5011292240027163"
+                 data-ad-slot="1234567890"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const speedInput = document.getElementById('speed-input');
+            const htmlInput = document.getElementById('html-input');
+            const analyzeBtn = document.getElementById('analyze-btn');
+            const clearBtn = document.getElementById('clear-btn');
+            const speedOutput = document.getElementById('speed-output');
+
+            let speedResultsText = '';
+
+            // Function to fetch page content using a proxy
+            async function fetchPageContent(url) {
+                const proxyUrl = 'https://api.allorigins.win/raw?url=';
+                try {
+                    const startTime = performance.now();
+                    const response = await fetch(proxyUrl + encodeURIComponent(url));
+                    if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+                    const html = await response.text();
+                    const loadTime = (performance.now() - startTime) / 1000; // Simulated load time in seconds
+                    return { html, loadTime };
+                } catch (error) {
+                    throw new Error(`Failed to fetch URL: ${error.message}. Try pasting the HTML content instead or check the URL.`);
+                }
+            }
+
+            // Function to create a result block
+            function createResultBlock(iconClass, title, content, isWarning = false) {
+                const div = document.createElement('div');
+                div.classList.add('speed-result');
+                div.innerHTML = `
+                    <i class="${iconClass}"></i>
+                    <div class="content">
+                        <h3>${title}</h3>
+                        <p ${isWarning ? 'class="warning"' : ''}>${content}</p>
+                    </div>
+                `;
+                return div;
+            }
+
+            // Function to calculate page speed score
+            function calculateSpeedScore(data) {
+                let score = 0;
+                const maxScore = 100;
+                const weights = {
+                    loadTime: 40,      // <2s full points, >5s zero
+                    resourceCount: 20, // <20 full points, >50 zero
+                    totalSize: 20,     // <1MB full points, >3MB zero
+                    images: 20         // All optimized full points
+                };
+
+                // Load Time
+                if (data.loadTime <= 2) score += weights.loadTime;
+                else if (data.loadTime <= 5) score += weights.loadTime * (1 - (data.loadTime - 2) / 3);
+                // Resource Count
+                if (data.resourceCount <= 20) score += weights.resourceCount;
+                else if (data.resourceCount <= 50) score += weights.resourceCount * (1 - (data.resourceCount - 20) / 30);
+                // Total Size
+                if (data.totalSize <= 1) score += weights.totalSize;
+                else if (data.totalSize <= 3) score += weights.totalSize * (1 - (data.totalSize - 1) / 2);
+                // Images
+                if (data.imgTotal === 0 || data.imgUnoptimized === 0) score += weights.images;
+                else score += weights.images * (1 - data.imgUnoptimized / data.imgTotal);
+
+                return Math.round((score / maxScore) * 100);
+            }
+
+            // Function to analyze page speed
+            async function analyzePageSpeed() {
+                const url = speedInput.value.trim();
+                const htmlContent = htmlInput.value.trim();
+                let doc, loadTime;
+
+                speedOutput.innerHTML = '<p>Analyzing...</p>';
+
+                // Try fetching URL first
+                if (url && url.match(/^https?:\/\/.+/)) {
+                    try {
+                        const { html, loadTime: fetchTime } = await fetchPageContent(url);
+                        loadTime = fetchTime; // Simulated load time from proxy
+                        const parser = new DOMParser();
+                        doc = parser.parseFromString(html, 'text/html');
+                    } catch (e) {
+                        if (htmlContent) {
+                            speedOutput.innerHTML = `<div class="error">${e.message} Using provided HTML instead (load time not measured).</div>`;
+                            const parser = new DOMParser();
+                            doc = parser.parseFromString(htmlContent, 'text/html');
+                            loadTime = null; // No load time without fetch
+                        } else {
+                            speedOutput.innerHTML = `<div class="error">${e.message}</div>`;
+                            return;
+                        }
+                    }
+                } else if (htmlContent) {
+                    const parser = new DOMParser();
+                    doc = parser.parseFromString(htmlContent, 'text/html');
+                    loadTime = null; // No load time without fetch
+                } else {
+                    speedOutput.innerHTML = '<div class="error">Please enter a valid URL or paste HTML content.</div>';
+                    return;
+                }
+
+                // Page Speed Analysis
+                const scripts = doc.querySelectorAll('script[src]').length;
+                const stylesheets = doc.querySelectorAll('link[rel="stylesheet"]').length;
+                const imgTotal = doc.querySelectorAll('img').length;
+                const resourceCount = scripts + stylesheets + imgTotal;
+                const imgUnoptimized = Array.from(doc.querySelectorAll('img')).filter(img => 
+                    (!img.hasAttribute('width') && !img.hasAttribute('height')) || 
+                    (img.src && (img.src.includes('.png') || img.src.includes('.jpg')) && !img.src.includes('data:image'))
+                ).length;
+                const htmlSize = new Blob([doc.documentElement.outerHTML]).size / 1024 / 1024; // MB
+                const totalSize = htmlSize; // Placeholder; real size needs backend fetch of resources
+
+                // Calculate Speed Score
+                const score = calculateSpeedScore({ 
+                    loadTime: loadTime || 2, // Default 2s if not fetched
+                    resourceCount, 
+                    totalSize, 
+                    imgTotal, 
+                    imgUnoptimized 
+                });
+
+                // Build output
+                speedOutput.innerHTML = `
+                    <div class="output-buttons">
+                        <button id="copy-btn"><i class="fas fa-copy"></i> Copy Results</button>
+                    </div>
+                `;
+                const scoreDiv = document.createElement('div');
+                scoreDiv.classList.add('speed-score');
+                scoreDiv.innerHTML = `<h2>Your Page Speed Score: ${score}%</h2><p>Based on key performance factors</p>`;
+                speedOutput.appendChild(scoreDiv);
+
+                speedOutput.appendChild(createResultBlock('fas fa-clock', 'Load Time', loadTime ? `${loadTime.toFixed(2)}s` : 'Not measured (HTML input)', loadTime && loadTime > 2));
+                speedOutput.appendChild(createResultBlock('fas fa-file', 'Resource Count', `Total: ${resourceCount} (Scripts: ${scripts}, Styles: ${stylesheets}, Images: ${imgTotal})`, resourceCount > 20));
+                speedOutput.appendChild(createResultBlock('fas fa-weight', 'Total Size', `${totalSize.toFixed(2)} MB (HTML only; full size requires backend)`, totalSize > 1));
+                speedOutput.appendChild(createResultBlock('fas fa-image', 'Image Optimization', `Total: ${imgTotal}, Unoptimized: ${imgUnoptimized}`, imgUnoptimized > 0));
+
+                // Store results for copying
+                speedResultsText = `
+                    Page Speed Score: ${score}%
+                    Load Time: ${loadTime ? `${loadTime.toFixed(2)}s` : 'Not measured'}
+                    Resource Count: Total: ${resourceCount} (Scripts: ${scripts}, Styles: ${stylesheets}, Images: ${imgTotal})
+                    Total Size: ${totalSize.toFixed(2)} MB (HTML only)
+                    Image Optimization: Total: ${imgTotal}, Unoptimized: ${imgUnoptimized}
+                `;
+
+                document.getElementById('copy-btn').addEventListener('click', copySpeedResults);
+            }
+
+            // Function to clear input and output
+            function clear() {
+                speedInput.value = '';
+                htmlInput.value = '';
+                speedOutput.innerHTML = '';
+            }
+
+            // Function to copy results to clipboard
+            function copySpeedResults() {
+                navigator.clipboard.writeText(speedResultsText).then(() => {
+                    alert('Page speed results copied to clipboard!');
+                }).catch(() => {
+                    alert('Failed to copy results to clipboard.');
+                });
+            }
+
+            // Event listeners
+            analyzeBtn.addEventListener('click', analyzePageSpeed);
+            clearBtn.addEventListener('click', clear);
+        });
+    </script>
+</body>
+</html>
