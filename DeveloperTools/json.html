@@ -81,6 +81,17 @@
             background-color: var(--background-color);
             color: var(--text-color);
             line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .content-wrapper {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            max-width: 1800px;
+            margin: 0 auto;
         }
 
         /* Animations */
@@ -180,22 +191,61 @@
             border-left: 3px solid var(--success-color);
         }
 
-        /* Textarea */
-        textarea {
+        /* Textarea and Output */
+        textarea, #json-output {
             font-family: 'Fira Code', monospace;
             font-size: 13px;
             line-height: 1.5;
             transition: var(--transition);
         }
 
-        [data-theme="dark"] textarea {
+        [data-theme="dark"] textarea, [data-theme="dark"] #json-output {
             background: #2d3748;
             color: #f8f9fa;
         }
+
+        /* Dynamic Height for JSON Tool */
+        #json-tool {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tool-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #json-input, #json-output {
+            flex: 1;
+            min-height: 0; /* Prevents overflow */
+        }
+
+        @media (min-width: 1024px) {
+            #json-tool {
+                height: calc(100vh - 80px - 60px); /* Viewport height minus header (~80px) and footer-ad (~60px) */
+            }
+        }
+
+        @media (max-width: 1023px) {
+            #json-tool {
+                height: auto; /* Allow stacking on mobile */
+            }
+            #json-input, #json-output {
+                height: 40vh; /* Fallback for smaller screens */
+            }
+        }
+
+        @media (max-width: 640px) {
+            #json-input, #json-output {
+                height: 30vh; /* Smaller height for very small screens */
+            }
+        }
     </style>
 </head>
-<body class="flex flex-col items-center">
-    <div class="content-wrapper w-full max-w-[1800px]">
+<body>
+    <div class="content-wrapper">
         <header>
             <div class="header-content mx-auto px-6 py-4 flex justify-between items-center">
                 <a href="/" class="logo flex items-center gap-3" aria-label="Online Formatting Tools Home">
@@ -212,14 +262,14 @@
             </div>
         </header>
 
-        <main>
+        <main class="flex-1">
             <div id="json-tool" class="grid grid-cols-1 lg:grid-cols-2 gap-6 bg-[var(--header-bg)] p-6 rounded-lg shadow-md mx-auto max-w-[90%] lg:max-w-[1400px] fade-in">
                 <div class="tool-section flex flex-col gap-4">
                     <div class="section-header flex items-center gap-2 text-xl font-semibold text-[var(--text-color)]">
                         <i class="fas fa-file-code text-[var(--primary-color)]"></i>
                         <h2 class="m-0">Input JSON</h2>
                     </div>
-                    <textarea id="json-input" class="w-full h-[500px] p-3 border-2 border-[var(--border-color)] rounded-lg bg-gray-50 focus:border-[var(--primary-color)] focus:ring focus:ring-[var(--primary-color)]/20 resize-none" placeholder="Paste your JSON here..."></textarea>
+                    <textarea id="json-input" class="w-full p-3 border-2 border-[var(--border-color)] rounded-lg bg-gray-50 focus:border-[var(--primary-color)] focus:ring focus:ring-[var(--primary-color)]/20 resize-none" placeholder="Paste your JSON here..."></textarea>
                     <div class="buttons flex flex-col sm:flex-row gap-3">
                         <button id="validate-btn" class="bg-[var(--primary-color)] text-white px-4 py-2 rounded-lg font-medium hover:bg-[var(--secondary-color)] flex items-center gap-2"><i class="fas fa-check-circle"></i> Validate JSON</button>
                         <button id="format-btn" class="bg-[var(--primary-color)] text-white px-4 py-2 rounded-lg font-medium hover:bg-[var(--secondary-color)] flex items-center gap-2"><i class="fas fa-magic"></i> Format JSON</button>
@@ -232,7 +282,7 @@
                         <i class="fas fa-code text-[var(--primary-color)]"></i>
                         <h2 class="m-0">Formatted Output</h2>
                     </div>
-                    <div id="json-output" class="relative w-full h-[500px] p-3 border-2 border-[var(--border-color)] rounded-lg bg-gray-50 overflow-auto">
+                    <div id="json-output" class="relative w-full p-3 border-2 border-[var(--border-color)] rounded-lg bg-gray-50 overflow-auto">
                         <div class="output-buttons absolute top-2 right-2 flex gap-2">
                             <button id="expand-all-btn" class="disabled bg-[var(--success-color)] text-white px-3 py-1 rounded-md text-sm hover:bg-green-600 flex items-center gap-1"><i class="fas fa-expand-alt"></i> Expand</button>
                             <button id="collapse-all-btn" class="disabled bg-[var(--success-color)] text-white px-3 py-1 rounded-md text-sm hover:bg-green-600 flex items-center gap-1"><i class="fas fa-compress-alt"></i> Collapse</button>
